@@ -41,10 +41,10 @@ in
     pluskinda.desktop.addons = {
       wallpapers = enabled;
       electron-support = enabled;
+      xdg-portal = enabled;
     };
 
     environment.systemPackages = with pkgs; [
-      (hiPrio pluskinda.xdg-open-with-portal)
       wl-clipboard
       gnome.gnome-tweaks
       gnome.nautilus-python
