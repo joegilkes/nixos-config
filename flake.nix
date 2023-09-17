@@ -22,12 +22,6 @@
     # Snowfall Flake
     flake.url = "github:snowfallorg/flake";
     flake.inputs.nixpkgs.follows = "unstable";
-
-    # Flake Hygiene
-    flake-checker = {
-      url = "github:DeterminateSystems/flake-checker";
-      inputs.nixpkgs.follows = "unstable";
-    };
   };
 
   outputs = inputs: let 
@@ -54,7 +48,7 @@
       ];
 
       systems.modules.nixos = with inputs; [
-        home-manages.nixosModules.home-manager
+        home-manager.nixosModules.home-manager
       ];
     };
 }

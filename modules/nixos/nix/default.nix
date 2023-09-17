@@ -1,7 +1,7 @@
 { options, config, pkgs, lib, inputs, ... }:
 
 with lib;
-with lib.pluskinds;
+with lib.pluskinda;
 let
   cfg = config.pluskinda.nix;
 
@@ -37,7 +37,6 @@ in
       nixfmt
       nix-prefetch-git
       nix-output-monitor
-      flake-checker
     ];
 
     nix =
