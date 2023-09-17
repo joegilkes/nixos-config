@@ -43,11 +43,10 @@ in
 
       system = {
         boot = enabled;
-        env = enabled;
         fonts = enabled;
         locale = enabled;
         time = enabled;
-        xkb = enabled;
+        kb = enabled;
       };
     };
   };
