@@ -140,7 +140,7 @@ in
       # system to select).
       uid = 1000;
 
-      extraGroups = [ ] ++ cfg.extraGroups;
+      extraGroups = [ "wheel" ] ++ cfg.extraGroups;
     } // cfg.extraOptions;
   };
 }
