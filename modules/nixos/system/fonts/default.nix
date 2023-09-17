@@ -19,7 +19,8 @@ in
     environment.systemPackages = with pkgs; [ font-manager ];
 
     fonts = {
-      packages = with pkgs; [
+      enableDefaultFonts = true;
+      fonts = with pkgs; [
           noto-fonts
           noto-fonts-cjk-sans
           noto-fonts-cjk-serif
@@ -32,6 +33,8 @@ in
           monospace = [ "Hack" ];
         };
       };
+
+      fontDir.enable = true;
     };
   };
 }
