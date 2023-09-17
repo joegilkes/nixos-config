@@ -95,12 +95,16 @@ in
             enableAutosuggestions = true;
             enableSyntaxHighlighting = true;
 
+            oh-my-zsh = {
+              enable = true;
+              plugins = [ "git" ];
+            };
+
             shellAliases = {
               update = "sudo nixos-rebuild switch";
             };
 
             plugins = [
-              "git" 
               {
                 name = "zsh-nix-shell";
                 file = "nix-shell.plugin.zsh";
