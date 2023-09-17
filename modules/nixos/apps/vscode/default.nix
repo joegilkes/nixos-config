@@ -1,4 +1,4 @@
-{ options, config, lib, pkgs, channels, ... }:
+{ options, config, lib, pkgs, ... }:
 
 with lib;
 with lib.pluskinda;
