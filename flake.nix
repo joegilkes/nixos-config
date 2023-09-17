@@ -45,6 +45,7 @@
 
       overlays = with inputs; [
         snowfall-flake.overlays."package/flake"
+        vscode.overlay
       ];
 
       systems.modules.nixos = with inputs; [

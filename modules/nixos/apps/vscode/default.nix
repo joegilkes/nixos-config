@@ -1,10 +1,9 @@
-{ options, config, lib, pkgs, inputs, ... }:
+{ options, config, lib, pkgs, channels, ... }:
 
 with lib;
 with lib.pluskinda;
 let
   cfg = config.pluskinda.apps.vscode;
-  inherit (inputs) unstable;
 in
 {
   options.pluskinda.apps.vscode = with types; {
@@ -16,8 +15,8 @@ in
       extraOptions = {
         programs.vscode = {
           enable = true;
-          package = unstable.vscode.fhsWithPackages (ps: with ps; [ libsecret ]);
-          extensions = with unstable.vscode-extensions; [
+          package = pkgs.vscode.fhsWithPackages (ps: with ps; [ libsecret ]);
+          extensions = with pkgs.vscode-extensions; [
             jnoortheen.nix-ide
             mkhl.direnv
           ];
