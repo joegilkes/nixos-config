@@ -20,8 +20,8 @@
     snowfall-lib.inputs.nixpkgs.follows = "nixpkgs";
 
     # Snowfall Flake
-    flake.url = "github:snowfallorg/flake";
-    flake.inputs.nixpkgs.follows = "unstable";
+    snowfall-flake.url = "github:snowfallorg/flake";
+    snowfall-flake.inputs.nixpkgs.follows = "unstable";
   };
 
   outputs = inputs: let 
@@ -44,7 +44,7 @@
       };
 
       overlays = with inputs; [
-
+        snowfall-flake.overlays."package/flake"
       ];
 
       systems.modules.nixos = with inputs; [
