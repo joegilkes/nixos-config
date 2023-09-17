@@ -37,7 +37,7 @@ in
   };
 
   config = mkIf cfg.enable {
-    pluskinda.system.xkb.enable = true;
+    pluskinda.system.kb.enable = true;
     pluskinda.desktop.addons = {
       wallpapers = enabled;
       electron-support = enabled;
