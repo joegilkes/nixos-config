@@ -11,7 +11,7 @@ in
   };
 
   config = mkIf cfg.enable {
-    xdg.portals = {
+    xdg.portal = {
       enable = true;
       xdgOpenUsePortal = true;
     };
