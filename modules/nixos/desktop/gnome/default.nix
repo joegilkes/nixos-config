@@ -140,12 +140,10 @@ in
             ];
             favorite-apps =
               [ "org.gnome.Nautilus.desktop" ]
+              ++ optional config.pluskinda.apps.chrome.enable "google-chrome.desktop"
               ++ optional config.pluskinda.apps.firefox.enable "firefox.desktop"
               ++ optional config.pluskinda.apps.vscode.enable "code.desktop"
-              ++ optional config.pluskinda.desktop.addons.foot.enable "foot.desktop"
-              ++ optional config.pluskinda.apps.logseq.enable "logseq.desktop"
               ++ optional config.pluskinda.apps.discord.enable "discord.desktop"
-              ++ optional config.pluskinda.apps.element.enable "element-desktop.desktop"
               ++ optional config.pluskinda.apps.steam.enable "steam.desktop";
           };
 
@@ -223,11 +221,7 @@ in
             # Use the NixOS logo.
             menu-button-icon-image = 23;
 
-            menu-button-terminal =
-              if config.pluskinda.desktop.addons.term.enable then
-                lib.getExe config.pluskinda.desktop.addons.term.pkg
-              else
-                lib.getExe pkgs.gnome.gnome-terminal;
+            menu-button-terminal = lib.getExe pkgs.gnome.gnome-terminal;
           };
 
           "org/gnome/shell/extensions/top-bar-organizer" = {
