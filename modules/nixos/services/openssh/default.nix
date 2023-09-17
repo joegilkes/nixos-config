@@ -1,9 +1,9 @@
 { lib, config, options, ... }:
 
+with lib;
+with lib.pluskinda;
 let
   cfg = config.pluskinda.services.openssh;
-
-  inherit (lib) types mkEnableOption mkIf;
 in
 {
   options.pluskinda.services.openssh = with types; {
