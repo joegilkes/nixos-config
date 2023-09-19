@@ -1,0 +1,10 @@
+name: Flake Checker
+run-name: ${{ github.actor }} checking the current `flake.lock`
+on: [push]
+jobs:
+  flake-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Check Nix flake inputs
+        uses: DeterminateSystems/flake-checker-action@v5
