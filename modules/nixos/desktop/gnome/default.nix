@@ -223,6 +223,7 @@ in
           "org/gnome/shell/extensions/just-perfection" = {
             panel-size = 48;
             activities-button = false;
+            dash-icon-size = 48;
           };
 
           "org/gnome/shell/extensions/Logo-menu" = {
