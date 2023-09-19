@@ -48,6 +48,7 @@ in
       wl-clipboard
       gnome.gnome-tweaks
       gnome.nautilus-python
+      gnome.dconf-editor
     ] ++ defaultExtensions ++ cfg.extensions;
 
     environment.gnome.excludePackages = (with pkgs.gnome; [
@@ -58,11 +59,14 @@ in
       gnome-maps
       yelp
       cheese
+      totem
+      simple-scan
       gedit
       gnome-music
       gnome-contacts
       gnome-characters
       gnome-weather
+      gnome-calendar
     ]) ++ (with pkgs; [
       gnome-tour
       gnome-photos
