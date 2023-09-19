@@ -6,7 +6,7 @@ let cfg = config.pluskinda.apps.slack;
 in
 {
   options.pluskinda.apps.slack = with types; {
-    enable = mkBoolOpt false "Whether or not to enable Bottles.";
+    enable = mkBoolOpt false "Whether or not to enable Slack.";
   };
 
   config =
