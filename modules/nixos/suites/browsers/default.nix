@@ -15,6 +15,7 @@ in
       apps = {
         chrome = enabled;
         firefox = enabled;
+        protonvpn = enabled;
       };
     };
   };
