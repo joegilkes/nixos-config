@@ -17,6 +17,9 @@ in
         firefox = enabled;
         protonvpn-gui = enabled;
       };
+      cli-apps = {
+        protonvpn-cli = enabled;
+      };
     };
   };
 }
