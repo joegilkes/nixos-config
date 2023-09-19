@@ -56,6 +56,13 @@ in
       gnome-font-viewer
       gnome-system-monitor
       gnome-maps
+      yelp
+      cheese
+      gedit
+      gnome-music
+      gnome-contacts
+      gnome-characters
+      gnome-weather
     ]) ++ (with pkgs; [
       gnome-tour
       gnome-photos
