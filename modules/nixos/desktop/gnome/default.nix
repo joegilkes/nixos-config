@@ -169,6 +169,7 @@ in
           "org/gnome/desktop/peripherals/touchpad" = {
             disable-while-typing = false;
             natural-scroll = false;
+            tap-to-click = true;
           };
           "org/gnome/desktop/wm/preferences" = {
             num-workspaces = 10;
