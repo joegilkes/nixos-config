@@ -169,6 +169,7 @@ in
           "org/gnome/desktop/interface" = {
             color-scheme = if cfg.color-scheme == "light" then "default" else "prefer-dark";
             enable-hot-corners = false;
+            show-battery-percentage = true;
           };
           "org/gnome/desktop/peripherals/touchpad" = {
             disable-while-typing = false;
