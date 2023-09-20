@@ -26,6 +26,10 @@ in
         proton = enabled;
         wine = enabled;
       };
+
+      services = {
+        sunshine = enabled;
+      };
     };
   };
 }
