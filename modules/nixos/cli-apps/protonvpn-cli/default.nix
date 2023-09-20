@@ -2,10 +2,10 @@
 
 with lib;
 with lib.pluskinda;
-let cfg = config.pluskinda.apps.protonvpn-cli;
+let cfg = config.pluskinda.cli-apps.protonvpn-cli;
 in
 {
-  options.pluskinda.apps.protonvpn-cli = with types; {
+  options.pluskinda.cli-apps.protonvpn-cli = with types; {
     enable = mkBoolOpt false "Whether or not to enable Proton VPN (CLI).";
   };
 
