@@ -10,7 +10,7 @@ let
   };
 
   package =
-    pkgs.writeShellScriptBin "sunshine" ''
+    pkgs.writeShellScriptBin "sunshinectl" ''
       HAS_HELP=false
       MISSING_CMD=false
       START_SUNSHINE=false
@@ -44,11 +44,11 @@ let
 
       if [ $HAS_HELP == true ]; then
       	HELP_MSG="
-      sunshine
+      sunshinectl
 
       USAGE
 
-        sunshine [start/stop]
+        sunshinectl [start/stop]
 
       OPTIONS
 
@@ -57,10 +57,10 @@ let
       EXAMPLES
 
         $ # Start the Sunshine service
-        $ sunshine start
+        $ sunshinectl start
 
         $ # Stop the Sunshine service
-        $ sunshine stop
+        $ sunshinectl stop
       "
       	echo "$HELP_MSG"
         exit 0
@@ -73,7 +73,7 @@ let
       fi
 
       if [ $STOP_SUNSHINE == true ]; then
-        echo "Stopping Sunshine service.
+        echo "Stopping Sunshine service."
         systemctl --user stop sunshine
         exit 0
       fi      

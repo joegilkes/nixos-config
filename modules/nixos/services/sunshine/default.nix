@@ -32,6 +32,6 @@ in
       };
     };
 
-    environment.systemPackages = [ pluskinda.packages.sunshine-control ];
+    environment.systemPackages = [ pkgs.pluskinda.sunshine-control ];
   };
 }
