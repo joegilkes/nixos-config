@@ -12,9 +12,15 @@ let
   package =
     pkgs.writeShellScriptBin "sunshinectl" ''
       HAS_HELP=false
-      MISSING_CMD=false
       START_SUNSHINE=false
       STOP_SUNSHINE=false
+      STATUS_SUNSHINE=false
+      LOG_SUNSHINE=false
+
+      if [[ $# -eq 0 ]]; then
+        echo Missing argument.
+        HAS_HELP=true
+      fi
 
       while [[ $# -gt 0 ]]; do
       	case $1 in
@@ -30,17 +36,21 @@ let
             STOP_SUNSHINE=true
             shift
             ;;
+          status|st)
+            STATUS_SUNSHINE=true
+            shift
+            ;;
+          log)
+            LOG_SUNSHINE=true
+            shift
+            ;;
       		*)
-            MISSING_CMD=true
+            echo Unknown argument.
             HAS_HELP=true
       			shift
       			;;
       	esac
       done
-
-      if [ $MISSING_CMD == true ]; then
-        echo "Missing argument, needs one of [start/stop]."
-      fi
 
       if [ $HAS_HELP == true ]; then
       	HELP_MSG="
@@ -76,7 +86,17 @@ let
         echo "Stopping Sunshine service."
         systemctl --user stop sunshine
         exit 0
-      fi      
+      fi
+
+      if [ $STATUS_SUNSHINE == true ]; then
+        systemctl --user status sunshine
+        exit 0
+      fi
+
+      if [ $LOG_SUNSHINE == true ]; then
+        journalctl --user --unit=sunshine
+        exit 0
+      fi
     '';
 in
 override-meta new-meta package
