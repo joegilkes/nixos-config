@@ -15,6 +15,7 @@ in
       apps = {
         bottles = enabled;
         gamemode = enabled;
+        gamescope = enabled;
         lutris = enabled;
         prismlauncher = enabled;
         protontricks = enabled;
