@@ -17,6 +17,7 @@ in
         gamemode = enabled;
         gamescope = enabled;
         lutris = enabled;
+        mangohud = enabled;
         prismlauncher = enabled;
         protontricks = enabled;
         steam = enabled;
