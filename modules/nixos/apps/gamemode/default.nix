@@ -14,7 +14,7 @@ in
     environment.systemPackages = with pkgs; [ 
       gamemode
     ];
-    config.pluskinda.desktop.gnome.extensions = with pkgs; [
+    pluskinda.desktop.gnome.extensions = with pkgs; [
       gnomeExtensions.gamemode
     ];
   };

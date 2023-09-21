@@ -14,6 +14,7 @@ in
     pluskinda = {
       apps = {
         bottles = enabled;
+        gamemode = enabled;
         lutris = enabled;
         prismlauncher = enabled;
         protontricks = enabled;
