@@ -2,7 +2,7 @@
 
 pkgs.mkShell {
   packages = with pkgs; [
-    libgcc
+    gcc
   ];
   shellHook = ''
     echo --- Development Environment: GNU ---
