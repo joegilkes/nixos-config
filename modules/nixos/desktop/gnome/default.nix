@@ -179,6 +179,7 @@ in
           "org/gnome/desktop/wm/preferences" = {
             num-workspaces = 10;
             resize-with-right-button = true;
+            button-layout = ":minimize,appmenu,close";
           };
           "org/gnome/desktop/wm/keybindings" = {
             switch-to-workspace-1 = [ "<Super>1" ];
@@ -217,7 +218,7 @@ in
             switch-to-application-10 = [ ];
           };
           "org/gnome/mutter" = {
-            edge-tiling = false;
+            edge-tiling = true;
             dynamic-workspaces = false;
           };
 
