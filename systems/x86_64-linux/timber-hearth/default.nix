@@ -5,8 +5,6 @@ with lib.pluskinda;
 {
   imports = [ ./hardware.nix ];
 
-  services.xserver.videoDrivers = [ "amdgpu" ];
-
   networking.hostName = "timber-hearth";
 
   pluskinda = {
@@ -23,7 +21,6 @@ with lib.pluskinda;
     };
 
     tools.diagnostics = enabled;
-    tools.sensors = enabled;
   };
 
   system.stateVersion = "23.05";
