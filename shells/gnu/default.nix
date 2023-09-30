@@ -6,6 +6,5 @@ pkgs.mkShell {
   ];
   shellHook = ''
     echo --- Development Environment: GNU ---
-    exec zsh
   '';
 }
