@@ -22,5 +22,9 @@ with lib.pluskinda;
     };
   };
 
+  services.xserver = {
+    layout = mkForce "us";
+  };
+
   system.stateVersion = "23.05";
 }

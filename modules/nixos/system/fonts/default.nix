@@ -19,8 +19,8 @@ in
     environment.systemPackages = with pkgs; [ font-manager ];
 
     fonts = {
-      enableDefaultFonts = true;
-      fonts = with pkgs; [
+      enableDefaultPackages = true;
+      packages = with pkgs; [
           noto-fonts
           noto-fonts-cjk-sans
           noto-fonts-cjk-serif

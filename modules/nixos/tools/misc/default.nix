@@ -22,7 +22,7 @@ in
       wget
       curl
       screen
-      exa
+      eza
       htop
       btop
       iotop
