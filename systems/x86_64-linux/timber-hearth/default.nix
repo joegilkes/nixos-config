@@ -19,6 +19,8 @@ with lib.pluskinda;
       media = enabled;
       social = enabled;
     };
+
+    tools.diagnostics = enabled;
   };
 
   system.stateVersion = "23.05";

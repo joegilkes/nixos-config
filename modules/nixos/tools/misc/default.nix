@@ -31,6 +31,8 @@ in
       ltrace # library call monitor
       lsof # list open files 
       neofetch
+      lshw
+      glxinfo
     ];
   };
 }
