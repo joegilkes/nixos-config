@@ -3,10 +3,10 @@
 
   inputs = {
      # NixPkgs (nixos-23.05)
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-23.05";
+    stable.url = "github:nixos/nixpkgs/nixos-23.05";
 
     # NixPkgs Unstable (nixos-unstable)
-    unstable.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
     # Home Manager (release-23.05)
     home-manager.url = "github:nix-community/home-manager/release-23.05";
@@ -21,7 +21,7 @@
 
     # Snowfall Flake
     snowfall-flake.url = "github:snowfallorg/flake";
-    snowfall-flake.inputs.nixpkgs.follows = "unstable";
+    snowfall-flake.inputs.nixpkgs.follows = "nixpkgs";
 
     # nix-index database
     nix-index-database.url = "github:Mic92/nix-index-database";
