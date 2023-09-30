@@ -18,10 +18,8 @@ with lib.pluskinda;
       gaming = enabled;
       media = enabled;
       social = enabled;
+      tuning = enabled;
     };
-
-    tools.diagnostics = enabled;
-    tools.sensors = enabled;
   };
 
   system.stateVersion = "23.05";

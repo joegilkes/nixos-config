@@ -15,7 +15,8 @@ in
 
   boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "ahci" "usb_storage" "usbhid" "sd_mod" ];
   boot.initrd.kernelModules = [ ];
-  boot.kernelModules = [ "kvm-amd" ];
+  boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.kernelModules = [ "kvm-amd" "coretemp" "nct6775" ];
   boot.extraModulePackages = [ ];
 
   fileSystems."/" =
