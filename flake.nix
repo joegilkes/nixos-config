@@ -22,6 +22,10 @@
     # Snowfall Flake
     snowfall-flake.url = "github:snowfallorg/flake";
     snowfall-flake.inputs.nixpkgs.follows = "unstable";
+
+    # nix-index database
+    nix-index-database.url = "github:Mic92/nix-index-database";
+    nix-index-database.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = inputs: let 
@@ -49,6 +53,10 @@
 
       systems.modules.nixos = with inputs; [
         home-manager.nixosModules.home-manager
+        nix-index-database.nixosModules.nix-index {
+          programs.nix-index.enableZshIntegration = true;
+          programs.command-not-found.enable = false;
+        }
       ];
     };
 }
