@@ -21,6 +21,7 @@ with lib.pluskinda;
     };
 
     tools.diagnostics = enabled;
+    tools.sensors = enabled;
   };
 
   system.stateVersion = "23.05";
