@@ -4,7 +4,6 @@ with lib;
 with lib.pluskinda;
 let 
   cfg = config.pluskinda.tools.sensors;
-  gnome = config.pluskinda.desktop.gnome;
 in
 {
   options.pluskinda.tools.sensors = with types; {
@@ -16,6 +15,6 @@ in
       lm_sensors
     ];
 
-    pluskinda.desktop.gnome.extensions = mkIf gnome.enable [ pkgs.gnomeExtensions.sensory-perception ];
+    pluskinda.desktop.gnome.extensions = [ pkgs.gnomeExtensions.sensory-perception ];
   };
 }
