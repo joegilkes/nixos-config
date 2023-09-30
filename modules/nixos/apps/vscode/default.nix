@@ -15,7 +15,7 @@ in
       extraOptions = {
         programs.vscode = {
           enable = true;
-          package = pkgs.vscode.fhsWithPackages (ps: with ps; [ libsecret ]);
+          package = pkgs.vscode.fhsWithPackages (ps: with ps; [ libsecret hack-font ]);
           extensions = with pkgs.vscode-extensions; [
             jnoortheen.nix-ide
             mkhl.direnv
