@@ -31,7 +31,7 @@ in
   fileSystems."/beluga" = 
     { device = "/dev/disk/by-label/beluga";
       fsType = "ext4";
-    }
+    };
 
   swapDevices =
     [ { device = "/dev/disk/by-uuid/14e3060c-1d7c-48c7-b164-51044d9eed54"; }
