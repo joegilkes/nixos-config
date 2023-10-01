@@ -13,7 +13,6 @@ in
   config = mkIf cfg.enable {
     pluskinda = {
       apps = {
-        phoronix-test-suite = enabled;
         unigine = enabled;
       };
     };
