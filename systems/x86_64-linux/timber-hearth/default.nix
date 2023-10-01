@@ -11,6 +11,7 @@ with lib.pluskinda;
     suites = {
       common = enabled;
       desktop = enabled;
+      benchmarking = enabled;
       browsers = enabled;
       creative = enabled;
       development = enabled;
