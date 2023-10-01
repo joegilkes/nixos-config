@@ -18,7 +18,7 @@ in
 
       cli-apps = {
         mprime = enabled;
-      }
+      };
     };
   };
 }
