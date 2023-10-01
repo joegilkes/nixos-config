@@ -93,7 +93,7 @@ in
             enable = true;
             enableCompletion = true;
             enableAutosuggestions = true;
-            enableSyntaxHighlighting = true;
+            SyntaxHighlighting.enable = true;
 
             oh-my-zsh = {
               enable = true;
