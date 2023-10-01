@@ -14,7 +14,7 @@ in
     pluskinda = {
       apps = {
         phoronix-test-suite = enabled;
-        unigine-heaven = enabled;
+        unigine = enabled;
       };
     };
   };
