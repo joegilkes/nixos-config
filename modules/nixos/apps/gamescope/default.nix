@@ -11,8 +11,8 @@ in
   };
 
   config = mkIf cfg.enable {
-    environment.systemPackages = with pkgs; [ 
-      gamescope
-    ];
+    programs.gamescope = {
+      enable = true;
+    };
   };
 }
