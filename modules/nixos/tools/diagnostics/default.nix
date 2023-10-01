@@ -2,12 +2,19 @@
 
 with lib;
 with lib.pluskinda;
-let cfg = config.pluskinda.tools.diagnostics;
+let 
+  cfg = config.pluskinda.tools.diagnostics;
+  amdPkgs = with pkgs; [ 
+    nvtop-amd
+    radeontop
+    radeon-profile
+  ];
+  nvidiaPkgs = with pkgs; [ nvtop ];
 in
 {
   options.pluskinda.tools.diagnostics = with types; {
     enable = mkBoolOpt false "Whether or not to enable diagnostic utilities.";
-    gpuType = mkOpt str "none" "GPU type, for installing vendor-specific utilities [none, amd, nvidia]"
+    gpuType = mkOpt str "none" "GPU type, for installing vendor-specific utilities [none, amd, nvidia]";
   };
 
   config = mkIf cfg.enable {
@@ -15,12 +22,6 @@ in
       lshw
       glxinfo
       pciutils
-    ] ++ mkIf cfg.gpuType == "amd" [
-      nvtop-amd
-      radeontop
-      radeon-profile
-    ] ++ mkIf cfg.gpuType == "nvidia" [
-      nvtop
-    ];
+    ] ++ optionals (cfg.gpuType == "amd") amdPkgs ++ optionals (cfg.gpuType == "nvidia") nvidiaPkgs;
   };
 }
