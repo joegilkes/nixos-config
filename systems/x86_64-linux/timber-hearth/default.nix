@@ -20,6 +20,8 @@ with lib.pluskinda;
       social = enabled;
       tuning = enabled;
     };
+
+    tools.diagnostics.gpuType = "amd";
   };
 
   services.xserver = {
