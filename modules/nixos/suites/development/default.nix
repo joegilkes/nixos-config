@@ -16,6 +16,10 @@ in
         vscode = enabled;
       };
 
+      cli-apps = {
+        nixd = enabled;
+      };
+
       tools = {
         direnv = enabled;
       };
