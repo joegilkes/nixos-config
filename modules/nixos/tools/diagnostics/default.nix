@@ -22,6 +22,7 @@ in
       lshw
       glxinfo
       pciutils
+      inxi
     ] ++ optionals (cfg.gpuType == "amd") amdPkgs ++ optionals (cfg.gpuType == "nvidia") nvidiaPkgs;
   };
 }
