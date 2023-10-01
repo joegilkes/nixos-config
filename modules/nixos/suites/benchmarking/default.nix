@@ -15,6 +15,10 @@ in
       apps = {
         unigine = enabled;
       };
+
+      cli-apps = {
+        mprime = enabled;
+      }
     };
   };
 }
