@@ -58,7 +58,7 @@ let
 
       USAGE
 
-        sunshinectl [start/stop]
+        sunshinectl [start/stop/status/log]
 
       OPTIONS
 
@@ -71,6 +71,13 @@ let
 
         $ # Stop the Sunshine service
         $ sunshinectl stop
+
+        $ # Show the status of the Sunshine service
+        $ sunshinectl st
+        $ sunshinectl status
+
+        $ # Show the journalctl log for the Sunshine service
+        $ sunshinectl log
       "
       	echo "$HELP_MSG"
         exit 0
