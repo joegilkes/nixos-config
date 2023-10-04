@@ -33,6 +33,7 @@ in
       neofetch
       lshw
       glxinfo
+      util-linux
     ];
   };
 }
