@@ -19,7 +19,7 @@
     nix-gaming.url = "github:fufexan/nix-gaming";
 
     # Snowfall Lib
-    snowfall-lib.url = "github:snowfallorg/lib/dev";
+    snowfall-lib.url = "github:snowfallorg/lib";
     snowfall-lib.inputs.nixpkgs.follows = "nixpkgs";
 
     # Snowfall Flake
