@@ -15,6 +15,9 @@
     # Hardware Configuration
     nixos-hardware.url = "github:nixos/nixos-hardware";
 
+    # Nix Gaming
+    nix-gaming.url = "github:fufexan/nix-gaming";
+
     # Snowfall Lib
     snowfall-lib.url = "github:snowfallorg/lib/dev";
     snowfall-lib.inputs.nixpkgs.follows = "nixpkgs";
