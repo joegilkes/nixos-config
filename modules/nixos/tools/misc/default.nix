@@ -13,6 +13,7 @@ in
     pluskinda.home.configFile."wgetrc".text = "";
 
     environment.systemPackages = with pkgs; [
+      vim
       fzf
       killall
       unzip
