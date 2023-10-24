@@ -23,6 +23,8 @@ with lib.pluskinda;
     };
 
     tools.diagnostics.gpuType = "amd";
+
+    apps.star-citizen.location = "/beluga/Games/star-citizen";
   };
 
   services.xserver = {
