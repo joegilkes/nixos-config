@@ -12,9 +12,8 @@ in
 
   config = mkIf cfg.enable {
     environment.systemPackages = with pkgs; [
-      winePackages.unstable
+      wineWowPackages.unstable
       winetricks
-      wine64Packages.unstable
     ];
   };
 }
