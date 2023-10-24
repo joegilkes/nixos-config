@@ -16,7 +16,7 @@
     nixos-hardware.url = "github:nixos/nixos-hardware";
 
     # Nix Gaming
-    nix-gaming.url = "github:fufexan/nix-gaming";
+    nix-gaming.url = "github:joegilkes/nix-gaming";
 
     # Snowfall Lib
     snowfall-lib.url = "github:snowfallorg/lib";
