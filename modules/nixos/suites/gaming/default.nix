@@ -28,7 +28,6 @@ in
 
       cli-apps = {
         proton = enabled;
-        wine = enabled;
       };
 
       services = {
