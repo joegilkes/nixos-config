@@ -13,6 +13,7 @@ in
   config = mkIf cfg.enable {
     pluskinda = {
       apps = {
+        calibre = enabled;
         spotify = enabled;
         vlc = enabled;
       };
