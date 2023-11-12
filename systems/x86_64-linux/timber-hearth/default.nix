@@ -8,6 +8,10 @@ with lib.pluskinda;
   networking.hostName = "timber-hearth";
 
   pluskinda = {
+    nix.extra-substituters = {
+      "https://nix-gaming.cachix.org".key = "nix-gaming.cachix.org-1:nbjlureqMbRAxR1gJ/f3hxemL9svXaZF/Ees8vCUUs4=";
+    };
+
     suites = {
       common = enabled;
       desktop = enabled;
