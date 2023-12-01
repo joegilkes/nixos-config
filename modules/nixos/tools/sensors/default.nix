@@ -15,6 +15,10 @@ in
       lm_sensors
     ];
 
-    pluskinda.desktop.gnome.extensions = [ pkgs.gnomeExtensions.sensory-perception ];
+    # Sensory Perception GNOME extension not working for GNOME 45 yet.
+    # Maintainer doesn't seem likely to update this anytime soon.
+    # See https://github.com/HarlemSquirrel/gnome-shell-extension-sensory-perception/issues/49
+    # 
+    # pluskinda.desktop.gnome.extensions = [ pkgs.gnomeExtensions.sensory-perception ];
   };
 }
