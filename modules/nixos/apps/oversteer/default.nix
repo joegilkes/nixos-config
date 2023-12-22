@@ -11,8 +11,8 @@ in
   };
 
   config = mkIf cfg.enable {
-    programs.oversteer = {
-      enable = true;
-    };
+    environment.systemPackages = with pkgs; [ 
+      oversteer
+    ];
   };
 }
