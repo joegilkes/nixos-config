@@ -18,6 +18,7 @@ in
         gamescope = enabled;
         lutris = enabled;
         mangohud = enabled;
+        oversteer = enabled;
         prismlauncher = enabled;
         protontricks = enabled;
         star-citizen = enabled;
