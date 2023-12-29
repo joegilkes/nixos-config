@@ -27,6 +27,7 @@ with lib.pluskinda;
     };
 
     tools.diagnostics.gpuType = "amd";
+    tools.usb-modeswitch = enabled;
 
     apps.star-citizen.location = "/beluga/Games/star-citizen";
   };
