@@ -24,6 +24,7 @@ with lib.pluskinda;
       media = enabled;
       social = enabled;
       tuning = enabled;
+      vr = enabled;
     };
 
     tools.diagnostics.gpuType = "amd";
