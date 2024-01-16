@@ -61,13 +61,13 @@ in
       cheese
       totem
       simple-scan
-      gedit
       gnome-music
       gnome-contacts
       gnome-characters
       gnome-weather
       gnome-calendar
     ]) ++ (with pkgs; [
+      gedit
       gnome-tour
       gnome-photos
     ]);
