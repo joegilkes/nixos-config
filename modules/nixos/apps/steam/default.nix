@@ -18,6 +18,10 @@ in
 
     environment.systemPackages = with pkgs; [
       steam
+      # Nasty fix to make TF2 work for now.
+      # Symlinks libtcmalloc_minimal.so.4 from 32-bit gperftools.
+      # See https://github.com/ValveSoftware/Source-1-Games/issues/5043
+      pkgsi686Linux.gperftools
     ];
 
     environment.sessionVariables = {
