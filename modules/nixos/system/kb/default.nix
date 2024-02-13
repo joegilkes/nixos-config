@@ -13,7 +13,7 @@ in
     console = {
       keyMap = "uk";
     };
-    services.xserver = {
+    services.xserver.xkb = {
       layout = "gb";
     };
   };

@@ -33,7 +33,7 @@ with lib.pluskinda;
     apps.star-citizen.location = "/beluga/Games/star-citizen";
   };
 
-  services.xserver = {
+  services.xserver.xkb = {
     layout = mkForce "us";
   };
 
