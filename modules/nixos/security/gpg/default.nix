@@ -28,7 +28,7 @@ in
         enable = true;
         enableSSHSupport = true;
         enableExtraSocket = true;
-        pinentryFlavor = "gnome3";
+        pinentryPackage = pkgs.pinentry-gnome3;
       };
     };
 
