@@ -27,5 +27,10 @@ in
     environment.sessionVariables = {
       STEAM_EXTRA_COMPAT_TOOLS_PATHS = "$HOME/.steam/root/compatibilitytools.d";
     };
+
+    # Allow local network game transfers.
+    networking.firewall = {
+      allowedTCPPorts = [ 27040 ];
+    };
   };
 }
