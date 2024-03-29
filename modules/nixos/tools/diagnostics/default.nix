@@ -5,7 +5,7 @@ with lib.pluskinda;
 let 
   cfg = config.pluskinda.tools.diagnostics;
   amdPkgs = with pkgs; [ 
-    nvtop-amd
+    nvtopPackages.amd
     radeontop
     radeon-profile
   ];
