@@ -27,6 +27,7 @@ with lib.pluskinda;
       vr = enabled;
     };
 
+    apps.blender.gpuType = "amd";
     tools.diagnostics.gpuType = "amd";
     tools.usb-modeswitch = enabled;
 
