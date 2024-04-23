@@ -28,14 +28,11 @@ with lib.pluskinda;
     };
 
     apps.blender.gpuType = "amd";
+    apps.keymapp = enabled;
     tools.diagnostics.gpuType = "amd";
     tools.usb-modeswitch = enabled;
 
     apps.star-citizen.location = "/beluga/Games/star-citizen";
-  };
-
-  services.xserver.xkb = {
-    layout = mkForce "us";
   };
 
   system.stateVersion = "23.05";
