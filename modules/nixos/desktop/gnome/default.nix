@@ -115,19 +115,20 @@ in
       '';
     };
 
-    # Required for app indicators
-    services.udev.packages = with pkgs; [ gnome3.gnome-settings-daemon ];
-
-    services.xserver = {
-      enable = true;
+    services = {
+      # Required for app indicators
+      udev.packages = with pkgs; [ gnome3.gnome-settings-daemon ];
 
       libinput.enable = true;
-      displayManager.gdm = {
+      xserver = {
         enable = true;
-        wayland = cfg.wayland;
-        autoSuspend = cfg.suspend;
+        displayManager.gdm = {
+          enable = true;
+          wayland = cfg.wayland;
+          autoSuspend = cfg.suspend;
+        };
+        desktopManager.gnome.enable = true;
       };
-      desktopManager.gnome.enable = true;
     };
 
     pluskinda.home.extraOptions = {

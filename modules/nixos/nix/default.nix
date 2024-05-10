@@ -14,7 +14,7 @@ in
 {
   options.pluskinda.nix = with types; {
     enable = mkBoolOpt true "Whether or not to manage nix configuration.";
-    package = mkOpt package pkgs.nixUnstable "Which nix package to use.";
+    package = mkOpt package pkgs.nixVersions.latest "Which nix package to use.";
 
     default-substituter = {
       url = mkOpt str "https://cache.nixos.org" "The url for the substituter.";
@@ -34,7 +34,7 @@ in
 
     environment.systemPackages = with pkgs; [
       pluskinda.nixos-revision
-      nixfmt
+      nixfmt-classic
       nix-prefetch-git
       nix-output-monitor
     ];
