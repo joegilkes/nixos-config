@@ -35,5 +35,9 @@ with lib.pluskinda;
     apps.star-citizen.location = "/beluga/Games/star-citizen";
   };
 
+  environment.sessionVariables = {
+    RADV_PERFTEST = "gpl";
+  };
+
   system.stateVersion = "23.05";
 }
