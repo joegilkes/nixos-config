@@ -8,8 +8,19 @@
     # NixPkgs Unstable (nixos-unstable)
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
-    # MixPkgs Master
+    # NixPkgs Master
     master.url = "github:nixos/nixpkgs/master";
+
+    # Replace Nix with Lix https://lix.systems/
+    lix = {
+      url = "git+https://git@git.lix.systems/lix-project/lix?ref=refs/tags/2.90-beta.1";
+      flake = false;
+    };
+    lix-module = {
+      url = "git+https://git.lix.systems/lix-project/nixos-module";
+      inputs.lix.follows = "lix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     # Home Manager (release-23.05)
     home-manager.url = "github:nix-community/home-manager/master";
@@ -58,6 +69,7 @@
       ];
 
       systems.modules.nixos = with inputs; [
+        lix-module.nixosModules.default
         home-manager.nixosModules.home-manager
         nix-index-database.nixosModules.nix-index {
           programs.nix-index.enableZshIntegration = true;
