@@ -34,6 +34,8 @@ with lib.pluskinda;
       vr = enabled;
     };
 
+    desktop.gnome.wallpaper.dark = pkgs.pluskinda.wallpapers.contour_bi_x3_test;
+
     apps.blender.gpuType = "amd";
     apps.keymapp = enabled;
     tools.diagnostics.gpuType = "amd";
