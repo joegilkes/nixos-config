@@ -4,6 +4,7 @@ with lib;
 with lib.pluskinda;
 let
   cfg = config.pluskinda.apps.vscode;
+  texenabled = config.pluskinda.apps.texlive.enable;
 in
 {
   options.pluskinda.apps.vscode = with types; {
@@ -16,9 +17,14 @@ in
         programs.vscode = {
           enable = true;
           package = pkgs.vscode.fhsWithPackages (ps: with ps; [ libsecret hack-font ]);
-          extensions = with pkgs.vscode-extensions; [
-            jnoortheen.nix-ide
-            mkhl.direnv
+          extensions = with pkgs.vscode-extensions; mkMerge [
+            [
+              jnoortheen.nix-ide
+              mkhl.direnv
+            ]
+            ( mkIf (texenabled) [
+              pkgs.vscode-extensions.james-yu.latex-workshop
+            ])
           ];
         };
       };
