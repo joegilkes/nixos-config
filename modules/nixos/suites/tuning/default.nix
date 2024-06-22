@@ -13,6 +13,10 @@ in
 
   config = mkIf cfg.enable {
     pluskinda = {
+      apps = {
+        coolercontrol = enabled;
+      };
+
       cli-apps = {
         liquidctl = enabled;
       };
