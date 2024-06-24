@@ -13,9 +13,9 @@ in
 
   config = mkIf cfg.enable {
     pluskinda = {
-      apps = {
-        coolercontrol = enabled;
-      };
+      # apps = {
+      #   coolercontrol = enabled;
+      # };
 
       cli-apps = {
         liquidctl = enabled;
