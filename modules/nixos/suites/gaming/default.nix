@@ -28,6 +28,7 @@ in
       };
 
       cli-apps = {
+        ffbtools = enabled;
         proton = enabled;
       };
 
