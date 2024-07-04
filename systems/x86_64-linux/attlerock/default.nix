@@ -21,6 +21,7 @@ with lib.pluskinda;
     cli-apps.android-platform-tools.enable = mkForce false;
 
     desktop.gnome.wallpaper.dark = pkgs.pluskinda.wallpapers.contour_sunrise_bi;
+    desktop.gnome.extensions = with pkgs; [ gnomeExtensions.improved-osk ];
   };
 
   system.stateVersion = "24.05";
