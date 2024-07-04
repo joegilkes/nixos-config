@@ -9,9 +9,9 @@ in
     microsoft-surface-pro-intel
   ];
 
-  boot.initrd.availableKernelModules = [ "xhci_pci" "nvme" "usbhid" ];
-  boot.initrd.kernelModules = [ ];
-  boot.kernelModules = [ "kvm-intel" ];
+  boot.initrd.availableKernelModules = [ "xhci_pci" "nvme" "usbhid" "pinctrl_sunrisepoint" ];
+  boot.initrd.kernelModules = [ "pinctrl_sunrisepoint" ];
+  boot.kernelModules = [ "kvm-intel" "soc_button_array" ];
   boot.extraModulePackages = [ ];
   boot.kernelParams = [ "i915.enable_psr=0" ];
 
