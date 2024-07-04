@@ -13,6 +13,7 @@ in
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
+  boot.kernelParams = [ "i915.enable_psr=0" ];
 
   fileSystems."/" =
     { device = "/dev/disk/by-uuid/490f3cc2-ea36-4ed5-a5d9-b321379a9d48";
