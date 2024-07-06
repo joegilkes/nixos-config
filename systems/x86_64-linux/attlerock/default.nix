@@ -15,7 +15,7 @@ with lib.pluskinda;
       # package = pkgs.nixVersions.stable;
 
       extra-substituters = {
-        "ssh://joe@timber-hearth".key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINJuGmKSUGo325hD/w/uWN2sBQklwkG06K4v3fsB11O3 joe@timber-hearth";
+        "ssh://builder".key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINJuGmKSUGo325hD/w/uWN2sBQklwkG06K4v3fsB11O3 joe@timber-hearth";
       };
     };
 
@@ -32,6 +32,14 @@ with lib.pluskinda;
     desktop.gnome.wallpaper.dark = pkgs.pluskinda.wallpapers.contour_sunrise_bi;
     desktop.gnome.extensions = with pkgs; [ gnomeExtensions.gjs-osk ];
   };
+
+  programs.ssh.extraConfig = ''
+    Host builder
+      HostName timber-hearth
+      User nix-ssh
+      IdentitiesOnly yes
+      IdentityFile /root/.ssh/nixremote
+  '';
 
   networking.extraHosts = ''
     192.168.0.36 timber-hearth

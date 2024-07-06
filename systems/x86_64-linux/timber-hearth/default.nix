@@ -47,7 +47,7 @@ with lib.pluskinda;
   # Enable this system as a local shared Nix store.
   nix.sshServe = {
     enable = true;
-    keys = [ "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINJuGmKSUGo325hD/w/uWN2sBQklwkG06K4v3fsB11O3 joe@timber-hearth" ];
+    keys = [ "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILFz8ePAZAOD3JZh5AY+25dW+4L1dL4dnJ3JbvOxpqqi root@attlerock" ];
   };
 
   environment.sessionVariables = {

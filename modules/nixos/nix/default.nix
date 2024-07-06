@@ -41,6 +41,7 @@ in
 
     nix =
       let users = [ "root" config.pluskinda.user.name ] ++
+        optional config.nix.sshServe.enable "nix-ssh" ++
         optional config.services.hydra.enable "hydra";
       in
       {
