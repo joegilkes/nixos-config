@@ -15,7 +15,7 @@ with lib.pluskinda;
       # package = pkgs.nixVersions.stable;
 
       extra-substituters = {
-        "ssh://builder".key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINJuGmKSUGo325hD/w/uWN2sBQklwkG06K4v3fsB11O3 joe@timber-hearth";
+        "ssh-ng://builder".key = "timber-hearth:P0qnfshi3IsdI0gMkeFn3o1kik55uWpBqHaiYVC8UQY=";
       };
     };
 
