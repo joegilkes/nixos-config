@@ -46,25 +46,25 @@ in
 
     environment.systemPackages = with pkgs; [
       wl-clipboard
-      gnome.gnome-tweaks
-      gnome.nautilus-python
-      gnome.dconf-editor
+      gnome-tweaks
+      nautilus-python
+      dconf-editor
     ] ++ defaultExtensions ++ cfg.extensions;
 
-    environment.gnome.excludePackages = (with pkgs.gnome; [
+    environment.gnome.excludePackages = (with pkgs; [
       epiphany
       geary
       gnome-font-viewer
       gnome-system-monitor
-      gnome-maps
+      gnome.gnome-maps
       yelp
       cheese
       totem
       simple-scan
-      gnome-music
-      gnome-contacts
-      gnome-characters
-      gnome-weather
+      gnome.gnome-music
+      gnome.gnome-contacts
+      gnome.gnome-characters
+      gnome.gnome-weather
       gnome-calendar
     ]) ++ (with pkgs; [
       gedit
@@ -238,7 +238,7 @@ in
             # Use the NixOS logo.
             menu-button-icon-image = 23;
 
-            menu-button-terminal = lib.getExe pkgs.gnome.gnome-terminal;
+            menu-button-terminal = lib.getExe pkgs.gnome-terminal;
           };
 
           "org/gnome/shell/extensions/top-bar-organizer" = {

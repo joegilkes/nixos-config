@@ -15,7 +15,7 @@ in
       lutris
       # Needed for some installers.
       openssl
-      gnome.zenity
+      zenity
     ];
   };
 }

@@ -12,9 +12,9 @@ in
 
   config = mkIf cfg.enable {
     environment.systemPackages = with pkgs; [
-      gnome.gnome-keyring
-      gnome.libgnome-keyring
-      gnome.seahorse
+      gnome-keyring
+      libgnome-keyring
+      seahorse
     ];
 
     # Technically could be in services but fits better here.
