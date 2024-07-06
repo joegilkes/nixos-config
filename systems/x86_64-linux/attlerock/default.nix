@@ -45,5 +45,20 @@ with lib.pluskinda;
     192.168.0.36 timber-hearth
   '';
 
+  nix = {
+    buildMachines = [ {
+      hostName = "builder";
+      system = "x86_64-linux";
+      protocol = "ssh";
+      maxJobs = 12;
+      speedFactor = 2;
+      supportedFeatures = [ "big-parallel" ];
+    }];
+    distributedBuilds = true;
+    extraOptions = ''
+      builders-use-substitutes = true
+    '';
+  };
+
   system.stateVersion = "24.05";
 }
