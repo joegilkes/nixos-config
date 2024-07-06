@@ -18,9 +18,6 @@ with lib.pluskinda;
         "ssh://joe@timber-hearth".key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINJuGmKSUGo325hD/w/uWN2sBQklwkG06K4v3fsB11O3 joe@timber-hearth";
       };
     };
-    networking.extraHosts = ''
-      192.168.0.36 timber-hearth
-    '';
 
     suites = {
       common = enabled;
@@ -35,6 +32,10 @@ with lib.pluskinda;
     desktop.gnome.wallpaper.dark = pkgs.pluskinda.wallpapers.contour_sunrise_bi;
     desktop.gnome.extensions = with pkgs; [ gnomeExtensions.gjs-osk ];
   };
+
+  networking.extraHosts = ''
+    192.168.0.36 timber-hearth
+  '';
 
   system.stateVersion = "24.05";
 }
