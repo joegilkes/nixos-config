@@ -44,6 +44,12 @@ with lib.pluskinda;
     apps.star-citizen.location = "/beluga/Games/star-citizen";
   };
 
+  # Enable this system as a local shared Nix store.
+  nix.sshServe = {
+    enable = true;
+    keys = [ "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINJuGmKSUGo325hD/w/uWN2sBQklwkG06K4v3fsB11O3 joe@timber-hearth" ];
+  };
+
   environment.sessionVariables = {
     RADV_PERFTEST = "gpl";
   };
