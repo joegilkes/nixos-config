@@ -12,10 +12,10 @@ with lib.pluskinda;
 
     nix = {
       # Overwritten by Lix, use nix_2_18_upstream to go back
-      # package = pkgs.nixVersions.stable;
+      package = pkgs.nixVersions.stable;
 
       extra-substituters = {
-        "ssh-ng://builder".key = "timber-hearth:P0qnfshi3IsdI0gMkeFn3o1kik55uWpBqHaiYVC8UQY=";
+        "ssh://builder".key = "timber-hearth:P0qnfshi3IsdI0gMkeFn3o1kik55uWpBqHaiYVC8UQY=";
       };
     };
 
