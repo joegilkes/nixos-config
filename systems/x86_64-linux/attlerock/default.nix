@@ -58,6 +58,8 @@ with lib.pluskinda;
     distributedBuilds = true;
     extraOptions = ''
       builders-use-substitutes = true
+      fallback = true
+      connect-timeout = 5
     '';
   };
 
