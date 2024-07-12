@@ -15,7 +15,7 @@ with lib.pluskinda;
       package = pkgs.nixVersions.stable;
 
       extra-substituters = {
-        "ssh://builder".key = "timber-hearth:P0qnfshi3IsdI0gMkeFn3o1kik55uWpBqHaiYVC8UQY=";
+        "ssh-ng://builder".key = "timber-hearth:P0qnfshi3IsdI0gMkeFn3o1kik55uWpBqHaiYVC8UQY=";
       };
     };
 
@@ -50,10 +50,10 @@ with lib.pluskinda;
     buildMachines = [ {
       hostName = "builder";
       system = "x86_64-linux";
-      protocol = "ssh";
+      protocol = "ssh-ng";
       maxJobs = 12;
       speedFactor = 2;
-      supportedFeatures = [ "big-parallel" ];
+      supportedFeatures = [ "big-parallel" "kvm" "nixos-test" ];
     }];
     distributedBuilds = true;
     extraOptions = ''
