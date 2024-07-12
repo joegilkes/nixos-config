@@ -16,15 +16,20 @@ in
     environment.systemPackages = with pkgs; mkMerge [
       [
         libwacom-surface
+        iptsd
       ]
       ( mkIf cfg.useLibcamera [
         libcamera
       ])
     ];
 
-    services.pipewire.package = mkIf (!cfg.useLibcamera) (
-      pkgs.pipewire.override { libcameraSupport = false; }
-    );
+    services= {
+      pipewire.package = mkIf (!cfg.useLibcamera) (
+        pkgs.pipewire.override { libcameraSupport = false; }
+      );
+
+      iptsd.config.Touch.DisableOnPalm = true;
+    };
 
     environment.etc = mkIf (!cfg.useLibcamera) {
       "wireplumber/wireplumber.conf.d/51-libcamera-disable.conf" = {
