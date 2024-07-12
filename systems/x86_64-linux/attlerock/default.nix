@@ -27,6 +27,7 @@ with lib.pluskinda;
       media = enabled;
     };
 
+    apps.xournalpp = enabled;
     cli-apps.android-platform-tools.enable = mkForce false;
 
     desktop.gnome.wallpaper.dark = pkgs.pluskinda.wallpapers.contour_sunrise_bi;
