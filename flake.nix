@@ -2,8 +2,8 @@
   description = "Plus Kinda";
 
   inputs = {
-     # NixPkgs (nixos-23.05)
-    stable.url = "github:nixos/nixpkgs/nixos-23.05";
+     # NixPkgs (nixos-24.05)
+    stable.url = "github:nixos/nixpkgs/nixos-24.05";
 
     # NixPkgs Unstable (nixos-unstable)
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
@@ -11,9 +11,12 @@
     # NixPkgs Master
     master.url = "github:nixos/nixpkgs/master";
 
+    # Nixpkgs commit for fixing sunshine, see overlay.
+    sunshine-fix.url = "github:nixos/nixpkgs/3a9671961fd9481564092656e1ccb5f8fdf2ded4";
+
     # Replace Nix with Lix https://lix.systems/
     lix-module = {
-      url = "https://git.lix.systems/lix-project/nixos-module/archive/2.90.0-rc1.tar.gz";
+      url = "https://git.lix.systems/lix-project/nixos-module/archive/2.90.0.tar.gz";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
