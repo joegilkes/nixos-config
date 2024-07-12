@@ -48,6 +48,7 @@ with lib.pluskinda;
   nix = {
     sshServe = {
       enable = true;
+      protocol = "ssh-ng";
       keys = [ "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILFz8ePAZAOD3JZh5AY+25dW+4L1dL4dnJ3JbvOxpqqi root@attlerock" ]; 
     };
     extraOptions = ''
