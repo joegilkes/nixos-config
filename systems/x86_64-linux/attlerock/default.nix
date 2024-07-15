@@ -29,6 +29,7 @@ with lib.pluskinda;
 
     apps.xournalpp = enabled;
     cli-apps.android-platform-tools.enable = mkForce false;
+    cli-apps.fusee-nano.enable = true;
 
     desktop.gnome.wallpaper.dark = pkgs.pluskinda.wallpapers.contour_sunrise_bi;
     desktop.gnome.extensions = with pkgs; [ gnomeExtensions.gjs-osk ];

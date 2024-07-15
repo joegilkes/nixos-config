@@ -16,6 +16,9 @@ in
       apps = {
         dolphin = enabled;
       };
+      cli-apps = {
+        fusee-nano = enabled;
+      };
     };
   };
 }
