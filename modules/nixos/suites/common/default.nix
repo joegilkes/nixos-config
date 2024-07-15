@@ -17,7 +17,6 @@ in
 
       cli-apps = {
         flake = enabled;
-        comma = enabled;
       };
 
       tools = {

@@ -72,6 +72,7 @@
         nix-index-database.nixosModules.nix-index {
           programs.nix-index.enableZshIntegration = true;
           programs.command-not-found.enable = false;
+          programs.nix-index-database.comma.enable = true;
         }
       ];
     };
