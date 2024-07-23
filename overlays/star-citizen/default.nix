@@ -1,5 +1,5 @@
-{ channels, nix-gaming, ... }:
+{ inputs, ... }:
 
 final: prev: {
-  star-citizen = nix-gaming.packages.${prev.system}.star-citizen;
+  star-citizen = inputs.nix-gaming.packages.${prev.system}.star-citizen;
 }
