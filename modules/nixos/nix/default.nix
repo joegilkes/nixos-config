@@ -22,6 +22,8 @@ in
     };
 
     extra-substituters = mkOpt (attrsOf substituters-submodule) { } "Extra substituters to configure.";
+
+    report-changes = mkBoolOpt true "Whether or not to generate a store diff with nvd when activating a new configuration.";
   };
 
   config = mkIf cfg.enable {
@@ -37,7 +39,15 @@ in
       nixfmt-classic
       nix-prefetch-git
       nix-output-monitor
+      nvd
     ];
+
+    system.activationScripts = mkIf cfg.report-changes {
+      report-changes = ''
+        PATH=$PATH:${lib.makeBinPath [ pkgs.nvd pkgs.nix ]}
+        nvd diff $(ls -dv /nix/var/nix/profiles/system-*-link | tail -2)
+      '';
+    };
 
     nix =
       let users = [ "root" config.pluskinda.user.name ] ++
