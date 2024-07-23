@@ -15,6 +15,7 @@ in
     pluskinda = {
       apps = {
         dolphin = enabled;
+        ryujinx = enabled;
       };
       cli-apps = {
         fusee-nano = enabled;
