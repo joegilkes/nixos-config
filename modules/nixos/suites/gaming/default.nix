@@ -16,7 +16,7 @@ in
         bottles = enabled;
         gamemode = enabled;
         gamescope = enabled;
-        heroic-launcher = enbaled;
+        heroic-launcher = enabled;
         lutris = enabled;
         mangohud = enabled;
         oversteer = enabled;
