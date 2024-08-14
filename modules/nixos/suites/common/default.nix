@@ -30,6 +30,7 @@ in
       };
 
       services = {
+        avahi = enabled;
         printing = enabled;
         openssh = enabled;
         flatpak = enabled;
