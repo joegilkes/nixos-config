@@ -119,6 +119,14 @@ in
 
             initExtra = "eval \"$(starship init zsh)\"\neval \"$(direnv hook zsh)\"";
           };
+
+          zoxide = {
+            enable = true;
+            enableZshIntegration = true;
+            options = [
+              "--cmd cd"
+            ];
+          };
         };
       };
     };
