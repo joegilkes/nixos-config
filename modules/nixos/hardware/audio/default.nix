@@ -8,6 +8,8 @@ in
 {
   options.pluskinda.hardware.audio = with types; {
     enable = mkBoolOpt false "Whether or not to enable audio support.";
+    use-musnix = mkBoolOpt false "Whether or not to enable musnix module.";
+    use-musnix-rt = mkBoolOpt false "Whether or not to recompile the kernel with musnix RT tweaks.";
     extra-packages = mkOpt (listOf package) [ ] "Additional packages to install.";
   };
 
@@ -33,5 +35,11 @@ in
     ] ++ cfg.extra-packages;
 
     pluskinda.user.extraGroups = [ "audio" ];
+
+    musnix = {
+      enable = cfg.use-musnix;
+      rtcqs.enable = cfg.use-musnix;
+      kernel.realtime = cfg.use-musnix-rt;
+    };
   };
 }

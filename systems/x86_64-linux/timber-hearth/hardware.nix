@@ -50,4 +50,6 @@ in
   hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 
   hardware.usb-modeswitch.enable = true;
+
+  pluskinda.hardware.audio.use-musnix = true;
 }

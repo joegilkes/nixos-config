@@ -27,6 +27,9 @@
     # Hardware Configuration
     nixos-hardware.url = "github:nixos/nixos-hardware";
 
+    # Musnix - RT kernel tweaks for audio
+    musnix.url = "github:musnix/musnix";
+
     # Nix Gaming
     nix-gaming.url = "github:fufexan/nix-gaming";
 
@@ -68,6 +71,7 @@
 
       systems.modules.nixos = with inputs; [
         lix-module.nixosModules.default
+        musnix.nixosModules.musnix
         home-manager.nixosModules.home-manager
         nix-index-database.nixosModules.nix-index {
           programs.nix-index.enableZshIntegration = true;
