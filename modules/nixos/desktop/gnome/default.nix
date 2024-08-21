@@ -49,6 +49,7 @@ in
       gnome-tweaks
       nautilus-python
       dconf-editor
+      gcolor3
     ] ++ defaultExtensions ++ cfg.extensions;
 
     environment.gnome.excludePackages = (with pkgs; [
