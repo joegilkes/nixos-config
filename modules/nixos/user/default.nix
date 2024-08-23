@@ -117,7 +117,13 @@ in
               }
             ];
 
-            initExtra = "eval \"$(starship init zsh)\"\neval \"$(direnv hook zsh)\"";
+            initExtra = strings.concatStringsSep "\n" (
+              [
+                "eval \"$(starship init zsh)\""
+              ] ++ lists.optionals (config.pluskinda.tools.direnv.enable) [
+                "eval \"$(direnv hook zsh)\""
+              ]
+            );
           };
 
           zoxide = {
