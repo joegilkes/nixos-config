@@ -15,6 +15,10 @@ in
       apps = {
         
       };
+
+      services = {
+        flatpak.enable = mkForce false;
+      };
     };
   };
 }
