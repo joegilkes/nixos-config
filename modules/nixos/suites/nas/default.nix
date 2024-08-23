@@ -18,6 +18,7 @@ in
 
       services = {
         flatpak.enable = mkForce false;
+        zfs = enabled;
       };
     };
   };

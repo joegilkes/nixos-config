@@ -31,6 +31,16 @@ in
       options = [ "fmask=0077" "dmask=0077" ];
     };
 
+  fileSystems."/mnt/gabbro" = 
+    { device = "gabbro";
+      fsType = "zfs";
+    };
+
+  fileSystems."/mnt/gabbro/backups" = 
+    { device = "gabbro/backups";
+      fsType = "zfs";
+    };
+
   swapDevices =
     [ { device = "/dev/disk/by-uuid/222e077b-3829-4e44-a04c-0d1e2111d0d2"; }
     ];
