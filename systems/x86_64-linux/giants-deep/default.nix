@@ -22,6 +22,13 @@ with lib.pluskinda;
       nas = enabled;
       tuning = enabled;
     };
+
+    services.samba = {
+      serverName = "NAS";
+      privateShareDirs = {
+        backups = "/mnt/gabbro/backups";
+      };
+    };
   };
 
   programs.ssh.extraConfig = ''

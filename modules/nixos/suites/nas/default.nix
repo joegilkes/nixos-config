@@ -12,19 +12,11 @@ in
 
   config = mkIf cfg.enable {
     pluskinda = {
-      apps = {
-        
-      };
+      apps = {};
 
       services = {
         flatpak.enable = mkForce false;
-        samba = {
-          enable = true;
-          serverName = "NAS";
-          privateShareDirs = {
-            backups = "/mnt/gabbro/backups";
-          };
-        };
+        samba = enabled;
         zfs = enabled;
       };
     };
