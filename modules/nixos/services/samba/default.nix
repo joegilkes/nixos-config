@@ -9,9 +9,9 @@ in
   options.pluskinda.services.samba = with types; {
     enable = mkBoolOpt false "Whether to enable the SMB server.";
     wsdd-enable = mkBoolOpt true "Whether to enable the discoverability of SMB shares on Windows.";
-    serverName = mkOpt string "Name of SMB server";
-    privateShareDirs = mkOpt attrs "Attribute set of directories to enable as private shares.";
-    publicShareDirs = mkOpt attrs "Attribute set of directories to enable as public shares.";
+    serverName = mkOpt string "nixsmb" "Name of SMB server";
+    privateShareDirs = mkOpt attrs {} "Attribute set of directories to enable as private shares.";
+    publicShareDirs = mkOpt attrs {} "Attribute set of directories to enable as public shares.";
   };
 
   config = mkIf cfg.enable {
@@ -33,7 +33,7 @@ in
         guest account = nobody
         map to guest = bad user
       '';
-      
+
       shares = (
         mapAttrs (name: value: {
           path = value;
