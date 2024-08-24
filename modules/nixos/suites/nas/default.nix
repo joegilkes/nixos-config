@@ -18,6 +18,13 @@ in
 
       services = {
         flatpak.enable = mkForce false;
+        samba = {
+          enable = true;
+          serverName = "NAS";
+          privateShareDirs = {
+            backups = "/mnt/gabbro/backups";
+          };
+        };
         zfs = enabled;
       };
     };
