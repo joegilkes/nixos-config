@@ -41,6 +41,21 @@ in
       fsType = "zfs";
     };
 
+  fileSystems."/mnt/gabbro/media" = 
+    { device = "gabbro/media";
+      fsType = "zfs";
+    };
+
+  fileSystems."/mnt/gabbro/storage" = 
+    { device = "gabbro/storage";
+      fsType = "zfs";
+    };
+
+  fileSystems."/mnt/gabbro/public" = 
+    { device = "gabbro/public";
+      fsType = "zfs";
+    };
+
   fileSystems."/mnt/keyring" = 
     { device = "/dev/disk/by-label/KEYRING";
       fsType = "vfat";

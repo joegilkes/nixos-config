@@ -27,6 +27,11 @@ with lib.pluskinda;
       serverName = "NAS";
       privateShareDirs = {
         backups = "/mnt/gabbro/backups";
+        media = "/mnt/gabbro/media";
+        storage = "/mnt/gabbro/storage";
+      };
+      publicShareDirs = {
+        public = "/mnt/gabbro/public";
       };
     };
   };
