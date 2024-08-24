@@ -16,5 +16,7 @@ in
       openFirewall = true;
       port = 3003;
     };
+
+    networking.firewall.allowedTCPPorts = [ 53 ];
   };
 }
