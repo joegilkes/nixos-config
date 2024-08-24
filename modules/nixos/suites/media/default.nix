@@ -14,6 +14,7 @@ in
     pluskinda = {
       apps = {
         calibre = enabled;
+        jellyfin = enabled;
         spotify = enabled;
         vlc = enabled;
       };
