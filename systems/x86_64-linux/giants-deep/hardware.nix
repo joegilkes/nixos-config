@@ -41,6 +41,11 @@ in
       fsType = "zfs";
     };
 
+  fileSystems."/mnt/keyring" = 
+    { device = "/dev/disk/by-label/KEYRING";
+      fsType = "vfat";
+    };
+
   swapDevices =
     [ { device = "/dev/disk/by-uuid/222e077b-3829-4e44-a04c-0d1e2111d0d2"; }
     ];
