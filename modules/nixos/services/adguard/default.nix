@@ -11,6 +11,9 @@ in
   };
 
   config = mkIf cfg.enable {
-    services.adguardhome.enable = true;
+    services.adguardhome = {
+      enable = true;
+      openFirewall = true;
+    };
   };
 }
