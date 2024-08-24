@@ -20,5 +20,11 @@ in
         zfs = enabled;
       };
     };
+
+    services = {
+      devmon = enabled;
+      gvfs = enabled;
+      udisks2 = enabled;
+    };
   };
 }
