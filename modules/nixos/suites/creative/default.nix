@@ -15,6 +15,7 @@ in
     pluskinda = {
       apps = {
         blender = enabled;
+        darktable = enabled;
         texlive = enabled;
       };
     };
