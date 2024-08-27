@@ -8,21 +8,22 @@ in
 {
   options.pluskinda.services.glances = with types; {
     enable = mkBoolOpt false "Whether to enable the Glances web server.";
+    port = mkOpt port 61208 "tCP port to run the Glances web server through";
   };
 
   config = mkIf cfg.enable {
     systemd.services.glances = {
       enable = true;
       description = "Open-source system cross-platform monitoring tool";
-      after = [ "default.target" ];
+      after = [ "network.target" ];
+      wantedBy = [ "multi-user.target" ];
       serviceConfig = {
-        ExecStart = "${pkgs.glances}/bin/glances -w";
+        ExecStart = "${pkgs.glances}/bin/glances -p ${cfg.port} -w";
         Restart = "on-failure";
         RestartSec = "5s";
       };
     };
 
-    networking.firewall.allowedTCPPorts = [ 61208 ];
-    networking.firewall.allowedUDPPorts = [ 61208 ];
+    networking.firewall.allowedTCPPorts = [ cfg.port ];
   };
 }
