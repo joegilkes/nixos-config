@@ -5,7 +5,7 @@ with lib.pluskinda;
 {
   imports = [ 
     ./hardware.nix
-    ./homepage.nix
+    # ./homepage.nix
   ];
 
   networking.hostName = "giants-deep";

@@ -27,6 +27,9 @@
     # Hardware Configuration
     nixos-hardware.url = "github:nixos/nixos-hardware";
 
+    # Agenix - age encrypted secrets
+    inputs.agenix.url = "github:ryantm/agenix";
+
     # Musnix - RT kernel tweaks for audio
     musnix.url = "github:musnix/musnix";
 
@@ -73,6 +76,7 @@
         lix-module.nixosModules.default
         musnix.nixosModules.musnix
         home-manager.nixosModules.home-manager
+        agenix.nixosModules.default
         nix-index-database.nixosModules.nix-index {
           programs.nix-index.enableZshIntegration = true;
           programs.command-not-found.enable = false;
