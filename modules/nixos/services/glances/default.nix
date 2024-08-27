@@ -8,7 +8,7 @@ in
 {
   options.pluskinda.services.glances = with types; {
     enable = mkBoolOpt false "Whether to enable the Glances web server.";
-    port = mkOpt port 61208 "tCP port to run the Glances web server through";
+    port = mkOpt port 61208 "TCP port to run the Glances web server through";
   };
 
   config = mkIf cfg.enable {
@@ -18,7 +18,7 @@ in
       after = [ "network.target" ];
       wantedBy = [ "multi-user.target" ];
       serviceConfig = {
-        ExecStart = "${pkgs.glances}/bin/glances -p ${cfg.port} -w";
+        ExecStart = "${pkgs.glances}/bin/glances -p ${toString cfg.port} -w";
         Restart = "on-failure";
         RestartSec = "5s";
       };
