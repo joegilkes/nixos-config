@@ -56,7 +56,7 @@ in
       network = [
         {
           "AdGuard Home" = {
-            icon = "";
+            icon = "adguard-home.png";
             href = "http://${hname}.local:3003";
             description = "DNS filter";
             widget = {
