@@ -28,7 +28,7 @@
     nixos-hardware.url = "github:nixos/nixos-hardware";
 
     # Agenix - age encrypted secrets
-    inputs.agenix.url = "github:ryantm/agenix";
+    agenix.url = "github:ryantm/agenix";
 
     # Musnix - RT kernel tweaks for audio
     musnix.url = "github:musnix/musnix";
