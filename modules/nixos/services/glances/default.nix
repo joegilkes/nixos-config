@@ -14,7 +14,7 @@ in
     systemd.services.glances = {
       enable = true;
       description = "Open-source system cross-platform monitoring tool";
-      after = [ "network.target" ];
+      after = [ "default.target" ];
       serviceConfig = {
         ExecStart = "${pkgs.glances}/bin/glances -w";
         Restart = "on-failure";
