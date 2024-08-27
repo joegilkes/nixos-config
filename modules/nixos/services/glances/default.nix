@@ -11,10 +11,10 @@ in
   };
 
   config = mkIf cfg.enable {
-    systemd.user.services.glances = {
+    systemd.services.glances = {
+      enable = true;
       description = "Open-source system cross-platform monitoring tool";
-      startLimitBurst = 5;
-      startLimitIntervalSec = 500;
+      after = [ "network.target" ];
       serviceConfig = {
         ExecStart = "${pkgs.glances}/bin/glances -w";
         Restart = "on-failure";
