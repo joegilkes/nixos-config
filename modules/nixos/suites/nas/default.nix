@@ -17,6 +17,7 @@ in
       services = {
         flatpak.enable = mkForce false;
         adguard = enabled;
+        glances = enabled;
         jellyfin = enabled;
         samba = enabled;
         zfs = enabled;
