@@ -18,7 +18,7 @@ in
     openFirewall = true;
     environmentFile = config.age.secrets.homepage-env.path;
     settings = {
-      title = "NAS Dashboard [${hname}]";
+      title = "Dashboard - ${hname}";
       headerstyle = "clean";
     };
     bookmarks = [{
@@ -39,6 +39,84 @@ in
     }];
     services = [
       {
+        stats = [
+          { 
+            "CPU Usage" = {
+              widget = {
+                type = "glances";
+                url = "http://${hname}.local:8096";
+                metric = "cpu";
+              };
+            };
+          }
+          { 
+            "Memory Usage" = {
+              widget = {
+                type = "glances";
+                url = "http://${hname}.local:8096";
+                metric = "memory";
+              };
+            };
+          }
+          { 
+            "Network Usage" = {
+              widget = {
+                type = "glances";
+                url = "http://${hname}.local:8096";
+                metric = "network:enp0s31f6";
+              };
+            };
+          }
+          { 
+            "Top Processes" = {
+              widget = {
+                type = "glances";
+                url = "http://${hname}.local:8096";
+                metric = "process";
+              };
+            };
+          }
+          { 
+            "gabbro/public" = {
+              widget = {
+                type = "glances";
+                url = "http://${hname}.local:8096";
+                metric = "fs:/mnt/gabbro/public";
+                chart = false;
+              };
+            };
+          }
+          { 
+            "gabbro/backups" = {
+              widget = {
+                type = "glances";
+                url = "http://${hname}.local:8096";
+                metric = "fs:/mnt/gabbro/backups";
+                chart = false;
+              };
+            };
+          }
+          { 
+            "gabbro/media" = {
+              widget = {
+                type = "glances";
+                url = "http://${hname}.local:8096";
+                metric = "fs:/mnt/gabbro/media";
+                chart = false;
+              };
+            };
+          }
+          { 
+            "gabbro/storage" = {
+              widget = {
+                type = "glances";
+                url = "http://${hname}.local:8096";
+                metric = "fs:/mnt/gabbro/storage";
+                chart = false;
+              };
+            };
+          }
+        ];
         media = [
           { 
             Jellyfin = {
@@ -53,7 +131,7 @@ in
             };
           }
         ];
-      network = [
+        network = [
         {
           "AdGuard Home" = {
             icon = "adguard-home.png";
@@ -71,69 +149,25 @@ in
     }];
     widgets = [
       {
+        greeting = {
+          text_size = "xl";
+          text = "${hname}";
+        };
+      }
+      {
         search = {
           provider = "google";
           target = "_self";
         };
       }
       {
-        glances = {
-          url = "http://${hname}.local:61208";
-          cpu = true;
-          label = "CPU Usage";
-        };
-      }
-      {
-        glances = {
-          url = "http://${hname}.local:61208";
-          memory = true;
-          label = "Memory Usage";
-        };
-      }
-      {
-        glances = {
-          url = "http://${hname}.local:61208";
-          process = true;
-          label = "Top Processes";
-        };
-      }
-      {
-        glances = {
-          url = "http://${hname}.local:61208";
-          "network:enp0s31f6" = true;
-          label = "Network Usage";
-        };
-      }
-      {
-        glances = {
-          url = "http://${hname}.local:61208";
-          "fs:/mnt/gabbro/public" = true;
-          label = "gabbro/public";
-          chart = false;
-        };
-      }
-      {
-        glances = {
-          url = "http://${hname}.local:61208";
-          "fs:/mnt/gabbro/storage" = true;
-          label = "gabbro/storage";
-          chart = false;
-        };
-      }
-      {
-        glances = {
-          url = "http://${hname}.local:61208";
-          "fs:/mnt/gabbro/backups" = true;
-          label = "gabbro/backups";
-          chart = false;
-        };
-      }
-      {
-        glances = {
-          url = "http://${hname}.local:61208";
-          "fs:/mnt/gabbro/media" = true;
-          label = "gabbro/media";
-          chart = false;
+        datetime = {
+          text_size = "md";
+          format = {
+            dateStyle = "short";
+            timeStyle = "short";
+            hour12 = true;
+          };
         };
       }
     ];
