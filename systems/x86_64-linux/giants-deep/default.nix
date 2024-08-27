@@ -36,7 +36,7 @@ with lib.pluskinda;
         };
       };
 
-      adguardhome.port = 3003;
+      adguard.port = 3003;
     };
   };
 
