@@ -8,13 +8,14 @@ in
 {
   options.pluskinda.services.adguard = with types; {
     enable = mkBoolOpt false "Whether to enable AdGuard Home.";
+    port = mkOpt port 3003 "Port to run the AdGuard Home WebUI through";
   };
 
   config = mkIf cfg.enable {
     services.adguardhome = {
       enable = true;
       openFirewall = true;
-      port = 3003;
+      port = cfg.port;
     };
 
     networking.firewall.allowedTCPPorts = [ 53 ];

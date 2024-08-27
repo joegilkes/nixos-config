@@ -23,16 +23,20 @@ with lib.pluskinda;
       tuning = enabled;
     };
 
-    services.samba = {
-      serverName = "NAS";
-      privateShareDirs = {
-        backups = "/mnt/gabbro/backups";
-        media = "/mnt/gabbro/media";
-        storage = "/mnt/gabbro/storage";
+    services = {
+      samba = {
+        serverName = "NAS";
+        privateShareDirs = {
+          backups = "/mnt/gabbro/backups";
+          media = "/mnt/gabbro/media";
+          storage = "/mnt/gabbro/storage";
+        };
+        publicShareDirs = {
+          public = "/mnt/gabbro/public";
+        };
       };
-      publicShareDirs = {
-        public = "/mnt/gabbro/public";
-      };
+
+      adguardhome.port = 3003;
     };
   };
 
