@@ -2,7 +2,7 @@
 
 let 
   inherit (lib) readFile;
-  hname = config.hname;
+  hname = config.networking.hostName;
 in 
 {
   services = {
