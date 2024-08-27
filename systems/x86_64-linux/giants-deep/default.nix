@@ -3,7 +3,10 @@
 with lib;
 with lib.pluskinda;
 {
-  imports = [ ./hardware.nix ];
+  imports = [ 
+    ./hardware.nix
+    ./homepage.nix
+  ];
 
   networking.hostName = "giants-deep";
 
