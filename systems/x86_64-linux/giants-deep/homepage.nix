@@ -1,4 +1,4 @@
-{ config, lib, pkgs, inputs, self, ...}:
+{ config, lib, pkgs, inputs, ...}:
 
 let 
   hname = config.networking.hostName;
@@ -6,7 +6,7 @@ in
 {
   age.secrets = {
     homepage-env = {
-      file = "${self}/secrets/giants-deep-homepage.age";
+      file = "../../../secrets/giants-deep-homepage.age";
       owner = "root";
       group = "users";
       mode = "400";
