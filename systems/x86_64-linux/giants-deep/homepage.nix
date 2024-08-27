@@ -6,7 +6,7 @@ in
 {
   age.secrets = {
     homepage-env = {
-      file = "../../../secrets/giants-deep-homepage.age";
+      file = ../../../secrets/giants-deep-homepage.age;
       owner = "root";
       group = "users";
       mode = "400";
