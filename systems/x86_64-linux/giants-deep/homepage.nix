@@ -20,6 +20,18 @@ in
     settings = {
       title = "Dashboard - ${hname}";
       headerstyle = "clean";
+      layout = {
+        stats = {
+          style = "row";
+          columns = 4;
+        };
+        media = {
+          style = "columns";
+        };
+        network = {
+          style = "columns";
+        };
+      };
     };
     bookmarks = [{
       dev = [
