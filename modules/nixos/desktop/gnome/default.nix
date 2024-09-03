@@ -57,20 +57,20 @@ in
       geary
       gnome-font-viewer
       gnome-system-monitor
-      gnome.gnome-maps
+      gnome-maps
       yelp
       cheese
       totem
       simple-scan
-      gnome.gnome-music
-      gnome.gnome-contacts
-      gnome.gnome-characters
-      gnome.gnome-weather
+      gnome-music
+      gnome-contacts
+      gnome-characters
+      gnome-weather
       gnome-calendar
-    ]) ++ (with pkgs; [
       gedit
       gnome-tour
       gnome-photos
+      gnome-maps
     ]);
 
     systemd.tmpfiles.rules = [
