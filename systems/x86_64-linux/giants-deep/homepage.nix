@@ -56,7 +56,7 @@ in
             "CPU Usage" = {
               widget = {
                 type = "glances";
-                url = "http://${hname}.local:8096";
+                url = "http://${hname}.local:61208";
                 metric = "cpu";
               };
             };
@@ -65,7 +65,7 @@ in
             "Memory Usage" = {
               widget = {
                 type = "glances";
-                url = "http://${hname}.local:8096";
+                url = "http://${hname}.local:61208";
                 metric = "memory";
               };
             };
@@ -74,7 +74,7 @@ in
             "Network Usage" = {
               widget = {
                 type = "glances";
-                url = "http://${hname}.local:8096";
+                url = "http://${hname}.local:61208";
                 metric = "network:enp0s31f6";
               };
             };
@@ -83,7 +83,7 @@ in
             "Top Processes" = {
               widget = {
                 type = "glances";
-                url = "http://${hname}.local:8096";
+                url = "http://${hname}.local:61208";
                 metric = "process";
               };
             };
@@ -92,7 +92,7 @@ in
             "gabbro/public" = {
               widget = {
                 type = "glances";
-                url = "http://${hname}.local:8096";
+                url = "http://${hname}.local:61208";
                 metric = "fs:/mnt/gabbro/public";
                 chart = false;
               };
@@ -102,7 +102,7 @@ in
             "gabbro/backups" = {
               widget = {
                 type = "glances";
-                url = "http://${hname}.local:8096";
+                url = "http://${hname}.local:61208";
                 metric = "fs:/mnt/gabbro/backups";
                 chart = false;
               };
@@ -112,7 +112,7 @@ in
             "gabbro/media" = {
               widget = {
                 type = "glances";
-                url = "http://${hname}.local:8096";
+                url = "http://${hname}.local:61208";
                 metric = "fs:/mnt/gabbro/media";
                 chart = false;
               };
@@ -122,7 +122,7 @@ in
             "gabbro/storage" = {
               widget = {
                 type = "glances";
-                url = "http://${hname}.local:8096";
+                url = "http://${hname}.local:61208";
                 metric = "fs:/mnt/gabbro/storage";
                 chart = false;
               };
