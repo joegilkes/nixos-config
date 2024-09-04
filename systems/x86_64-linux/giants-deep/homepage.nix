@@ -58,6 +58,7 @@ in
                 type = "glances";
                 url = "http://${hname}.local:61208";
                 metric = "cpu";
+                version = 4;
               };
             };
           }
@@ -67,6 +68,7 @@ in
                 type = "glances";
                 url = "http://${hname}.local:61208";
                 metric = "memory";
+                version = 4;
               };
             };
           }
@@ -76,6 +78,7 @@ in
                 type = "glances";
                 url = "http://${hname}.local:61208";
                 metric = "network:enp0s31f6";
+                version = 4;
               };
             };
           }
@@ -85,6 +88,7 @@ in
                 type = "glances";
                 url = "http://${hname}.local:61208";
                 metric = "process";
+                version = 4;
               };
             };
           }
@@ -95,6 +99,7 @@ in
                 url = "http://${hname}.local:61208";
                 metric = "fs:/mnt/gabbro/public";
                 chart = false;
+                version = 4;
               };
             };
           }
@@ -105,6 +110,7 @@ in
                 url = "http://${hname}.local:61208";
                 metric = "fs:/mnt/gabbro/backups";
                 chart = false;
+                version = 4;
               };
             };
           }
@@ -115,6 +121,7 @@ in
                 url = "http://${hname}.local:61208";
                 metric = "fs:/mnt/gabbro/media";
                 chart = false;
+                version = 4;
               };
             };
           }
@@ -125,6 +132,7 @@ in
                 url = "http://${hname}.local:61208";
                 metric = "fs:/mnt/gabbro/storage";
                 chart = false;
+                version = 4;
               };
             };
           }
