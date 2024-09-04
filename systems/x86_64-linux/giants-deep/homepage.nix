@@ -129,6 +129,8 @@ in
             };
           }
         ];
+      }
+      {
         media = [
           { 
             Jellyfin = {
@@ -143,6 +145,8 @@ in
             };
           }
         ];
+      }
+      {
         network = [
         {
           "AdGuard Home" = {
