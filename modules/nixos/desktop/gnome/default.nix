@@ -118,7 +118,7 @@ in
 
     services = {
       # Required for app indicators
-      udev.packages = with pkgs; [ gnome3.gnome-settings-daemon ];
+      udev.packages = with pkgs; [ gnome-settings-daemon ];
 
       libinput.enable = true;
       xserver = {
