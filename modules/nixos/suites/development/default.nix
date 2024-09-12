@@ -19,6 +19,7 @@ in
       cli-apps = {
         nixd = enabled;
         android-platform-tools = enabled;
+        julia = enabled;
       };
 
       tools = {
