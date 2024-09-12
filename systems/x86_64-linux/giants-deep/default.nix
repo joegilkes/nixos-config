@@ -46,6 +46,8 @@ with lib.pluskinda;
         sonarr-dataDir = "/mnt/gabbro/storage/sonarr";
       };
     };
+
+    user.extraGroups = [ "jellyfin" ];
   };
 
   programs.ssh.extraConfig = ''
