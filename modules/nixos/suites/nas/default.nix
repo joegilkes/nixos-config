@@ -19,7 +19,6 @@ in
         adguard = enabled;
         glances = enabled;
         jellyfin = enabled;
-        jellyseerr = enabled;
         samba = enabled;
         zfs = enabled;
       };

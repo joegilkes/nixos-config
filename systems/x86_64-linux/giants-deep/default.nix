@@ -40,11 +40,6 @@ with lib.pluskinda;
       };
 
       adguard.port = 3003;
-
-      jellyseerr = {
-        radarr-dataDir = "/mnt/gabbro/storage/radarr";
-        sonarr-dataDir = "/mnt/gabbro/storage/sonarr";
-      };
     };
 
     user.extraGroups = [ "jellyfin" ];
