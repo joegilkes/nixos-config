@@ -19,6 +19,7 @@ in
         adguard = enabled;
         glances = enabled;
         jellyfin = enabled;
+        tvheadend = enabled;
         samba = enabled;
         zfs = enabled;
       };
