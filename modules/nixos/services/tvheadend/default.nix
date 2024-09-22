@@ -2,14 +2,12 @@
 
 with lib;
 with lib.pluskinda;
-
 let 
   cfg = config.pluskinda.services.tvheadend;
   pidFile = "${config.users.users.tvheadend.home}/tvheadend.pid";
 in
-
 {
-  options.pluskinda.services.tvheadend = {
+  options.pluskinda.services.tvheadend = with types; {
     enable = mkBoolOpt false "Whether to enable Tvheadend as a service with its own user.";
     httpPort = mkOpt port 9981 "Port to bind HTTP to.";
     htspPort = mkOpt port 9982 "Port to bind HTSP to.";
