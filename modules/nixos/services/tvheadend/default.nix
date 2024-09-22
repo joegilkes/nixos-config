@@ -48,5 +48,9 @@ in
         ExecStop     = "${pkgs.coreutils}/bin/rm ${pidFile}";
       };
     };
+
+    networking.firewall = {
+      allowedTCPPorts = [ 9981 9982 ];
+    };
   };
 }
