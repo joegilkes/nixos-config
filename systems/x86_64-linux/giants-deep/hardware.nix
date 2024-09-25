@@ -13,7 +13,7 @@ in
 
   boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "ahci" "usb_storage" "usbhid" "sd_mod" ];
   boot.initrd.kernelModules = [ ];
-  boot.kernelPackages = config.boot.zfs.package.latestCompatibleLinuxPackages;
+  boot.kernelPackages = pkgs.linuxPackages_6_10;
   boot.kernelModules = [ "coretemp" ];
   boot.kernelParams = [ "nohibernate" ];
   boot.extraModulePackages = [ ];
