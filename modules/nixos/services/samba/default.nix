@@ -25,7 +25,7 @@ in
           "server string" = cfg.serverName;
           "netbios name" = cfg.serverName;
           "security" = "user";
-          "security type" = "user";
+          # "security type" = "user";
           #use sendfile = yes
           #max protocol = smb2
           # note: localhost is the ipv6 localhost ::1
