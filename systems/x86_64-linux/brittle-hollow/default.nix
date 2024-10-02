@@ -25,6 +25,10 @@ with lib.pluskinda;
       media = enabled;
       social = enabled;
     };
+
+    services = {
+      virtualisation = enabled;
+    };
   };
 
   programs.ssh.extraConfig = ''
