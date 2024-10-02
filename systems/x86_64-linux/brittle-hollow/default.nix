@@ -7,7 +7,8 @@ with lib.pluskinda;
 
   networking.hostName = "brittle-hollow";
 
-  nix = {
+  pluskinda = {
+    nix = {
       # Overwritten by Lix, use nix_2_18_upstream to go back
       package = pkgs.nixVersions.stable;
 
@@ -16,7 +17,6 @@ with lib.pluskinda;
       };
     };
 
-  pluskinda = {
     suites = {
       common = enabled;
       desktop = enabled;
