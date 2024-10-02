@@ -14,8 +14,8 @@ in
     src = fetchFromGitHub {
       owner = "berarma";
       repo = name;
-      rev = "master";
-      hash = "sha256-jm7kp8VjrbeDdS45yD6tlSx0u84NETXA9NJ+Oz8wNu0=";
+      rev = "ebc4702f4fa6284f641d3b58b8f3e234244f9deb";
+      hash = "sha256-K9RdZ211nhzQhNaw+vPx6XZ047ERjU++eUyaMyyE170=";
     };
 
     installPhase = ''
