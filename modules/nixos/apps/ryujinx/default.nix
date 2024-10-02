@@ -10,5 +10,5 @@ in
   };
 
   config =
-    mkIf cfg.enable { environment.systemPackages = with pkgs; [ ryujinx ]; };
+    mkIf cfg.enable { environment.systemPackages = with pkgs.pluskinda; [ ryujinx ]; };
 }
