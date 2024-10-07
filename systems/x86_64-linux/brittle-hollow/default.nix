@@ -33,14 +33,10 @@ with lib.pluskinda;
 
   programs.ssh.extraConfig = ''
     Host builder
-      HostName timber-hearth
+      HostName timber-hearth.local
       User nix-ssh
       IdentitiesOnly yes
       IdentityFile /root/.ssh/nixremote
-  '';
-
-  networking.extraHosts = ''
-    192.168.0.36 timber-hearth
   '';
 
   nix = {
