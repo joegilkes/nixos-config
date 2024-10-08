@@ -30,7 +30,7 @@
 }:
 
 let
-  version = "4.3-unstable-2024-08-04";
+  version = "4.3-unstable-2024-10-05";
 in stdenv.mkDerivation {
   pname = "tvheadend";
   inherit version;
@@ -38,8 +38,8 @@ in stdenv.mkDerivation {
   src = fetchFromGitHub {
     owner = "tvheadend";
     repo = "tvheadend";
-    rev = "078a822cf548b37bc474475fa57e48e9604090ee";
-    hash = "sha256-3uCFPGBe5xCxsX7LU9HAwAtB51V2Iet1Uxin7cYhwoI=";
+    rev = "eee5cdadf244b80efddedb944a55c9cdbb0ff6c9";
+    hash = "sha256-M/M0GhBlV4Ww9Ek7G453g3Xe0pEA4nfbevek5IJfpLE=";
   };
 
   outputs = [
