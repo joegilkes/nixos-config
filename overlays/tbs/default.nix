@@ -1,5 +1,6 @@
 { channels, ... }:
 
+with channels.nixpkgs;
 let 
   media = fetchFromGitHub rec {
     name = repo;
@@ -18,7 +19,7 @@ let
   };
 in 
   final: prev: {
-    tbs = prev.tvs.overrideAttrs (old: {
+    tbs = prev.tbs.overrideAttrs (old: {
       srcs = [ media build ];
     });
   }
