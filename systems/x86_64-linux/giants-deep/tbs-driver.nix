@@ -6,7 +6,7 @@ let
     owner = "tbsdtv";
     repo = "linux_media";
     rev = "a2e856bfb243942a9e9aaae004353501f513a5d7";
-    hash = "";
+    hash = "sha256-FfIbTaNQzU9EkP5cjSdnskli3JrEc7OMVH/LhjaizOU=";
   };
 
   build = fetchFromGitHub rec {
@@ -14,7 +14,7 @@ let
     owner = "tbsdtv";
     repo = "media_build";
     rev = "0f49c76b80838ded04bd64c56af9e1f9b8ac1965";
-    hash = "";
+    hash = "sha256-S5g7OTBJjzClLfy6C0PJwUtukrqoCiIjyU26Yy26hDo=";
   };
 
 in
