@@ -16,7 +16,7 @@ in
   boot.kernelPackages = pkgs.linuxPackages_6_6;
   boot.kernelModules = [ "coretemp" ];
   boot.kernelParams = [ "nohibernate" ];
-  boot.extraModulePackages = with config.boot.kernelPackages; [ tbs ];
+  boot.extraModulePackages = with pkgs.pluskinda; [ tbs ];
   boot.supportedFilesystems = [ "zfs" ];
   boot.zfs.forceImportRoot = false;
 
