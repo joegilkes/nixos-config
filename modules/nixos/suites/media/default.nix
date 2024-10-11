@@ -15,6 +15,7 @@ in
       apps = {
         calibre = enabled;
         jellyfin = enabled;
+        kodi = enabled;
         spotify = enabled;
         vlc = enabled;
       };
