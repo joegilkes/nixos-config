@@ -7,7 +7,7 @@ let
 in
 {
   options.pluskinda.suites.nas = with types; {
-    enable = mkBoolOpt false "Whether or not to enable NAS apps.";
+    enable = mkBoolOpt false "Whether or not to enable NAS apps and services.";
   };
 
   config = mkIf cfg.enable {
@@ -18,8 +18,6 @@ in
         flatpak.enable = mkForce false;
         adguard = enabled;
         glances = enabled;
-        jellyfin = enabled;
-        tvheadend = enabled;
         samba = enabled;
         zfs = enabled;
       };

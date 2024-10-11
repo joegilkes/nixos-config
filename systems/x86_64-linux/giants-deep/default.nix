@@ -22,6 +22,7 @@ with lib.pluskinda;
 
     suites = {
       common = enabled;
+      htpc = enabled;
       nas = enabled;
       tuning = enabled;
     };
