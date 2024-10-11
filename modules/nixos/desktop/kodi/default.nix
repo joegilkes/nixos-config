@@ -7,7 +7,7 @@ let
 in
 {
   options.pluskinda.desktop.kodi = with types; {
-    enable = mkBoolOpt false "Whether to enable the Kodi client as the desktop environment."
+    enable = mkBoolOpt false "Whether to enable the Kodi client as the desktop environment.";
   };
 
   config = mkIf cfg.enable {
