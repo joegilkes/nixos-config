@@ -11,21 +11,21 @@ in
   };
 
   config = mkIf cfg.enable {
-    services.xserver = {
-      enable = true;
-      desktopManager.kodi = {
+    services = {
+      xserver = {
         enable = true;
-        package = pkgs.kodi.withPackages ( pkgs: with pkgs; [
-          jellyfin
-          pvr-hts
-        ]);
-      };
-      displayManager = {
-        autoLogin = {
+        desktopManager.kodi = {
           enable = true;
-          user = "kodi";
+          package = pkgs.kodi.withPackages ( pkgs: with pkgs; [
+            jellyfin
+            pvr-hts
+          ]);
         };
-        lightdm.greeter.enable = false;
+        displayManager.lightdm.greeter.enable = false;
+      };
+      displayManager.autoLogin = {
+        enable = true;
+        user = "kodi";
       };
     };
 
