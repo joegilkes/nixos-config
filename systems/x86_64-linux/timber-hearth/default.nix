@@ -36,12 +36,18 @@ with lib.pluskinda;
 
     desktop.gnome.wallpaper.dark = pkgs.pluskinda.wallpapers.contour_bi_x3_test;
 
-    apps.blender.gpuType = "amd";
-    apps.keymapp = enabled;
-    tools.diagnostics.gpuType = "amd";
-    tools.usb-modeswitch = enabled;
+    apps = {
+      blender.gpuType = "amd";
+      keymapp = enabled;
+      star-citizen.location = "/beluga/Games/star-citizen";
+    };
 
-    apps.star-citizen.location = "/beluga/Games/star-citizen";
+    tools = {
+      diagnostics.gpuType = "amd";
+      usb-modeswitch = enabled;
+    };
+
+    services.virtualisation = enabled;
   };
 
   # Enable this system as a local shared Nix store.
