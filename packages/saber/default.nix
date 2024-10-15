@@ -1,7 +1,7 @@
 {
   lib,
   fetchFromGitHub,
-  flutter322,
+  flutter326,
   rustc,
   cargo,
   libsecret,
@@ -17,7 +17,7 @@ let
   version = "0.24.3";
   # pubspecLock = lib.importJSON ./pubspec.lock.json;
 in 
-  flutter322.buildFlutterApplication {
+  flutter326.buildFlutterApplication {
     inherit pname version;
 
     src = fetchFromGitHub {
