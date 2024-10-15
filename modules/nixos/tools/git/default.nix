@@ -17,16 +17,26 @@ in
   config = mkIf cfg.enable {
     environment.systemPackages = with pkgs; [ git ];
 
-    pluskinda.home.extraOptions = {
-      programs.git = {
-        enable = true;
-        inherit (cfg) userName userEmail;
-        extraConfig = {
-          init = { defaultBranch = "main"; };
-          pull = { rebase = true; };
-          push = { autoSetupRemote = true; };
-          core = { whitespace = "trailing-space,space-before-tab"; };
+    pluskinda.home = {
+      extraOptions = {
+        programs.git = {
+          enable = true;
+          inherit (cfg) userName userEmail;
+          extraConfig = {
+            init = { defaultBranch = "main"; };
+            pull = { rebase = true; };
+            push = { autoSetupRemote = true; };
+            core = { 
+              excludesfile = "~/.gitignore";
+              whitespace = "trailing-space,space-before-tab"; 
+            };
+          };
         };
+      };
+      file = { 
+        ".gitignore".text = ''
+          .direnv
+        '';
       };
     };
   };
