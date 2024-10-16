@@ -325,6 +325,22 @@
         "type": "github"
       }
     },
+    "nexusmods-latest": {
+      "locked": {
+        "lastModified": 1729080951,
+        "narHash": "sha256-KkzZc33HhLlonRKarnRyxQ+7mQDul94SAmLw4MzPAE8=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "1eee78feeb14691bf478b1ccab9eedc2ecfc6484",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "1eee78feeb14691bf478b1ccab9eedc2ecfc6484",
+        "type": "github"
+      }
+    },
     "nix-gaming": {
       "inputs": {
         "flake-parts": "flake-parts",
@@ -463,6 +479,7 @@
         "lix-module": "lix-module",
         "master": "master",
         "musnix": "musnix",
+        "nexusmods-latest": "nexusmods-latest",
         "nix-gaming": "nix-gaming",
         "nix-index-database": "nix-index-database",
         "nixos-hardware": "nixos-hardware",

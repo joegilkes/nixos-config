@@ -14,6 +14,9 @@
     # Nixpkgs commit for fixing sunshine, see overlay.
     sunshine-fix.url = "github:nixos/nixpkgs/3a9671961fd9481564092656e1ccb5f8fdf2ded4";
 
+    # NexusMods.app latest version.
+    nexusmods-latest.url = "github:nixos/nixpkgs/1eee78feeb14691bf478b1ccab9eedc2ecfc6484";
+
     # Replace Nix with Lix https://lix.systems/
     lix-module = {
       url = "https://git.lix.systems/lix-project/nixos-module/archive/2.91.0.tar.gz";

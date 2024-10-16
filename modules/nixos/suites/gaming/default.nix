@@ -19,6 +19,7 @@ in
         heroic-launcher = enabled;
         lutris = enabled;
         mangohud = enabled;
+        nexusmods-app = enabled;
         oversteer = enabled;
         prismlauncher = enabled;
         protontricks = enabled;
