@@ -2,7 +2,10 @@
 
 with lib;
 with lib.pluskinda;
-let cfg = config.pluskinda.tools.misc;
+let 
+  cfg = config.pluskinda.tools.misc;
+  gpuType = config.pluskinda.tools.diagnostics.gpuType;
+
 in
 {
   options.pluskinda.tools.misc = with types; {
@@ -25,7 +28,6 @@ in
       screen
       eza
       htop
-      btop
       iotop
       iftop
       strace # system call monitor
@@ -35,6 +37,6 @@ in
       lshw
       glxinfo
       util-linux
-    ];
+    ] ++ ( if gpuType == "amd" then [ btop-rocm ] else [ btop ] );
   };
 }
