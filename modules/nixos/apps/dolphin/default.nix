@@ -13,6 +13,6 @@ in
     environment.systemPackages = with pkgs; [ dolphin-emu ];
 
     # Enable GameCube controller support.
-    services.udev.packages = [ pkgs.dolphinEmu ];
+    services.udev.packages = [ pkgs.dolphin-emu ];
   };
 }
