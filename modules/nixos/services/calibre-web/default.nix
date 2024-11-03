@@ -16,7 +16,10 @@ in
     services.calibre-web = {
       enable = true;
       openFirewall = true;
-      listen.port = cfg.port;
+      listen = {
+        ip = "0.0.0.0";
+        port = cfg.port;
+      };
       user = "calibre";
       group = "calibre";
       options = {
