@@ -66,6 +66,6 @@ stdenv.mkDerivation {
     license = licenses.gpl2Only;
     maintainers = with maintainers; [ ck3d ];
     priority = -1;
-    broken = kernel.kernelOlder "4.14" || kernel.kernelAtLeast "6.9";
+    broken = kernel.kernelOlder "4.14" || kernel.kernelAtLeast "6.11";
   };
 }
