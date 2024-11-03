@@ -17,6 +17,7 @@ in
       services = {
         flatpak.enable = mkForce false;
         adguard = enabled;
+        calibre-web = enabled;
         glances = enabled;
         samba = enabled;
         zfs = enabled;

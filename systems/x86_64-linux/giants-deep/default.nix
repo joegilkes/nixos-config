@@ -39,11 +39,10 @@ with lib.pluskinda;
           public = "/mnt/gabbro/public";
         };
       };
-
-      adguard.port = 3003;
+      calibre-web.libraryPath = "/mnt/gabbro/media/Books";
     };
 
-    user.extraGroups = [ "jellyfin" ];
+    user.extraGroups = [ "jellyfin" "calibre" ];
   };
 
   programs.ssh.extraConfig = ''
