@@ -17,6 +17,9 @@ in
         gnome = enabled;
         addons = { wallpapers = enabled; };
       };
+      apps = {
+        proton-pass = enabled;
+      };
     };
   };
 }
