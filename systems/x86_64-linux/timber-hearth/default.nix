@@ -47,6 +47,8 @@ with lib.pluskinda;
       usb-modeswitch = enabled;
     };
 
+    hardware.tablet = enabled;
+
     services.virtualisation = enabled;
   };
 
