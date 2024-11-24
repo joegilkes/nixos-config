@@ -14,7 +14,7 @@ in
     pluskinda = {
       apps = {};
 
-      desktop.kodi = enabled;
+      # desktop.kodi = enabled;
 
       services = {
         jellyfin = enabled;
