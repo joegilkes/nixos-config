@@ -10,7 +10,10 @@ in
   };
 
   config = mkIf cfg.enable { 
-    virtualisation.libvirtd = enabled;
+    virtualisation = {
+      libvirtd = enabled;
+      spiceUSBRedirection = enabled;
+    };
     programs.virt-manager = enabled;
 
     pluskinda.user.extraGroups = [ "libvirtd" ]; 
