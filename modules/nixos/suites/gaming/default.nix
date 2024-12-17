@@ -23,6 +23,7 @@ in
         oversteer = enabled;
         prismlauncher = enabled;
         protontricks = enabled;
+        r2modman = enabled;
         star-citizen = enabled;
         steam = enabled;
         steamtinkerlaunch = enabled;
