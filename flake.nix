@@ -3,7 +3,7 @@
 
   inputs = {
      # NixPkgs (nixos-24.05)
-    stable.url = "github:nixos/nixpkgs/nixos-24.05";
+    stable.url = "github:nixos/nixpkgs/nixos-24.11";
 
     # NixPkgs Unstable (nixos-unstable)
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
@@ -19,11 +19,11 @@
 
     # Replace Nix with Lix https://lix.systems/
     lix-module = {
-      url = "https://git.lix.systems/lix-project/nixos-module/archive/2.91.1-1.tar.gz";
+      url = "https://git.lix.systems/lix-project/nixos-module/archive/2.91.1-2.tar.gz";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # Home Manager (release-23.05)
+    # Home Manager (release-24-11)
     home-manager.url = "github:nix-community/home-manager/master";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
