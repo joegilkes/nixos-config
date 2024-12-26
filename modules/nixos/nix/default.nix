@@ -44,7 +44,7 @@ in
 
     system.activationScripts = mkIf cfg.report-changes {
       report-changes = ''
-        PATH=$PATH:${lib.makeBinPath [ pkgs.nvd pkgs.nixVersions.stable ]}
+        PATH=$PATH:${lib.makeBinPath [ pkgs.nvd cfg.package ]}
         nvd diff $(ls -dv /nix/var/nix/profiles/system-*-link | tail -2)
       '';
     };
