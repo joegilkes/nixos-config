@@ -8,12 +8,6 @@ with lib.pluskinda;
   networking.hostName = "interloper";
 
   pluskinda = {
-    # Use CppNix rather than Lix until build server is connected.
-    nix = {
-      enable = true;
-      package = pkgs.nixVersions.stable_upstream;
-    };
-
     cli-apps = {
       flake = enabled;
     };

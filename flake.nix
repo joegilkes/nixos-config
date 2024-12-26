@@ -76,7 +76,6 @@
       ];
 
       systems.modules.nixos = with inputs; [
-        lix-module.nixosModules.default
         musnix.nixosModules.musnix
         home-manager.nixosModules.home-manager
         agenix.nixosModules.default
@@ -86,5 +85,9 @@
           programs.nix-index-database.comma.enable = true;
         }
       ];
+      systems.hosts.attlerock.modules = with inputs; [ lix-module.nixosModules.default ];
+      systems.hosts.brittle-hollow.modules = with inputs; [ lix-module.nixosModules.default ];
+      systems.hosts.giants-deep.modules = with inputs; [ lix-module.nixosModules.default ];
+      systems.hosts.timber-hearth.modules = with inputs; [ lix-module.nixosModules.default ];
     };
 }
