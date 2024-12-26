@@ -6,12 +6,15 @@ in
 {
   imports = with nixos-hardware.nixosModules; [
     (modulesPath + "/installer/scan/not-detected.nix")
-    (modulesPath + "/installer/sd-card/sd-image-aarch64.nix")
     raspberry-pi-4
   ];
 
   boot.initrd.availableKernelModules = [ "xhci_pci" "usb_storage" "usbhid" ];
   boot.kernelPackages = pkgs.linuxKernel.packages.linux_rpi4;
+  boot.loader = {
+    grub.enable = false;
+    generic-extlinux-compatible.enable = true;
+  };
 
   fileSystems."/" =
     { device = "/dev/disk/by-label/NIXOS_SD";
