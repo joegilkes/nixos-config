@@ -3,7 +3,10 @@
 with lib;
 with lib.pluskinda;
 {
-  imports = [ ./hardware.nix ];
+  imports = [ 
+    ./hardware.nix
+    ./traefik.nix
+  ];
 
   networking.hostName = "interloper";
 
@@ -24,6 +27,8 @@ with lib.pluskinda;
 
     services = {
       avahi = enabled;
+      glances = enabled;
+      traefik = enabled;
       openssh = {
         enable = true;
         allowPasswordAuth = false;
