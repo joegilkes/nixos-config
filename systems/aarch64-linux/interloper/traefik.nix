@@ -5,8 +5,8 @@
     dynamicConfigOptions = {
       http = {
         routers = {
-          router1 = {
-            rule = "Host(`home.joegilk.es`)";
+          mainRouter = {
+            rule = "Host(`wilds.joegilk.es`)";
             service = "glances";
           };
         };
