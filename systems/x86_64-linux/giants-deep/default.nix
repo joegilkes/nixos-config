@@ -28,6 +28,7 @@ with lib.pluskinda;
     };
 
     services = {
+      openssh.allowPasswordAuth = false;
       samba = {
         serverName = "NAS";
         privateShareDirs = {

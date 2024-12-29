@@ -24,7 +24,10 @@ with lib.pluskinda;
 
     services = {
       avahi = enabled;
-      openssh = enabled;
+      openssh = {
+        enable = true;
+        allowPasswordAuth = false;
+      };
     };
 
     security = {

@@ -8,6 +8,7 @@ in
 {
   options.pluskinda.services.openssh = with types; {
     enable = mkBoolOpt false "Whether or not to configure OpenSSH support.";
+    allowPasswordAuth = mkBoolOpt true "Whether to allow SSH password authentication.";
   };
 
   config = mkIf cfg.enable {
@@ -16,6 +17,7 @@ in
       settings = {
         X11Forwarding = true;
         PermitRootLogin = "no";
+        PasswordAuthentication = cfg.allowPasswordAuth;
       };
     };
   };
