@@ -18,17 +18,17 @@ in
           web = {
             address = ":80";
             asDefault = true;
-            # http.redirections.entrypoint = {
-            #   to = "websecure";
-            #   scheme = "https";
-            # };
+            http.redirections.entrypoint = {
+              to = "websecure";
+              scheme = "https";
+            };
           };
 
-          # websecure = {
-          #   address = ":443";
-          #   asDefault = true;
-          #   http.tls.certResolver = "letsencrypt";
-          # };
+          websecure = {
+            address = ":443";
+            asDefault = true;
+            http.tls.certResolver = "letsencrypt";
+          };
         };
 
         log = {
@@ -37,11 +37,11 @@ in
           format = "json";
         };
 
-        # certificatesResolvers.letsencrypt.acme = {
-        #   email = "postmaster@YOUR.DOMAIN";
-        #   storage = "${config.services.traefik.dataDir}/acme.json";
-        #   httpChallenge.entryPoint = "web";
-        # };
+        certificatesResolvers.letsencrypt.acme = {
+          email = "joe@joegilk.es";
+          storage = "${config.services.traefik.dataDir}/acme.json";
+          httpChallenge.entryPoint = "web";
+        };
 
         api.dashboard = true;
         # Access the Traefik dashboard on <Traefik IP>:8080 of your server

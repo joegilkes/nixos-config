@@ -5,6 +5,7 @@ with lib.pluskinda;
 {
   imports = [ 
     ./hardware.nix
+    ./acme.nix
     ./traefik.nix
   ];
 

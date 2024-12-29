@@ -7,6 +7,7 @@
         routers = {
           mainRouter = {
             rule = "Host(`wilds.joegilk.es`)";
+            tls.certResolver = "letsencrypt";
             service = "glances";
           };
         };
