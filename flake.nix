@@ -39,6 +39,9 @@
     # Nix Gaming
     nix-gaming.url = "github:fufexan/nix-gaming";
 
+    # Simple NixOS Mailserver
+    simple-nixos-mailserver.url = "gitlab:simple-nixos-mailserver/nixos-mailserver/master";
+
     # Snowfall Lib
     snowfall-lib.url = "github:snowfallorg/lib";
     snowfall-lib.inputs.nixpkgs.follows = "nixpkgs";
@@ -76,7 +79,6 @@
       ];
 
       systems.modules.nixos = with inputs; [
-        musnix.nixosModules.musnix
         home-manager.nixosModules.home-manager
         agenix.nixosModules.default
         nix-index-database.nixosModules.nix-index {
@@ -88,6 +90,10 @@
       systems.hosts.attlerock.modules = with inputs; [ lix-module.nixosModules.default ];
       systems.hosts.brittle-hollow.modules = with inputs; [ lix-module.nixosModules.default ];
       systems.hosts.giants-deep.modules = with inputs; [ lix-module.nixosModules.default ];
-      systems.hosts.timber-hearth.modules = with inputs; [ lix-module.nixosModules.default ];
+      systems.hosts.interloper.modules = with inputs; [ simple-nixos-mailserver.nixosModule ];
+      systems.hosts.timber-hearth.modules = with inputs; [ 
+        lix-module.nixosModules.default
+        musnix.nixosModules.musnix
+      ];
     };
 }
