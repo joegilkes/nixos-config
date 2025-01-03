@@ -37,4 +37,5 @@ with lib.pluskinda;
       port = 81;
     }
   ];
+  networking.allowedTCPPorts = [ 81 ];
 }
