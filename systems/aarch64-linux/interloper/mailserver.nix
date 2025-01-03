@@ -16,7 +16,7 @@ with lib.pluskinda;
 
     fqdn = "mail.joegilk.es";
     domains = [ "wilds.joegilk.es" ];
-    certificateScheme = "acme";
+    certificateScheme = "acme-nginx";
 
     loginAccounts = {
       "auth@wilds.joegilk.es" = {
@@ -24,5 +24,10 @@ with lib.pluskinda;
         aliases = [ "postmaster@wilds.joegilk.es" ];
       };
     };
+  };
+
+  security.acme = {
+    acceptTerms = true;
+    defaults.email = "joe@joegilk.es";
   };
 }
