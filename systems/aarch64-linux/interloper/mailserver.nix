@@ -30,4 +30,11 @@ with lib.pluskinda;
     acceptTerms = true;
     defaults.email = "joe@joegilk.es";
   };
+
+  services.nginx.virtualHosts."mail.joegilk.es".listen = [
+    {
+      addr = "127.0.0.1";
+      port = 81;
+    }
+  ];
 }
