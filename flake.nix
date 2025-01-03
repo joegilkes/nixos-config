@@ -79,6 +79,7 @@
       ];
 
       systems.modules.nixos = with inputs; [
+        musnix.nixosModules.musnix
         home-manager.nixosModules.home-manager
         agenix.nixosModules.default
         nix-index-database.nixosModules.nix-index {
@@ -91,9 +92,6 @@
       systems.hosts.brittle-hollow.modules = with inputs; [ lix-module.nixosModules.default ];
       systems.hosts.giants-deep.modules = with inputs; [ lix-module.nixosModules.default ];
       systems.hosts.interloper.modules = with inputs; [ simple-nixos-mailserver.nixosModule ];
-      systems.hosts.timber-hearth.modules = with inputs; [ 
-        lix-module.nixosModules.default
-        musnix.nixosModules.musnix
-      ];
+      systems.hosts.timber-hearth.modules = with inputs; [ lix-module.nixosModules.default ];
     };
 }
