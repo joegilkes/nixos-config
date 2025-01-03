@@ -1,0 +1,127 @@
+{ config, lib, ...}:
+
+with lib;
+with lib.pluskinda;
+let 
+  cfg = config.pluskinda.services.authelia;
+in
+{
+  options.pluskinda.services.authelia = with types; {
+    enable = mkBoolOpt false "Whether or not to configure Authelia for web auth.";
+    port = mkOpt port 9092 "Port to run the Authelia WebUI through";
+    user = mkOpt str "authelia" "User to run Authelia under";
+    secrets = mkOpt attrs {} "Secrets to pass to Authelia";
+    envVars = mkOpt attrs {} "Environment variables to pass to Authelia";
+  };
+
+  config = mkIf cfg.enable { 
+    users.users.${cfg.user}.extraGroups = [ "redis" "sendgrid" ];
+
+    services.mysql = {
+      enable = mkForce true;
+      ensureDatabases = [ "authelia" ];
+      ensureUsers = [
+        {
+          name = cfg.user;
+          ensurePermissions = {
+            "authelia.*" = "ALL PRIVILEGES";
+          };
+        }
+      ];
+    };
+
+    services.authelia.instances.main = {
+      enable = true;
+      secrets = cfg.secrets;
+      environmentVariables = cfg.envVars;
+      user = cfg.user;
+      group = cfg.user;
+
+      settings = {
+        theme = "dark";
+        default_2fa_method = "totp";
+        server.address = "localhost:${toString cfg.port}";
+        log.level = "info";
+        session = {
+          cookies = [{
+            domain = "joegilk.es";
+            authelia_url = "https://auth.joegilk.es";
+            default_redirection_url = "https://wilds.joegilk.es";
+          }];
+          redis = {
+            host = config.services.redis.servers."".unixSocket;
+            port = 0;
+            database_index = 0;
+          };
+        };
+        regulation = {
+          max_retries = 3;
+          find_time = 120;
+          ban_time = 300;
+        };
+        authentication_backend = {
+          refresh_interval = 120;
+          ldap = {
+            implementation = "custom";
+            address = "ldap://localhost:3890";
+            timeout = "10s";
+            start_tls = false;
+            base_dn = "dc=joegilk,dc=es";
+            additional_users_dn = "ou=people";
+            users_filter = "(&(|({username_attribute}={input})({mail_attribute}={input}))(objectClass=person))";
+            additional_groups_dn = "ou=groups";
+            groups_filter = "(member={dn})";
+            user = "uid=admin,ou=people,dc=joegilk,dc=es";
+            attributes = {
+              display_name = "displayName";
+              group_name = "cn";
+              mail = "mail";
+              username = "uid";
+            };
+          };
+        };
+        access_control = {
+          default_policy = "deny";
+          networks = [
+            {
+              name = "localhost";
+              networks = [ "127.0.0.1/32" ];
+            }
+            # Internal devices only on 192.168.0.40 through 192.168.0.43
+            {
+              name = "internal";
+              networks = [ "192.168.0.40/30" ];
+            }
+          ];
+          rules = [
+            {
+              domain = "*.joegilk.es";
+              policy = "bypass";
+              networks = "localhost";
+            }
+            {
+              domain = "*.joegilk.es";
+              policy = "one_factor";
+              networks = "internal";
+            }
+          ];
+        };
+        storage = {
+          mysql = {
+            address = "/run/mysqld/mysqld.sock";
+            database = "authelia";
+            username = cfg.user;
+          };
+        };
+        notifier = {
+          disable_startup_check = false;
+          smtp = {
+            address = "submissions://smtp.sendgrid.net:465";
+            username = "apikey";
+            sender = "auth@joegilk.es";
+          };
+        };
+      };
+    };
+  };
+}

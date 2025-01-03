@@ -6,7 +6,6 @@ with lib.pluskinda;
   imports = [ 
     ./hardware.nix
     ./traefik.nix
-    ./mailserver.nix
   ];
 
   networking.hostName = "interloper";
@@ -27,8 +26,13 @@ with lib.pluskinda;
     };
 
     services = {
+      authelia = enabled;
       avahi = enabled;
       glances = enabled;
+      redis = {
+        enable = true;
+        databases = 1;
+      };
       traefik = enabled;
       openssh = {
         enable = true;

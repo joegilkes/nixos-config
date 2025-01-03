@@ -1,6 +1,122 @@
 { pkgs, config, lib, channel, ...}:
 
+with lib;
+with lib.pluskinda;
+let
+  autheliaUser = "authelia-interloper";
+  autheliaInstance = config.services.authelia.instances.main;
+  autheliaUrl = "http://${autheliaInstance.settings.server.address}";
+in
 {
+  age.secrets = {
+    authelia_jwt_secret = {
+      file = ../../../secrets/authelia-jwt.age;
+      owner = autheliaUser;
+      group = autheliaUser;
+      mode = "400";
+    };
+    authelia_hmac_secret = {
+      file = ../../../secrets/authelia-hmac.age;
+      owner = autheliaUser;
+      group = autheliaUser;
+      mode = "400";
+    };
+    authelia_issuer_priv_key = {
+      file = ../../../secrets/authelia-issuer.age;
+      owner = autheliaUser;
+      group = autheliaUser;
+      mode = "400";
+    };
+    authelia_session_secret = {
+      file = ../../../secrets/authelia-session.age;
+      owner = autheliaUser;
+      group = autheliaUser;
+      mode = "400";
+    };
+    authelia_storage_encryption_secret = {
+      file = ../../../secrets/authelia-storage.age;
+      owner = autheliaUser;
+      group = autheliaUser;
+      mode = "400";
+    };
+    authelia_mysql_password = {
+      file = ../../../secrets/authelia-mysql.age;
+      owner = autheliaUser;
+      group = autheliaUser;
+      mode = "400";
+    };
+    ldap_password = {
+      file = ../../../secrets/ldap-password.age;
+      owner = autheliaUser;
+      group = autheliaUser;
+      mode = "400";
+    };
+    lldap_private_key = {
+      file = ../../../secrets/lldap-private-key.age;
+      group = "lldap-secrets";
+      mode = "0440";
+    };
+    lldap_jwt_secret = {
+      file = ../../../secrets/lldap-jwt.age;
+      group = "lldap-secrets";
+      mode = "0440";
+    };
+    lldap_user_pass = {
+      file = ../../../secrets/lldap-user-password.age;
+      group = "lldap-secrets";
+      mode = "0440";
+    };
+    sendgrid_api_token = {
+      file = ../../../secrets/sendgrid-api-token.age;
+      group = "sendgrid";
+      mode = "0440";
+    };
+  };
+
+  pluskinda.services.authelia = {
+    user = autheliaUser;
+    secrets = {
+      jwtSecretFile = config.age.secrets.authelia_jwt_secret.path;
+      oidcHmacSecretFile = config.age.secrets.authelia_hmac_secret.path;
+      oidcIssuerPrivateKeyFile = config.age.secrets.authelia_issuer_priv_key.path;
+      sessionSecretFile = config.age.secrets.authelia_session_secret.path;
+      storageEncryptionKeyFile = config.age.secrets.authelia_storage_encryption_secret.path;
+    };
+    envVars = {
+      AUTHELIA_AUTHENTICATION_BACKEND_LDAP_PASSWORD_FILE = config.age.secrets.ldap_password.path;
+      AUTHELIA_NOTIFIER_SMTP_PASSWORD_FILE = config.age.secrets.sendgrid_api_token.path;
+      AUTHELIA_STORAGE_MYSQL_PASSWORD_FILE = config.age.secrets.authelia_mysql_password.path;
+    };
+  };
+
+  services.lldap = {
+    enable = true;
+    settings = {
+      ldap_base_dn = "dc=joegilk,dc=es";
+      key_file = config.age.secrets.lldap_private_key.path;
+    };
+    environment = {
+      LLDAP_JWT_SECRET_FILE = secrets.lldap_jwt_secret.path;
+      LLDAP_LDAP_USER_PASS_FILE = secrets.lldap_user_pass.path;
+    };
+  };
+  systemd.services.lldap.serviceConfig.SupplementaryGroups = [ "lldap-secrets" ];
+  systemd.services.authelia.after = [ "lldap.service" ];
+
+  programs.msmtp = {
+    enable = true;
+    accounts.default = {
+      auth = true;
+      tls = true;
+      tls_starttls = false;
+      host = "smtp.sendgrid.net";
+      port = 465;
+      user = "apikey";
+      passwordeval = "${pkgs.coreutils}/bin/cat ${config.age.secrets.sendgrid_api_token.path}";
+    };
+  };
+  users.groups.sendgrid = { };
+
   services.traefik = {
     dynamicConfigOptions = {
       http = {
@@ -9,22 +125,21 @@
             rule = "Host(`wilds.joegilk.es`)";
             tls.certResolver = "letsencrypt";
             service = "glances";
+            middlewares = [ "authelia" ];
           };
-          mailserver-nginx = {
-            rule = "Host(`mail.joegilk.es`)";
-            # tls.certResolver = "letsencrypt";
-            service = "nginx";
+        };
+        middlewares = {
+          authelia.forwardAuth = {
+            address = "${autheliaUrl}/api/verify?rd=https%3A%2F%2Fauth.joegilk.es%2F";
+            trustForwardHeader = true;
+            authResponseHeaders = [ "Remote-User" "Remote-Groups" "Remote-Name" "Remote-Email" ];
+            tls.insecureSkipVerify = true;
           };
         };
         services = {
           glances.loadBalancer.servers = [
-                {
-                  url = "http://localhost:61208";
-                }
-              ];
-          nginx.loadBalancer.servers = [
             {
-              url = "http://localhost:81";
+              url = "http://localhost:61208";
             }
           ];
         };
