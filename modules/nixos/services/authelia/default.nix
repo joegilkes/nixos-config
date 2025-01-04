@@ -1,4 +1,4 @@
-{ config, lib, ...}:
+{ config, lib, pkgs, ...}:
 
 with lib;
 with lib.pluskinda;
@@ -22,6 +22,7 @@ in
 
     services.mysql = {
       enable = mkForce true;
+      package = pkgs.mariadb_1011;
       ensureDatabases = [ "authelia" ];
       ensureUsers = [
         {
