@@ -9,7 +9,7 @@ in
 {
   options.pluskinda.services.authelia = with types; {
     enable = mkBoolOpt false "Whether or not to configure Authelia for web auth.";
-    port = mkOpt port 9092 "Port to run the Authelia WebUI through";
+    port = mkOpt port 9091 "Port to run the Authelia through";
     secrets = mkOpt attrs {} "Secrets to pass to Authelia";
     envVars = mkOpt attrs {} "Environment variables to pass to Authelia";
   };
@@ -42,7 +42,7 @@ in
       settings = {
         theme = "dark";
         default_2fa_method = "totp";
-        server.address = "localhost:${toString cfg.port}";
+        server.address = "tcp://127.0.0.1:${toString cfg.port}";
         log.level = "info";
         session = {
           cookies = [{

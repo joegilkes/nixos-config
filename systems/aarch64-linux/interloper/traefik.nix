@@ -124,12 +124,18 @@ in
             rule = "Host(`wilds.joegilk.es`)";
             tls.certResolver = "letsencrypt";
             service = "glances";
-            middlewares = [ "authelia" ];
+            middlewares = [ "authelia@file" ];
+          };
+          authelia = {
+            entryPoints = [ "websecure" ];
+            rule = "Host(`auth.joegilk.es`)";
+            tls.certResolver = "letsencrypt";
+            service = "authelia@file";
           };
         };
         middlewares = {
           authelia.forwardAuth = {
-            address = "${autheliaUrl}/api/verify?rd=https%3A%2F%2Fauth.joegilk.es%2F";
+            address = "http://authelia:9091/api/authz/forward-auth";
             trustForwardHeader = true;
             authResponseHeaders = [ "Remote-User" "Remote-Groups" "Remote-Name" "Remote-Email" ];
             tls.insecureSkipVerify = true;
@@ -139,6 +145,11 @@ in
           glances.loadBalancer.servers = [
             {
               url = "http://localhost:61208";
+            }
+          ];
+          auth.loadBalancer.servers = [
+            {
+              url = "http://authelia:9091";
             }
           ];
         };
