@@ -95,8 +95,8 @@ in
       key_file = config.age.secrets.lldap_private_key.path;
     };
     environment = {
-      LLDAP_JWT_SECRET_FILE = secrets.lldap_jwt_secret.path;
-      LLDAP_LDAP_USER_PASS_FILE = secrets.lldap_user_pass.path;
+      LLDAP_JWT_SECRET_FILE = config.age.secrets.lldap_jwt_secret.path;
+      LLDAP_LDAP_USER_PASS_FILE = config.age.secrets.lldap_user_pass.path;
     };
   };
   systemd.services.lldap.serviceConfig.SupplementaryGroups = [ "lldap-secrets" ];
