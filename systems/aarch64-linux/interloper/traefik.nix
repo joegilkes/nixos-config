@@ -8,6 +8,11 @@ let
   autheliaUrl = "http://${autheliaInstance.settings.server.address}";
 in
 {
+  users.groups = {
+    lldap-secrets = { };
+    sendgrid = { };
+  };
+
   age.secrets = {
     authelia_jwt_secret = {
       file = ../../../secrets/authelia-jwt.age;
@@ -114,7 +119,6 @@ in
       passwordeval = "${pkgs.coreutils}/bin/cat ${config.age.secrets.sendgrid_api_token.path}";
     };
   };
-  users.groups.sendgrid = { };
 
   services.traefik = {
     dynamicConfigOptions = {
