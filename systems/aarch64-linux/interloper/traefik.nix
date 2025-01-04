@@ -9,7 +9,7 @@ let
 in
 {
   users.groups = {
-    lldap-secrets = { };
+    # lldap-secrets = { };
     sendgrid = { };
   };
 
@@ -58,17 +58,20 @@ in
     };
     lldap_private_key = {
       file = ../../../secrets/lldap-private-key.age;
-      group = "lldap-secrets";
+      owner = "lldap";
+      group = "lldap";
       mode = "0440";
     };
     lldap_jwt_secret = {
       file = ../../../secrets/lldap-jwt.age;
-      group = "lldap-secrets";
+      owner = "lldap";
+      group = "lldap";
       mode = "0440";
     };
     lldap_user_pass = {
       file = ../../../secrets/lldap-user-password.age;
-      group = "lldap-secrets";
+      owner = "lldap";
+      group = "lldap";
       mode = "0440";
     };
     sendgrid_api_token = {
@@ -104,7 +107,7 @@ in
       LLDAP_LDAP_USER_PASS_FILE = config.age.secrets.lldap_user_pass.path;
     };
   };
-  systemd.services.lldap.serviceConfig.SupplementaryGroups = [ "lldap-secrets" ];
+  # systemd.services.lldap.serviceConfig.SupplementaryGroups = [ "lldap-secrets" ];
   systemd.services.authelia.after = [ "lldap.service" ];
 
   programs.msmtp = {
