@@ -4,25 +4,28 @@ with lib;
 with lib.pluskinda;
 let 
   cfg = config.pluskinda.services.authelia;
+  autheliaMain = config.services.authelia.instances.main;
 in
 {
   options.pluskinda.services.authelia = with types; {
     enable = mkBoolOpt false "Whether or not to configure Authelia for web auth.";
     port = mkOpt port 9092 "Port to run the Authelia WebUI through";
-    user = mkOpt str "authelia" "User to run Authelia under";
     secrets = mkOpt attrs {} "Secrets to pass to Authelia";
     envVars = mkOpt attrs {} "Environment variables to pass to Authelia";
   };
 
   config = mkIf cfg.enable { 
-    users.users.${cfg.user}.extraGroups = [ "redis" "sendgrid" ];
+    environment.systemPackages = [ autheliaMain.package ];
+
+    pluskinda.user.extraGroups = [ "authelia" ];
+    users.users.${autheliaMain.user}.extraGroups = [ "redis" "sendgrid" ];
 
     services.mysql = {
       enable = mkForce true;
       ensureDatabases = [ "authelia" ];
       ensureUsers = [
         {
-          name = cfg.user;
+          name = autheliaMain.user;
           ensurePermissions = {
             "authelia.*" = "ALL PRIVILEGES";
           };
@@ -34,8 +37,6 @@ in
       enable = true;
       secrets = cfg.secrets;
       environmentVariables = cfg.envVars;
-      user = cfg.user;
-      group = cfg.user;
 
       settings = {
         theme = "dark";
@@ -110,7 +111,7 @@ in
           mysql = {
             address = "/run/mysqld/mysqld.sock";
             database = "authelia";
-            username = cfg.user;
+            username = autheliaMain.user;
           };
         };
         notifier = {

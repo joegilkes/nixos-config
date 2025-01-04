@@ -3,8 +3,8 @@
 with lib;
 with lib.pluskinda;
 let
-  autheliaUser = "authelia-interloper";
   autheliaInstance = config.services.authelia.instances.main;
+  autheliaUser = autheliaInstance.user;
   autheliaUrl = "http://${autheliaInstance.settings.server.address}";
 in
 {
@@ -74,7 +74,6 @@ in
   };
 
   pluskinda.services.authelia = {
-    user = autheliaUser;
     secrets = {
       jwtSecretFile = config.age.secrets.authelia_jwt_secret.path;
       oidcHmacSecretFile = config.age.secrets.authelia_hmac_secret.path;
