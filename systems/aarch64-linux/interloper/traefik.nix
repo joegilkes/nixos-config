@@ -56,8 +56,8 @@ in
       group = autheliaUser;
       mode = "400";
     };
-    lldap_private_key = {
-      file = ../../../secrets/lldap-private-key.age;
+    lldap_key_seed = {
+      file = ../../../secrets/lldap-key-seed.age;
       group = "lldap-secrets";
       mode = "0440";
     };
@@ -97,10 +97,10 @@ in
     enable = true;
     settings = {
       ldap_base_dn = "dc=joegilk,dc=es";
-      key_file = config.age.secrets.lldap_private_key.path;
     };
     environment = {
       LLDAP_JWT_SECRET_FILE = config.age.secrets.lldap_jwt_secret.path;
+      LLDAP_KEY_SEED_FILE = config.age.secrets.lldap_key_seed.path;
       LLDAP_LDAP_USER_PASS_FILE = config.age.secrets.lldap_user_pass.path;
     };
   };

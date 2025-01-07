@@ -17,6 +17,7 @@ in
   "authelia-mysql.age".publicKeys = users ++ [ interloper ];
   "ldap-password.age".publicKeys = users ++ [ interloper ];
   "lldap-private-key.age".publicKeys = users ++ [ interloper ];
+  "lldap-key-seed.age".publicKeys = users ++ [ interloper ];
   "lldap-jwt.age".publicKeys = users ++ [ interloper ];
   "lldap-user-password.age".publicKeys = users ++ [ interloper ];
   "sendgrid-api-token.age".publicKeys = users ++ [ interloper ];
