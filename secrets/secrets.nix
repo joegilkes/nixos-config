@@ -15,7 +15,7 @@ in
   "authelia-session.age".publicKeys = users ++ [ interloper ];
   "authelia-storage.age".publicKeys = users ++ [ interloper ];
   "authelia-mysql.age".publicKeys = users ++ [ interloper ];
-  "ldap-password.age".publicKeys = users ++ [ interloper ];
+  "authelia-ldap-password.age".publicKeys = users ++ [ interloper ];
   "lldap-private-key.age".publicKeys = users ++ [ interloper ];
   "lldap-key-seed.age".publicKeys = users ++ [ interloper ];
   "lldap-jwt.age".publicKeys = users ++ [ interloper ];

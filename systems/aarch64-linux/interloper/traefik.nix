@@ -38,10 +38,10 @@ in
       file = ../../../secrets/authelia-mysql.age;
       owner = autheliaUser;
     };
-    # ldap_password = {
-    #   file = ../../../secrets/ldap-password.age;
-    #   owner = autheliaUser;
-    # };
+    authelia_ldap_password = {
+      file = ../../../secrets/authelia-ldap-password.age;
+      owner = autheliaUser;
+    };
     lldap_key_seed = {
       file = ../../../secrets/lldap-key-seed.age;
       group = "lldap-secrets";
@@ -73,7 +73,7 @@ in
       storageEncryptionKeyFile = config.age.secrets.authelia_storage_encryption_secret.path;
     };
     envVars = {
-      AUTHELIA_AUTHENTICATION_BACKEND_LDAP_PASSWORD_FILE = config.age.secrets.lldap_user_pass.path;
+      AUTHELIA_AUTHENTICATION_BACKEND_LDAP_PASSWORD_FILE = config.age.secrets.authelia_ldap_password.path;
       AUTHELIA_NOTIFIER_SMTP_PASSWORD_FILE = config.age.secrets.sendgrid_api_token.path;
       AUTHELIA_STORAGE_MYSQL_PASSWORD_FILE = config.age.secrets.authelia_mysql_password.path;
     };
@@ -91,11 +91,7 @@ in
     };
   };
   systemd.services.lldap.serviceConfig.SupplementaryGroups = [ "lldap-secrets" ];
-  systemd.services.authelia = {
-    after = [ "lldap.service" ];
-    serviceConfig.SupplementaryGroups = [ "lldap-secrets" ];
-  
-  };
+  systemd.services.authelia.after = [ "lldap.service" ];
   networking.firewall.allowedTCPPorts = [ 17170 ];
 
   programs.msmtp = {
