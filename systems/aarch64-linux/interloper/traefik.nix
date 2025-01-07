@@ -17,45 +17,31 @@ in
     authelia_jwt_secret = {
       file = ../../../secrets/authelia-jwt.age;
       owner = autheliaUser;
-      group = autheliaUser;
-      mode = "400";
     };
     authelia_hmac_secret = {
       file = ../../../secrets/authelia-hmac.age;
       owner = autheliaUser;
-      group = autheliaUser;
-      mode = "400";
     };
     authelia_issuer_priv_key = {
       file = ../../../secrets/authelia-issuer.age;
       owner = autheliaUser;
-      group = autheliaUser;
-      mode = "400";
     };
     authelia_session_secret = {
       file = ../../../secrets/authelia-session.age;
       owner = autheliaUser;
-      group = autheliaUser;
-      mode = "400";
     };
     authelia_storage_encryption_secret = {
       file = ../../../secrets/authelia-storage.age;
       owner = autheliaUser;
-      group = autheliaUser;
-      mode = "400";
     };
     authelia_mysql_password = {
       file = ../../../secrets/authelia-mysql.age;
       owner = autheliaUser;
-      group = autheliaUser;
-      mode = "400";
     };
-    ldap_password = {
-      file = ../../../secrets/ldap-password.age;
-      owner = autheliaUser;
-      group = autheliaUser;
-      mode = "400";
-    };
+    # ldap_password = {
+    #   file = ../../../secrets/ldap-password.age;
+    #   owner = autheliaUser;
+    # };
     lldap_key_seed = {
       file = ../../../secrets/lldap-key-seed.age;
       group = "lldap-secrets";
@@ -81,13 +67,13 @@ in
   pluskinda.services.authelia = {
     secrets = {
       jwtSecretFile = config.age.secrets.authelia_jwt_secret.path;
-      oidcHmacSecretFile = config.age.secrets.authelia_hmac_secret.path;
-      oidcIssuerPrivateKeyFile = config.age.secrets.authelia_issuer_priv_key.path;
+      # oidcHmacSecretFile = config.age.secrets.authelia_hmac_secret.path;
+      # oidcIssuerPrivateKeyFile = config.age.secrets.authelia_issuer_priv_key.path;
       sessionSecretFile = config.age.secrets.authelia_session_secret.path;
       storageEncryptionKeyFile = config.age.secrets.authelia_storage_encryption_secret.path;
     };
     envVars = {
-      AUTHELIA_AUTHENTICATION_BACKEND_LDAP_PASSWORD_FILE = config.age.secrets.ldap_password.path;
+      AUTHELIA_AUTHENTICATION_BACKEND_LDAP_PASSWORD_FILE = config.age.secrets.lldap_user_pass.path;
       AUTHELIA_NOTIFIER_SMTP_PASSWORD_FILE = config.age.secrets.sendgrid_api_token.path;
       AUTHELIA_STORAGE_MYSQL_PASSWORD_FILE = config.age.secrets.authelia_mysql_password.path;
     };
@@ -105,7 +91,12 @@ in
     };
   };
   systemd.services.lldap.serviceConfig.SupplementaryGroups = [ "lldap-secrets" ];
-  systemd.services.authelia.after = [ "lldap.service" ];
+  systemd.services.authelia = {
+    after = [ "lldap.service" ];
+    serviceConfig.SupplementaryGroups = [ "lldap-secrets" ];
+  
+  };
+  networking.firewall.allowedTCPPorts = [ 17170 ];
 
   programs.msmtp = {
     enable = true;
@@ -134,7 +125,7 @@ in
             entryPoints = [ "websecure" ];
             rule = "Host(`auth.joegilk.es`)";
             tls.certResolver = "letsencrypt";
-            service = "authelia@file";
+            service = "auth@file";
           };
         };
         middlewares = {
