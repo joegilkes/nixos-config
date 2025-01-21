@@ -50,8 +50,11 @@ with lib.pluskinda;
 
     hardware.tablet = enabled;
 
-    services.virtualisation = enabled;
-    services.openssh.allowPasswordAuth = false;
+    services = {
+      glances = enabled;
+      openssh.allowPasswordAuth = false;
+      virtualisation = enabled;
+    };
   };
 
   # Enable this system as a local shared Nix store.
