@@ -130,7 +130,7 @@ in
           smtp = {
             address = "submissions://smtp.sendgrid.net:465";
             username = "apikey";
-            sender = "auth@joegilk.es";
+            sender = "auth@mail.joegilk.es";
           };
           template_path = "/etc/authelia/config/email_templates";
         };

@@ -118,34 +118,34 @@ in
             service = "auth@file";
           };
           homepage = {
-            rule = "Host(`wilds.joegilk.es`)";
+            rule = "Host(`home.joegilk.es`)";
             tls.certResolver = "letsencrypt";
             service = "homepage";
             middlewares = [ "authelia@file" ];
           };
           traefik = {
-            rule = "Host(`wilds.joegilk.es`) && Path(`/traefik`)";
+            rule = "Host(`traefik.joegilk.es`)";
             tls.certResolver = "letsencrypt";
             service = "api@internal";
             middlewares = [ "authelia@file" ];
           };
           glancesInterloper = {
-            rule = "Host(`wilds.joegilk.es`) && Path(`/glances/interloper`)";
+            rule = "Host(`glances.joegilk.es`) && Path(`/interloper`)";
             tls.certResolver = "letsencrypt";
             service = "glancesInterloper";
-            middlewares = [ "authelia@file" ];
+            middlewares = [ "authelia@file" "stripGlances" ];
           };
           glancesGiantsDeep = {
-            rule = "Host(`wilds.joegilk.es`) && Path(`/glances/giants-deep`)";
+            rule = "Host(`glances.joegilk.es`) && Path(`/giants-deep`)";
             tls.certResolver = "letsencrypt";
             service = "glancesGiantsDeep";
-            middlewares = [ "authelia@file" ];
+            middlewares = [ "authelia@file" "stripGlances" ];
           };
           glancesTimberHearth = {
-            rule = "Host(`wilds.joegilk.es`) && Path(`/glances/timber-hearth`)";
+            rule = "Host(`glances.joegilk.es`) && Path(`/timber-hearth`)";
             tls.certResolver = "letsencrypt";
             service = "glancesTimberHearth";
-            middlewares = [ "authelia@file" ];
+            middlewares = [ "authelia@file" "stripGlances" ];
           };
         };
         middlewares = {
@@ -154,6 +154,13 @@ in
             trustForwardHeader = true;
             authResponseHeaders = [ "Remote-User" "Remote-Groups" "Remote-Name" "Remote-Email" ];
             tls.insecureSkipVerify = true;
+          };
+          stripGlances.stripPrefix = {
+            prefixes = [ 
+              "/interloper"
+              "/giants-deep"
+              "/timber-hearth"
+            ];
           };
         };
         services = {
