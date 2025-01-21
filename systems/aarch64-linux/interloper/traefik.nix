@@ -126,7 +126,7 @@ in
         };
         middlewares = {
           authelia.forwardAuth = {
-            address = "http://authelia:9091/api/authz/forward-auth";
+            address = "http://localhost:9091/api/authz/forward-auth";
             trustForwardHeader = true;
             authResponseHeaders = [ "Remote-User" "Remote-Groups" "Remote-Name" "Remote-Email" ];
             tls.insecureSkipVerify = true;
@@ -140,7 +140,7 @@ in
           ];
           auth.loadBalancer.servers = [
             {
-              url = "http://authelia:9091";
+              url = "http://localhost:9091";
             }
           ];
         };

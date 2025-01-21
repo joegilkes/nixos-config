@@ -112,6 +112,10 @@ in
               policy = "one_factor";
               networks = "internal";
             }
+            {
+              domain = "*.joegilk.es";
+              policy = "two_factor";
+            }
           ];
         };
         storage = {
