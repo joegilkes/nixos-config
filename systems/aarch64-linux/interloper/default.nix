@@ -28,7 +28,10 @@ with lib.pluskinda;
     services = {
       authelia = enabled;
       avahi = enabled;
-      glances = enabled;
+      glances = {
+        enable = true;
+        refreshInterval = 5;
+      };
       redis = {
         enable = true;
         databases = 1;
