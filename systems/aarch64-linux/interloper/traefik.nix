@@ -111,18 +111,43 @@ in
     dynamicConfigOptions = {
       http = {
         routers = {
-          mainRouter = {
-            rule = "Host(`wilds.joegilk.es`)";
-            tls.certResolver = "letsencrypt";
-            service = "glances";
-            middlewares = [ "authelia@file" ];
-          };
           authelia = {
             entryPoints = [ "websecure" ];
             rule = "Host(`auth.joegilk.es`)";
             tls.certResolver = "letsencrypt";
             service = "auth@file";
           };
+          homepage = {
+            rule = "Host(`wilds.joegilk.es`)";
+            tls.certResolver = "letsencrypt";
+            service = "homepage";
+            middlewares = [ "authelia@file" ];
+          };
+          traefik = {
+            rule = "Host(`wilds.joegilk.es`) && Path(`/traefik`)";
+            tls.certResolver = "letsencrypt";
+            service = "api@internal";
+            middlewares = [ "authelia@file" ];
+          };
+          glancesInterloper = {
+            rule = "Host(`wilds.joegilk.es`) && Path(`/glances/interloper`)";
+            tls.certResolver = "letsencrypt";
+            service = "glancesInterloper";
+            middlewares = [ "authelia@file" ];
+          };
+          glancesGiantsDeep = {
+            rule = "Host(`wilds.joegilk.es`) && Path(`/glances/giants-deep`)";
+            tls.certResolver = "letsencrypt";
+            service = "glancesGiantsDeep";
+            middlewares = [ "authelia@file" ];
+          };
+          glancesTimberHearth = {
+            rule = "Host(`wilds.joegilk.es`) && Path(`/glances/timber-hearth`)";
+            tls.certResolver = "letsencrypt";
+            service = "glancesTimberHearth";
+            middlewares = [ "authelia@file" ];
+          };
+
         };
         middlewares = {
           authelia.forwardAuth = {
@@ -133,16 +158,11 @@ in
           };
         };
         services = {
-          glances.loadBalancer.servers = [
-            {
-              url = "http://localhost:61208";
-            }
-          ];
-          auth.loadBalancer.servers = [
-            {
-              url = "http://localhost:9091";
-            }
-          ];
+          auth.loadBalancer.servers = [ { url = "http://localhost:9091"; } ];
+          homepage.loadBalancer.servers = [ { url = "http://giants-deep.local:8082"; } ];
+          glancesInterloper.loadBalancer.servers = [ { url = "http://localhost:61208"; } ];
+          glancesGiantsDeep.loadBalancer.servers = [ { url = "http://giants-deep.local:61208"; } ];
+          glancesTimberHearth = [ { url = "http://timber-hearth.local:61208"; } ];
         };
       };
     };
