@@ -14,7 +14,7 @@ in
   config = mkIf cfg.enable {
     pluskinda = {
       apps = {
-        dolphin = enabled;
+        # dolphin = enabled;  Disabled while not being used and it keeps recompiling from scratch.
         ryujinx = enabled;
       };
       cli-apps = {
