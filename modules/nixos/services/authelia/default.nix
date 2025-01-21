@@ -16,6 +16,12 @@ in
 
   config = mkIf cfg.enable { 
     environment.systemPackages = [ autheliaMain.package ];
+    environment.etc = {
+      "authelia/config/email_templates" = {
+        source = ./templates;
+        user = autheliaMain.user;
+      };
+    };
 
     pluskinda.user.extraGroups = [ "authelia" ];
     users.users.${autheliaMain.user}.extraGroups = [ "redis" "sendgrid" ];
@@ -122,6 +128,7 @@ in
             username = "apikey";
             sender = "auth@joegilk.es";
           };
+          template_path = "/etc/authelia/config/email_templates";
         };
       };
     };
