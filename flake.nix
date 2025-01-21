@@ -2,7 +2,7 @@
   description = "Plus Kinda";
 
   inputs = {
-     # NixPkgs (nixos-24.05)
+     # NixPkgs (nixos-24.11)
     stable.url = "github:nixos/nixpkgs/nixos-24.11";
 
     # NixPkgs Unstable (nixos-unstable)
@@ -19,7 +19,7 @@
 
     # Replace Nix with Lix https://lix.systems/
     lix-module = {
-      url = "https://git.lix.systems/lix-project/nixos-module/archive/2.91.1-2.tar.gz";
+      url = "https://git.lix.systems/lix-project/nixos-module/archive/2.92.0.tar.gz";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
