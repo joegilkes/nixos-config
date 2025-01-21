@@ -147,7 +147,6 @@ in
             service = "glancesTimberHearth";
             middlewares = [ "authelia@file" ];
           };
-
         };
         middlewares = {
           authelia.forwardAuth = {
@@ -162,7 +161,7 @@ in
           homepage.loadBalancer.servers = [ { url = "http://giants-deep.local:8082"; } ];
           glancesInterloper.loadBalancer.servers = [ { url = "http://localhost:61208"; } ];
           glancesGiantsDeep.loadBalancer.servers = [ { url = "http://giants-deep.local:61208"; } ];
-          glancesTimberHearth = [ { url = "http://timber-hearth.local:61208"; } ];
+          glancesTimberHearth.loadBalancer.servers = [ { url = "http://timber-hearth.local:61208"; } ];
         };
       };
     };
