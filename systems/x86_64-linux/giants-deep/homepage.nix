@@ -177,6 +177,17 @@ in
             };
           };
         }
+        {
+          "Traefik" = {
+            icon = "traefik.png";
+            href = "http://192.168.0.40:8080";
+            description = "Reverse Proxy";
+            widget = {
+              type = "traefik";
+              url = "http://192.168.0.40:8080";
+            };
+          };
+        }
       ];
     }];
     widgets = [
