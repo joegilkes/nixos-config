@@ -39,8 +39,9 @@
     # Nix Gaming
     nix-gaming.url = "github:fufexan/nix-gaming";
 
-    # Simple NixOS Mailserver
-    simple-nixos-mailserver.url = "gitlab:simple-nixos-mailserver/nixos-mailserver/master";
+    # Crowdsec
+    crowdsec.url = "git+https://codeberg.org/kampka/nix-flake-crowdsec.git";
+    crowdsec.inputs.nixpkgs.follows = "nixpkgs";
 
     # Snowfall Lib
     snowfall-lib.url = "github:snowfallorg/lib";
@@ -91,7 +92,10 @@
       systems.hosts.attlerock.modules = with inputs; [ lix-module.nixosModules.default ];
       systems.hosts.brittle-hollow.modules = with inputs; [ lix-module.nixosModules.default ];
       systems.hosts.giants-deep.modules = with inputs; [ lix-module.nixosModules.default ];
-      systems.hosts.interloper.modules = with inputs; [ simple-nixos-mailserver.nixosModule ];
+      systems.hosts.interloper.modules = with inputs; [ 
+        crowdsec.nixosModules.crowdsec
+        crowdsec.nixosModules.crowdsec-firewall-bouncer
+      ];
       systems.hosts.timber-hearth.modules = with inputs; [ lix-module.nixosModules.default ];
     };
 }

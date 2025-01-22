@@ -21,4 +21,5 @@ in
   "lldap-jwt.age".publicKeys = users ++ [ interloper ];
   "lldap-user-password.age".publicKeys = users ++ [ interloper ];
   "sendgrid-api-token.age".publicKeys = users ++ [ interloper ];
+  "crowdsec-api-key-env.age".publicKeys = users ++ [ interloper ];
 }
