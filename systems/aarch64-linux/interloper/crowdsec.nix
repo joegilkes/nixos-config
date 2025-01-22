@@ -14,8 +14,6 @@ in
     };
   };
 
-  nixpkgs.overlays = [ crowdsec.overlays.default ];
-
   # Security Engine
   services.crowdsec = {
     enable = true;
