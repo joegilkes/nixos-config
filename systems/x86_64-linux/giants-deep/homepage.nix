@@ -56,7 +56,7 @@ in
             "CPU Usage" = {
               widget = {
                 type = "glances";
-                url = "http://${hname}.local:61208";
+                url = "http://192.168.0.41:61208";
                 metric = "cpu";
                 version = 4;
                 refreshInterval = 5000;
@@ -67,7 +67,7 @@ in
             "Memory Usage" = {
               widget = {
                 type = "glances";
-                url = "http://${hname}.local:61208";
+                url = "http://192.168.0.41:61208";
                 metric = "memory";
                 version = 4;
                 refreshInterval = 5000;
@@ -78,7 +78,7 @@ in
             "Network Usage" = {
               widget = {
                 type = "glances";
-                url = "http://${hname}.local:61208";
+                url = "http://192.168.0.41:61208";
                 metric = "network:enp0s31f6";
                 version = 4;
                 refreshInterval = 5000;
@@ -89,7 +89,7 @@ in
             "Top Processes" = {
               widget = {
                 type = "glances";
-                url = "http://${hname}.local:61208";
+                url = "http://192.168.0.41:61208";
                 metric = "process";
                 version = 4;
                 refreshInterval = 5000;
@@ -100,7 +100,7 @@ in
             "gabbro/public" = {
               widget = {
                 type = "glances";
-                url = "http://${hname}.local:61208";
+                url = "http://192.168.0.41:61208";
                 metric = "fs:/mnt/gabbro/public";
                 chart = false;
                 version = 4;
@@ -112,7 +112,7 @@ in
             "gabbro/backups" = {
               widget = {
                 type = "glances";
-                url = "http://${hname}.local:61208";
+                url = "http://192.168.0.41:61208";
                 metric = "fs:/mnt/gabbro/backups";
                 chart = false;
                 version = 4;
@@ -124,7 +124,7 @@ in
             "gabbro/media" = {
               widget = {
                 type = "glances";
-                url = "http://${hname}.local:61208";
+                url = "http://192.168.0.41:61208";
                 metric = "fs:/mnt/gabbro/media";
                 chart = false;
                 version = 4;
@@ -136,7 +136,7 @@ in
             "gabbro/storage" = {
               widget = {
                 type = "glances";
-                url = "http://${hname}.local:61208";
+                url = "http://192.168.0.41:61208";
                 metric = "fs:/mnt/gabbro/storage";
                 chart = false;
                 version = 4;
@@ -151,11 +151,11 @@ in
           { 
             Jellyfin = {
               icon = "jellyfin.png";
-              href = "http://${hname}.local:8096";
+              href = "http://192.168.0.41:8096";
               description = "film/TV streaming";
               widget = {
                 type = "jellyfin";
-                url = "http://${hname}.local:8096";
+                url = "http://192.168.0.41:8096";
                 key = "{{HOMEPAGE_VAR_JELLYFIN_API_KEY}}";
               };
             };
@@ -167,11 +167,11 @@ in
         {
           "AdGuard Home" = {
             icon = "adguard-home.png";
-            href = "http://${hname}.local:3003";
+            href = "http://192.168.0.41:3003";
             description = "DNS filter";
             widget = {
               type = "adguard";
-              url = "http://${hname}.local:3003";
+              url = "http://192.168.0.41:3003";
               username = "{{HOMEPAGE_VAR_ADGUARD_USER}}";
               password = "{{HOMEPAGE_VAR_ADGUARD_PASS}}";
             };

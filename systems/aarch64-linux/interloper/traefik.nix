@@ -130,22 +130,16 @@ in
             middlewares = [ "authelia@file" ];
           };
           glancesInterloper = {
-            rule = "Host(`glances.joegilk.es`) && Path(`/interloper`)";
+            rule = "Host(`interloper.joegilk.es`)";
             tls.certResolver = "letsencrypt";
             service = "glancesInterloper";
-            middlewares = [ "authelia@file" "stripGlances" ];
+            middlewares = [ "authelia@file" ];
           };
           glancesGiantsDeep = {
-            rule = "Host(`glances.joegilk.es`) && Path(`/giants-deep`)";
+            rule = "Host(`giants-deep.joegilk.es`)";
             tls.certResolver = "letsencrypt";
             service = "glancesGiantsDeep";
-            middlewares = [ "authelia@file" "stripGlances" ];
-          };
-          glancesTimberHearth = {
-            rule = "Host(`glances.joegilk.es`) && Path(`/timber-hearth`)";
-            tls.certResolver = "letsencrypt";
-            service = "glancesTimberHearth";
-            middlewares = [ "authelia@file" "stripGlances" ];
+            middlewares = [ "authelia@file" ];
           };
         };
         middlewares = {
@@ -155,20 +149,12 @@ in
             authResponseHeaders = [ "Remote-User" "Remote-Groups" "Remote-Name" "Remote-Email" ];
             tls.insecureSkipVerify = true;
           };
-          stripGlances.stripPrefix = {
-            prefixes = [ 
-              "/interloper"
-              "/giants-deep"
-              "/timber-hearth"
-            ];
-          };
         };
         services = {
           auth.loadBalancer.servers = [ { url = "http://localhost:9091"; } ];
-          homepage.loadBalancer.servers = [ { url = "http://giants-deep.local:8082"; } ];
+          homepage.loadBalancer.servers = [ { url = "http://192.168.0.41:8082"; } ];
           glancesInterloper.loadBalancer.servers = [ { url = "http://localhost:61208"; } ];
-          glancesGiantsDeep.loadBalancer.servers = [ { url = "http://giants-deep.local:61208"; } ];
-          glancesTimberHearth.loadBalancer.servers = [ { url = "http://timber-hearth.local:61208"; } ];
+          glancesGiantsDeep.loadBalancer.servers = [ { url = "http://192.168.0.41:61208"; } ];
         };
       };
     };
