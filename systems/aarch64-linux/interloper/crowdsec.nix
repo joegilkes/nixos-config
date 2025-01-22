@@ -34,7 +34,7 @@ in
     };
   };
   systemd.services.crowdsec-firewall-bouncer = {
-    environmentFile = config.age.secrets.crowdsec-api-key-env.path;
+    environmentFile = config.age.secrets.crowdsec_api_key_env.path;
   };
   systemd.services.crowdsec = {
     serviceConfig = {
@@ -50,6 +50,6 @@ in
         '';
       in ["${script}/bin/register-bouncer"];
     };
-    environmentFile = config.age.secrets.crowdsec-api-key-env.path;
+    environmentFile = config.age.secrets.crowdsec_api_key_env.path;
   };
 }
