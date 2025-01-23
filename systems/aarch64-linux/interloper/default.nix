@@ -6,7 +6,7 @@ with lib.pluskinda;
   imports = [ 
     ./hardware.nix
     ./traefik.nix
-    ./crowdsec.nix
+    # ./crowdsec.nix
   ];
 
   networking.hostName = "interloper";
