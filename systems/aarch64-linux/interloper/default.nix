@@ -55,7 +55,11 @@ with lib.pluskinda;
       time = enabled;
       kb = enabled;
     };
+
+    user.extraGroups = [ "docker" ];
   };
+
+  virtualisation.docker.enable = true;
 
   system.stateVersion = "25.05";
 }
