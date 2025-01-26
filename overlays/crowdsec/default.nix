@@ -1,1 +1,5 @@
-{ channels, inputs, ... }: inputs.crowdsec.overlays.default
+{ channels, ... }: 
+
+final: prev: {
+  inherit (channels.master) crowdsec;
+}

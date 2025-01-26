@@ -56,10 +56,11 @@ with lib.pluskinda;
       kb = enabled;
     };
 
-    user.extraGroups = [ "docker" ];
+    # user.extraGroups = [ "docker" ];
   };
 
-  virtualisation.docker.enable = true;
+  # virtualisation.docker.enable = true;
+  environment.systemPackages = with pkgs; [ crowdsec ];
 
   system.stateVersion = "25.05";
 }
