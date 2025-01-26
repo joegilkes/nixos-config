@@ -1,5 +1,5 @@
 { channels, ... }: 
 
 final: prev: {
-  inherit (channels.master) crowdsec;
+  inherit (channels.stable) crowdsec;
 }
