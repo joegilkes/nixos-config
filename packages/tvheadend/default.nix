@@ -39,7 +39,7 @@ in stdenv.mkDerivation {
     owner = "tvheadend";
     repo = "tvheadend";
     rev = "653bd0400b4413db96b80c807f0f7524f9248adb";
-    hash = "";
+    hash = "sha256-LvLBF3YEpcnk7HIJQ5IN+zqTAh440PqxruSF/aDBojM=";
   };
 
   outputs = [
