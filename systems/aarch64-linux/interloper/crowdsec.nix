@@ -17,6 +17,7 @@ in
   # Security Engine
   services.crowdsec = {
     enable = true;
+    package = pkgs.crowdsec;
     # enrollKeyFile = 
     settings = {
       api.server = {

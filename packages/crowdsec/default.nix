@@ -3,7 +3,9 @@
   buildGoModule,
   fetchFromGitHub,
   installShellFiles,
-  re2
+  re2,
+  libgcc,
+  pkg-config
 }:
 buildGoModule rec {
   pname = "crowdsec";
@@ -18,13 +20,17 @@ buildGoModule rec {
 
   vendorHash = "sha256-PtBVXPbLNdJyS8v8H9eRB6sTPaiseg18+eXToHvH7tw=";
 
-  nativeBuildInputs = [
-    installShellFiles
-    re2.dev
+  nativeBuildInputs = [ 
+    installShellFiles 
+    pkg-config
   ];
+  buildInputs = [ 
+    re2.dev 
+    libgcc
+  ];
+  env.CGO_ENABLED = true;
 
   outputs = ["out" "patterns"];
-
   subPackages = [
     "cmd/crowdsec"
     "cmd/crowdsec-cli"
@@ -35,11 +41,13 @@ buildGoModule rec {
     "-w"
     "-X github.com/crowdsecurity/go-cs-lib/version.Version=v${version}"
     "-X github.com/crowdsecurity/go-cs-lib/version.BuildDate=1970-01-01_00:00:00"
-    "-X github.com/crowdsecurity/go-cs-lib/version.Tag=${src.rev}"
+    "-X github.com/crowdsecurity/go-cs-lib/version.Tag=v${version}"
     "-X github.com/crowdsecurity/crowdsec/pkg/cwversion.Codename=alphaga"
     "-X github.com/crowdsecurity/crowdsec/pkg/csconfig.defaultConfigDir=/etc/crowdsec"
     "-X github.com/crowdsecurity/crowdsec/pkg/csconfig.defaultDataDir=/var/lib/crowdsec/data"
+    "-X github.com/crowdsecurity/crowdsec/pkg/cwversion.Libre2=C++"
   ];
+  tags = [ "netgo" "osusergo" "sqlite_omit_load_extension" "expr_debug" "re2_cgo" ];
 
   postBuild = "mv $GOPATH/bin/{crowdsec-cli,cscli}";
 
@@ -57,8 +65,12 @@ buildGoModule rec {
   '';
 
   # It's important that the version is correctly set as it also determines feature capabilities
-  checkPhase = ''
-    $GOPATH/bin/cscli version 2>&1 | grep -q "version: v${version}"
+  preCheck = ''
+    version=$($GOPATH/bin/cscli version 2>&1 | sed -nE 's/^version: (.*)/\1/p')
+    if [ "$version" != "v${version}" ]; then
+        echo "Invalid version string: '$version'"
+        exit 1
+    fi
   '';
 
   meta = with lib; {
