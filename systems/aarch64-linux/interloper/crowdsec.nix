@@ -36,7 +36,6 @@ with lib.pluskinda;
     ];
     settings = {
       api.server.listen_uri = "192.168.0.40:41412";
-      crowdsec_service.acquisition_path = acquisitions_file;
     };
   };
 
