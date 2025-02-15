@@ -34,7 +34,8 @@ in
       };
       background = {
         image = "/images/background.png";
-        blur = "sm";
+        blur = "md";
+        brightness = "50";
       };
     };
     bookmarks = [{
