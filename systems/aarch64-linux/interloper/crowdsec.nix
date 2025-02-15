@@ -12,13 +12,18 @@ in
       owner = "crowdsec";
       group = "crowdsec";
     };
+    crowdsec_enroll_key = {
+      file = ../../../secrets/crowdsec-enroll-key.age;
+      owner = "crowdsec";
+      group = "crowdsec";
+    };
   };
 
   # Security Engine
   services.crowdsec = {
     enable = true;
     package = pkgs.crowdsec;
-    # enrollKeyFile = 
+    enrollKeyFile = config.age.secrets.crowdsec_enroll_key.path;
     settings = {
       api.server = {
         listen_uri = "127.0.0.1:41412";
