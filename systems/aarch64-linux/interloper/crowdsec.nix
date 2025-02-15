@@ -31,17 +31,18 @@ in
     enrollKeyFile = config.age.secrets.crowdsec_enroll_key.path;
     allowLocalJournalAccess = true;
     settings = {
-      api.server.listen_uri = "127.0.0.1:41412";
+      api.server.listen_uri = "192.168.0.40:41412";
       crowdsec_service.acquisition_path = acquisitions_file;
     };
   };
+  networking.firewall.allowedTCPPorts = [ 41412 ];
 
   # Firewall Bouncer
   services.crowdsec-firewall-bouncer = {
     enable = true;
     settings = {
       api_key = "\${CROWDSEC_API_KEY}";
-      api_url = "http://localhost:41412";
+      api_url = "http://192.168.0.40:41412";
     };
   };
   systemd.services.crowdsec-firewall-bouncer = {
