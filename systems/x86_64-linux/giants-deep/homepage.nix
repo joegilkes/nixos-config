@@ -32,6 +32,10 @@ in
           style = "columns";
         };
       };
+      background = {
+        image = "/images/background.png";
+        blur = "sm";
+      };
     };
     bookmarks = [{
       dev = [
