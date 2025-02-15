@@ -141,6 +141,12 @@ in
             service = "glancesGiantsDeep";
             middlewares = [ "authelia@file" ];
           };
+          calibreWeb = {
+            rule = "Host(`books.joegilk.es`)";
+            tls.certResolver = "letsencrypt";
+            service = "calibreWeb";
+            middlewares = [ "authelia@file" ];
+          };
         };
         middlewares = {
           authelia.forwardAuth = {
@@ -155,6 +161,7 @@ in
           homepage.loadBalancer.servers = [ { url = "http://192.168.0.41:8082"; } ];
           glancesInterloper.loadBalancer.servers = [ { url = "http://localhost:61208"; } ];
           glancesGiantsDeep.loadBalancer.servers = [ { url = "http://192.168.0.41:61208"; } ];
+          calibreWeb.loadBalancer.servers = [ { url = "http://192.168.0.41:8083"; } ];
         };
       };
     };

@@ -157,11 +157,24 @@ in
             Jellyfin = {
               icon = "jellyfin.png";
               href = "http://192.168.0.41:8096";
-              description = "film/TV streaming";
+              description = "Film/TV Streaming";
               widget = {
                 type = "jellyfin";
                 url = "http://192.168.0.41:8096";
                 key = "{{HOMEPAGE_VAR_JELLYFIN_API_KEY}}";
+              };
+            };
+          }
+          {
+            Calibre = {
+              icon = "calibre-web.png";
+              href = "https://books.joegilk.es";
+              description = "eBook Library";
+              widget = {
+                type = "calibreweb";
+                url = "http://192.168.0.41:8083";
+                username = "{{HOMEPAGE_VAR_CALIBREWEB_USER}}";
+                password = "{{HOMEPAGE_VAR_CALIBREWEB_PASS}}";
               };
             };
           }
@@ -173,7 +186,7 @@ in
           "AdGuard Home" = {
             icon = "adguard-home.png";
             href = "http://192.168.0.41:3003";
-            description = "DNS filter";
+            description = "DNS Filter";
             widget = {
               type = "adguard";
               url = "http://192.168.0.41:3003";
