@@ -3,7 +3,12 @@
 with lib;
 with lib.pluskinda;
 let
-  
+  yaml = (pkgs.formats.yaml {}).generate;
+  acquisitions_file = yaml "acquisitions.yaml" {
+    source = "journalctl";
+    journalctl_filter = [ "_SYSTEMD_UNIT=sshd.service" ];
+    labels.type = "syslog";
+  };
 in
 {
   age.secrets = {
@@ -24,10 +29,10 @@ in
     enable = true;
     package = pkgs.crowdsec;
     enrollKeyFile = config.age.secrets.crowdsec_enroll_key.path;
+    allowLocalJournalAccess = true;
     settings = {
-      api.server = {
-        listen_uri = "127.0.0.1:41412";
-      };
+      api.server.listen_uri = "127.0.0.1:41412";
+      crowdsec_service.acquisition_path = acquisitions_file;
     };
   };
 
@@ -45,7 +50,16 @@ in
   systemd.services.crowdsec = {
     serviceConfig = {
       ExecStartPre = let
-        script = pkgs.writeScriptBin "register-bouncer" ''
+        collection_script = pkgs.writeScriptBin "register-collection" ''
+          #!${pkgs.runtimeShell}
+          set -eu
+          set -o pipefail
+
+          if ! cscli collections list | grep -q "crowdsecurity/linux"; then
+            cscli collections install crowdsecurity/linux
+          fi
+        '';
+        bouncer_script = pkgs.writeScriptBin "register-bouncer" ''
           #!${pkgs.runtimeShell}
           set -eu
           set -o pipefail
@@ -54,7 +68,10 @@ in
             cscli bouncers add "iptables-bouncer" --key "''${CROWDSEC_API_KEY}"
           fi
         '';
-      in ["${script}/bin/register-bouncer"];
+      in [
+        "${collection_script}/bin/register-collection"
+        "${bouncer_script}/bin/register-bouncer"
+      ];
       EnvironmentFile = config.age.secrets.crowdsec_api_key_env.path;
     };
   };
