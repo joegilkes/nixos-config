@@ -49,7 +49,10 @@ in
         theme = "dark";
         default_2fa_method = "totp";
         server.address = "tcp://127.0.0.1:${toString cfg.port}";
-        log.level = "info";
+        log = {
+          level = "info";
+          file_path = /var/log/authelia/authelia.log;
+        };
         session = {
           cookies = [{
             domain = "joegilk.es";
