@@ -29,7 +29,8 @@ with lib.pluskinda;
         labels.type = "syslog";
       }
       {
-        filenames = [ "/var/log/authelia/authelia.log" ];
+        source = "journalctl";
+        journalctl_filter = [ "_SYSTEMD_UNIT=authelia-main.service" ];
         labels.type = "authelia";
       }
     ];
