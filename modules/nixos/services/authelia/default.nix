@@ -141,9 +141,6 @@ in
       };
     };
 
-    systemd.tmpfiles.rules = [ 
-      "d '/var/log/authelia' 0750 ${autheliaMain.user} authelia - -"
-      "f '/var/log/authelia/authelia.log' 0750 ${autheliaMain.user} authelia - -" 
-    ];
+    systemd.services."authelia-main".serviceConfig.LogsDirectory = "authelia";
   };
 }
