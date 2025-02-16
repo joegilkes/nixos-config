@@ -23,8 +23,8 @@ in
       };
     };
 
-    pluskinda.user.extraGroups = [ "authelia" ];
-    users.users.${autheliaMain.user}.extraGroups = [ "redis" "sendgrid" ];
+    pluskinda.user.extraGroups = [ "authelia" "autheliaLog" ];
+    users.users.${autheliaMain.user}.extraGroups = [ "redis" "sendgrid" "autheliaLog" ];
 
     services.mysql = {
       enable = mkForce true;
@@ -51,7 +51,7 @@ in
         server.address = "tcp://127.0.0.1:${toString cfg.port}";
         log = {
           level = "info";
-          file_path = "/var/log/authelia/authelia.log";
+          file_path = "/var/log/authelia.log";
           keep_stdout = true;
         };
         session = {
@@ -140,5 +140,7 @@ in
         };
       };
     };
+
+    systemd.tmpfiles.rules = [ "f '/var/log/authelia.log' 0750 ${autheliaMain.user} autheliaLog - -" ];
   };
 }

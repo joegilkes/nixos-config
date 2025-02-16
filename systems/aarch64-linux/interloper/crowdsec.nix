@@ -29,7 +29,7 @@ with lib.pluskinda;
         labels.type = "syslog";
       }
       {
-        filenames = [ "/var/log/authelia/authelia.log" ];
+        filenames = [ "/var/log/authelia.log" ];
         labels.type = "authelia";
       }
     ];
@@ -69,6 +69,7 @@ with lib.pluskinda;
         "${bouncer_script}/bin/register-bouncer"
       ];
       EnvironmentFile = config.age.secrets.crowdsec_api_key_env.path;
+      SupplementaryGroups = [ "autheliaLog" ];
     };
   };
 
