@@ -69,7 +69,7 @@ with lib.pluskinda;
         "${bouncer_script}/bin/register-bouncer"
       ];
       EnvironmentFile = config.age.secrets.crowdsec_api_key_env.path;
-      SupplementaryGroups = [ "autheliaLog" ];
+      SupplementaryGroups = [ "authelia-log" ];
     };
   };
 

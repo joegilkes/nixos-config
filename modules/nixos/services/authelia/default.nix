@@ -23,8 +23,11 @@ in
       };
     };
 
-    pluskinda.user.extraGroups = [ "authelia" "autheliaLog" ];
-    users.users.${autheliaMain.user}.extraGroups = [ "redis" "sendgrid" "autheliaLog" ];
+    users.groups = {
+      authelia-log = { };
+    };
+    pluskinda.user.extraGroups = [ "authelia" "authelia-log" ];
+    users.users.${autheliaMain.user}.extraGroups = [ "redis" "sendgrid" "authelia-log" ];
 
     services.mysql = {
       enable = mkForce true;
@@ -142,8 +145,8 @@ in
     };
 
     systemd.tmpfiles.rules = [ 
-      "d '/var/log/authelia' 0750 ${autheliaMain.user} autheliaLog - -"
-      "f '/var/log/authelia/authelia.log' 0750 ${autheliaMain.user} autheliaLog - -" 
+      "d '/var/log/authelia' 0750 ${autheliaMain.user} authelia-log - -"
+      "f '/var/log/authelia/authelia.log' 0750 ${autheliaMain.user} authelia-log - -" 
     ];
   };
 }
