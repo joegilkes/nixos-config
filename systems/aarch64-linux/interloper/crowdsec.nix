@@ -29,7 +29,7 @@ with lib.pluskinda;
         labels.type = "syslog";
       }
       {
-        filenames = [ "/var/log/authelia.log" ];
+        filenames = [ "/var/log/authelia/authelia.log" ];
         labels.type = "authelia";
       }
     ];

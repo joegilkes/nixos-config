@@ -51,7 +51,7 @@ in
         server.address = "tcp://127.0.0.1:${toString cfg.port}";
         log = {
           level = "info";
-          file_path = "/var/log/authelia.log";
+          file_path = "/var/log/authelia/authelia.log";
           keep_stdout = true;
         };
         session = {
@@ -141,6 +141,9 @@ in
       };
     };
 
-    systemd.tmpfiles.rules = [ "f '/var/log/authelia.log' 0750 ${autheliaMain.user} autheliaLog - -" ];
+    systemd.tmpfiles.rules = [ 
+      "d '/var/log/authelia' 0750 ${autheliaMain.user} autheliaLog - -"
+      "f '/var/log/authelia/authelia.log' 0750 ${autheliaMain.user} autheliaLog - -" 
+    ];
   };
 }
