@@ -34,7 +34,10 @@ with lib.pluskinda;
       vr = enabled;
     };
 
-    desktop.gnome.wallpaper.dark = pkgs.pluskinda.wallpapers.contour_bi_x3_test;
+    desktop.gnome = {
+      wallpaper.dark = pkgs.pluskinda.wallpapers.contour_bi_x3_test;
+      enableExperimentalVRR = true;
+    };
 
     apps = {
       blender.gpuType = "amd";
