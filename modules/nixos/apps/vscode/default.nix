@@ -17,15 +17,17 @@ in
         programs.vscode = {
           enable = true;
           package = pkgs.vscode.fhsWithPackages (ps: with ps; [ libsecret hack-font ]);
-          extensions = with pkgs.vscode-extensions; mkMerge [
-            [
-              jnoortheen.nix-ide
-              mkhl.direnv
-            ]
-            ( mkIf (texenabled) [
-              pkgs.vscode-extensions.james-yu.latex-workshop
-            ])
-          ];
+          profiles = {
+            default.extensions = with pkgs.vscode-extensions; mkMerge [
+              [
+                jnoortheen.nix-ide
+                mkhl.direnv
+              ]
+              ( mkIf texenabled [
+                pkgs.vscode-extensions.james-yu.latex-workshop
+              ])
+            ];
+          };
         };
       };
     };
