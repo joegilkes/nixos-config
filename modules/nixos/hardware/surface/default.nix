@@ -24,11 +24,7 @@ in
     ];
 
     services= {
-      pipewire.package = mkIf (!cfg.useLibcamera) (
-        pkgs.pipewire.override { libcameraSupport = false; }
-      );
-
-      iptsd.config.Touch.DisableOnPalm = true;
+      iptsd.config.Touchscreen.DisableOnPalm = true;
     };
 
     environment.etc = mkIf (!cfg.useLibcamera) {
