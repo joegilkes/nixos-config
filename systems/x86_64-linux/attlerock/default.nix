@@ -28,6 +28,7 @@ with lib.pluskinda;
     };
 
     apps.xournalpp = enabled;
+    apps.microsoft-edge = enabled;
     cli-apps.android-platform-tools.enable = mkForce false;
     cli-apps.fusee-nano.enable = true;
 
