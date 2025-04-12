@@ -14,11 +14,13 @@ in
     pluskinda = {
       apps = {};
 
+      # Enable for full HTPC experience, needs a GPU and a HDMI CEC adapter to really make sense.
       # desktop.kodi = enabled;
 
       services = {
         jellyfin = enabled;
-        tvheadend = enabled;
+        # Only needed when running with a tuner card.
+        # tvheadend = enabled;
       };
     };
   };
