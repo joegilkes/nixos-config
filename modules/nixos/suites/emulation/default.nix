@@ -16,6 +16,8 @@ in
       apps = {
         # dolphin = enabled;  Disabled while not being used and it keeps recompiling from scratch.
         ryujinx = enabled;
+        pcsx2 = enabled;
+        rpcs3 = enabled;
       };
       cli-apps = {
         fusee-nano = enabled;
