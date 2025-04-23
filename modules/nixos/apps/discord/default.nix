@@ -10,5 +10,9 @@ in
   };
 
   config =
-    mkIf cfg.enable { environment.systemPackages = with pkgs; [ discord ]; };
+    mkIf cfg.enable { environment.systemPackages = with pkgs; [ 
+      discord 
+      vesktop
+    ];
+  };
 }
