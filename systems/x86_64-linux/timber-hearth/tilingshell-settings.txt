@@ -1,0 +1,6 @@
+[/]
+inner-gaps=uint32 0
+outer-gaps=uint32 0
+selected-layouts=[['6142646', '6183116', '6183116'], ['Layout 3', 'Layout 1', 'Layout 1'], ['Layout 3', 'Layout 1', 'Layout 1'], ['Layout 3', 'Layout 1', 'Layout 1'], ['Layout 3', 'Layout 1', 'Layout 1'], ['Layout 3', 'Layout 1', 'Layout 1'], ['Layout 3', 'Layout 1', 'Layout 1'], ['Layout 3', 'Layout 1', 'Layout 1'], ['Layout 3', 'Layout 1', 'Layout 1'], ['Layout 3', 'Layout 1', 'Layout 1']]
+tiling-system-deactivation-key=['2']
+top-edge-maximize=true

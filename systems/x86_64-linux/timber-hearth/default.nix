@@ -35,6 +35,7 @@ with lib.pluskinda;
     };
 
     desktop.gnome = {
+      extensions = [ pkgs.gnomeExtensions.tiling-shell ]; # Settings included but not applied.
       wallpaper.dark = pkgs.pluskinda.wallpapers.contour_bi_x3_test;
       enableExperimentalVRR = true;
     };
