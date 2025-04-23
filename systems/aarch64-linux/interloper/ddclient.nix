@@ -11,7 +11,7 @@ with lib.pluskinda;
   age.secrets = {
     ddclient_password = {
       file = ../../../secrets/ddclient-password.age;
-      owner = "ddclient-secrets";
+      group = "ddclient-secrets";
       mode = "0440";
     };
   };
