@@ -7,6 +7,7 @@ with lib.pluskinda;
     ./hardware.nix
     ./traefik.nix
     ./crowdsec.nix
+    ./ddclient.nix
   ];
 
   networking.hostName = "interloper";

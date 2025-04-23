@@ -23,4 +23,5 @@ in
   "sendgrid-api-token.age".publicKeys = users ++ [ interloper ];
   "crowdsec-api-key-env.age".publicKeys = users ++ [ interloper ];
   "crowdsec-enroll-key.age".publicKeys = users ++ [ interloper ];
+  "ddclient-password.age".publicKeys = users ++ [ interloper ];
 }
