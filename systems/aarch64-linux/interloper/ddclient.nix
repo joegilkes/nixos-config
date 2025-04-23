@@ -18,11 +18,11 @@ with lib.pluskinda;
 
   services.ddclient = {
     enable = true;
-    use = "web, web=dynamicdns.park-your-domain.com/getip";
+    usev4 = "webv4, webv4=dynamicdns.park-your-domain.com/getip";
     protocol = "namecheap";
     server = "dynamicdns.park-your-domain.com";
     username = "joegilk.es";
-    passwordFile = config.age.secrets.ddclient_password.file;
+    passwordFile = config.age.secrets.ddclient_password.path;
     domains = [
       "auth"
       "home"
