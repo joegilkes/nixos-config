@@ -92,7 +92,7 @@ in
   };
   systemd.services.lldap.serviceConfig.SupplementaryGroups = [ "lldap-secrets" ];
   systemd.services.authelia.after = [ "lldap.service" ];
-  networking.firewall.allowedTCPPorts = [ 17170 ];
+  networking.firewall.allowedTCPPorts = [ 3890 17170 ];
 
   programs.msmtp = {
     enable = true;
