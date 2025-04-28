@@ -17,7 +17,7 @@ with lib.pluskinda;
     hostName = "localhost";
     https = true;
     
-    home = "/mnt/gabbro/storage/nextcloud_root/nextcloud";
+    home = "/mnt/gabbro/nextcloud";
     database.createLocally = true;
     configureRedis = true;
     maxUploadSize = "16G";

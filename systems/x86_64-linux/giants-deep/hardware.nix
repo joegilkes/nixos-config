@@ -51,6 +51,11 @@ in
       fsType = "zfs";
     };
 
+  fileSystems."/mnt/gabbro/nextcloud" = 
+    { device = "gabbro/storage";
+      fsType = "zfs";
+    };
+
   fileSystems."/mnt/gabbro/public" = 
     { device = "gabbro/public";
       fsType = "zfs";
