@@ -16,7 +16,6 @@ with lib.pluskinda;
 
     hostName = "localhost";
     https = true;
-    enableBrokenCiphersForSSE = false;
     
     home = "/mnt/gabbro/storage/nextcloud";
     database.createLocally = true;
