@@ -32,7 +32,7 @@ with lib.pluskinda;
       adminpassFile = "${config.age.secrets.nextcloud-pass.path}";
     };
 
-    autoUpdateApps.enable = true;
+    appstoreEnable = false;
     extraApps = {
       inherit (pkgs.nextcloud31Packages.apps) mail calendar contacts phonetrack;
     };
