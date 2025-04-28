@@ -34,13 +34,7 @@ with lib.pluskinda;
 
     autoUpdateApps.enable = true;
     extraApps = {
-      inherit (pkgs.nextcloud31Packages.apps) mail calendar contact;
-      # phonetrack = pkgs.fetchNextcloudApp {
-      #   name = "phonetrack";
-      #   sha256 = "0qf366vbahyl27p9mshfma1as4nvql6w75zy2zk5xwwbp343vsbc";
-      #   url = "https://gitlab.com/eneiluj/phonetrack-oc/-/wikis/uploads/931aaaf8dca24bf31a7e169a83c17235/phonetrack-0.6.9.tar.gz";
-      #   version = "0.6.9";
-      # };
+      inherit (pkgs.nextcloud31Packages.apps) mail calendar contacts phonetrack;
     };
   };
 
