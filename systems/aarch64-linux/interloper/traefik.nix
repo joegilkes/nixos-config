@@ -151,7 +151,7 @@ in
             rule = "Host(`cloud.joegilk.es`)";
             tls.certResolver = "letsencrypt";
             service = "nextcloud";
-            middlewares = [ "authelia@file" ];
+            middlewares = [ "authelia@file" "nextcloud-redirectregex@file" ];
           };
         };
         middlewares = {
@@ -161,6 +161,13 @@ in
             authResponseHeaders = [ "Remote-User" "Remote-Groups" "Remote-Name" "Remote-Email" ];
             tls.insecureSkipVerify = true;
           };
+          nextcloud-redirectregex = {
+            redirectRegex = {
+              regex = "https://(.*)/.well-known/(?:card|cal)dav";
+              replacement = "https://${1}/remote.php/dav";
+              permanent = true;
+            };
+          };
         };
         services = {
           auth.loadBalancer.servers = [ { url = "http://localhost:9091"; } ];
@@ -168,7 +175,7 @@ in
           glancesInterloper.loadBalancer.servers = [ { url = "http://localhost:61208"; } ];
           glancesGiantsDeep.loadBalancer.servers = [ { url = "http://192.168.0.41:61208"; } ];
           calibreWeb.loadBalancer.servers = [ { url = "http://192.168.0.41:8083"; } ];
-          nextcloud.loadBalancer.servers = [ { url = "http://192.168.0.41:8084"; } ];
+          nextcloud.loadBalancer.servers = [ { url = "http://192.168.0.41"; } ];
         };
       };
     };

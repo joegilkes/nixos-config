@@ -25,6 +25,11 @@ with lib.pluskinda;
     settings = {
       overwriteprotocol = "https";
       default_phone_region = "GB";
+      trusted_proxies = [ "192.168.0.40" ];
+      trusted_domains = [
+        "cloud.joegilk.es"
+        "192.168.0.41"
+      ];
     };
     config = {
       dbtype = "pgsql";
@@ -38,6 +43,5 @@ with lib.pluskinda;
     };
   };
 
-  services.nginx.virtualHosts."localhost".listen = [ { addr = "127.0.0.1"; port = 8084; } ];
-  networking.firewall.allowedTCPPorts = [ 8084 ];
+  networking.firewall.allowedTCPPorts = [ 80 443 ];
 }
