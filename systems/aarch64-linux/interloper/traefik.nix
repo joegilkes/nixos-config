@@ -147,6 +147,12 @@ in
             service = "calibreWeb";
             middlewares = [ "authelia@file" ];
           };
+          nextcloud = {
+            rule = "Host(`cloud.joegilk.es`)";
+            tls.certResolver = "letsencrypt";
+            service = "nextcloud";
+            middlewares = [ "authelia@file" ];
+          };
         };
         middlewares = {
           authelia.forwardAuth = {
@@ -162,6 +168,7 @@ in
           glancesInterloper.loadBalancer.servers = [ { url = "http://localhost:61208"; } ];
           glancesGiantsDeep.loadBalancer.servers = [ { url = "http://192.168.0.41:61208"; } ];
           calibreWeb.loadBalancer.servers = [ { url = "http://192.168.0.41:8083"; } ];
+          nextcloud.loadBalancer.servers = [ { url = "http://192.168.0.41:8084"; } ];
         };
       };
     };

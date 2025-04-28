@@ -30,6 +30,7 @@ with lib.pluskinda;
       "interloper"
       "giants-deep"
       "books"
+      "cloud"
     ];
   };
   systemd.services.ddclient.serviceConfig.SupplementaryGroups = [ "ddclient-secrets" ];
