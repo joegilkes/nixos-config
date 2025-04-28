@@ -52,7 +52,7 @@ in
     };
 
   fileSystems."/mnt/gabbro/nextcloud" = 
-    { device = "gabbro/storage";
+    { device = "gabbro/nextcloud";
       fsType = "zfs";
     };
 
