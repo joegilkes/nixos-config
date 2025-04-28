@@ -117,7 +117,7 @@ in
               }
             ];
 
-            initExtra = strings.concatStringsSep "\n" (
+            initContent = strings.concatStringsSep "\n" (
               [
                 "eval \"$(starship init zsh)\""
               ] ++ lists.optionals (config.pluskinda.tools.direnv.enable) [
