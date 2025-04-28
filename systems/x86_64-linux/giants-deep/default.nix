@@ -6,6 +6,7 @@ with lib.pluskinda;
   imports = [ 
     ./hardware.nix
     ./homepage.nix
+    ./nextcloud.nix
   ];
 
   networking.hostName = "giants-deep";
