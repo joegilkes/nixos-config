@@ -43,6 +43,9 @@
     crowdsec.url = "git+https://codeberg.org/kampka/nix-flake-crowdsec.git";
     crowdsec.inputs.nixpkgs.follows = "nixpkgs";
 
+    # Quantum chemistry programs
+    qchem.url = "github:Nix-QChem/NixOS-QChem";
+
     # Snowfall Lib
     snowfall-lib.url = "github:snowfallorg/lib";
     snowfall-lib.inputs.nixpkgs.follows = "nixpkgs";
@@ -77,6 +80,7 @@
 
       overlays = with inputs; [
         snowfall-flake.overlays."package/flake"
+        qchem.overlays.default
       ];
 
       systems.modules.nixos = with inputs; [
