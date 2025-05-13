@@ -37,6 +37,9 @@ with lib.pluskinda;
       User nix-ssh
       IdentitiesOnly yes
       IdentityFile /root/.ssh/nixremote
+      ControlMaster auto
+      ControlPath /tmp/ssh-%r@%h:%p
+      ControlPersist 120
   '';
 
   nix = {
