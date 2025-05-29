@@ -30,7 +30,9 @@ in
 
       fontconfig = {
         defaultFonts = {
-          monospace = [ "Hack" ];
+          sansSerif = [ "Noto Sans" ];
+          serif = [ "Noto Serif" ];
+          monospace = [ "Hack Nerd Font Mono" ];
         };
       };
 

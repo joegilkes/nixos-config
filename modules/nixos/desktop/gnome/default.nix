@@ -137,6 +137,12 @@ in
         };
         desktopManager.gnome.enable = true;
       };
+
+      # Needed for correct mounting of Trash and network volumes.
+      gvfs = {
+        enable = true;
+        package = pkgs.gnome.gvfs;
+      };
     };
 
     pluskinda.home.extraOptions = {
@@ -148,6 +154,7 @@ in
               builtins.toString wallpaper
             else
               wallpaper;
+          customFonts = config.pluskinda.system.fonts.enable;
         in
         nested-default-attrs {
           "org/gnome/shell" = {
@@ -179,6 +186,10 @@ in
             color-scheme = if cfg.color-scheme == "light" then "default" else "prefer-dark";
             enable-hot-corners = false;
             show-battery-percentage = true;
+          } // optionalAttrs customFonts {
+            monospace-font-name = "Hack Nerd Font Mono 10";
+            font-name = "Noto Sans 10";
+            document-font-name = "Noto Sans 10";
           };
           "org/gnome/desktop/peripherals/touchpad" = {
             disable-while-typing = false;
