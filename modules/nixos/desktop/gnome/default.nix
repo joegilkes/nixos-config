@@ -128,21 +128,14 @@ in
       udev.packages = with pkgs; [ gnome-settings-daemon ];
 
       libinput.enable = true;
-      xserver = {
-        enable = true;
-        displayManager.gdm = {
-          enable = true;
-          wayland = cfg.wayland;
-          autoSuspend = cfg.suspend;
-        };
-        desktopManager.gnome.enable = true;
-      };
+      xserver.enable = true;
 
-      # Needed for correct mounting of Trash and network volumes.
-      gvfs = {
+      displayManager.gdm = {
         enable = true;
-        package = pkgs.gnome.gvfs;
+        wayland = cfg.wayland;
+        autoSuspend = cfg.suspend;
       };
+      desktopManager.gnome.enable = true;
     };
 
     pluskinda.home.extraOptions = {
