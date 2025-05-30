@@ -2,6 +2,18 @@
 
 let
   inherit (inputs) nixos-hardware;
+
+  zfsCompatibleKernelPackages = lib.filterAttrs (
+    name: kernelPackages:
+    (builtins.match "linux_[0-9]+_[0-9]+" name) != null
+    && (builtins.tryEval kernelPackages).success
+    && (!kernelPackages.${config.boot.zfs.package.kernelModuleAttribute}.meta.broken)
+  ) pkgs.linuxKernel.packages;
+  latestKernelPackage = lib.last (
+    lib.sort (a: b: (lib.versionOlder a.kernel.version b.kernel.version)) (
+      builtins.attrValues zfsCompatibleKernelPackages
+    )
+  );
 in
 {
   imports = with nixos-hardware.nixosModules; [
@@ -13,7 +25,7 @@ in
 
   boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "ahci" "usb_storage" "usbhid" "sd_mod" ];
   boot.initrd.kernelModules = [ ];
-  boot.kernelPackages = pkgs.linuxPackages_6_6;
+  boot.kernelPackages = latestKernelPackage;
   boot.kernelModules = [ "coretemp" ];
   boot.kernelParams = [ "nohibernate" ];
   # boot.extraModulePackages = [ (config.boot.kernelPackages.callPackage ./tbs-driver.nix {}) ];
