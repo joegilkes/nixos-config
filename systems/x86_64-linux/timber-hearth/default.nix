@@ -63,16 +63,16 @@ with lib.pluskinda;
   };
 
   # Enable this system as a local shared Nix store.
-  nix = {
-    sshServe = {
-      enable = true;
-      protocol = "ssh-ng";
-      keys = [ "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILFz8ePAZAOD3JZh5AY+25dW+4L1dL4dnJ3JbvOxpqqi root@attlerock" ]; 
-    };
-    extraOptions = ''
-      secret-key-files = /home/${config.pluskinda.user.name}/.nixos-cache-secrets/cache-priv-key.pem
-    '';
+  pluskinda.services.sshServe = {
+    enable = true;
+    write = true;
+    trusted = true;
+    protocol = "ssh-ng";
+    keys = [ "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILFz8ePAZAOD3JZh5AY+25dW+4L1dL4dnJ3JbvOxpqqi root@attlerock" ];
   };
+  nix.extraOptions = ''
+    secret-key-files = /home/${config.pluskinda.user.name}/.nixos-cache-secrets/cache-priv-key.pem
+  '';
 
   environment.sessionVariables = {
     RADV_PERFTEST = "gpl";
