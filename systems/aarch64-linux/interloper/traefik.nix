@@ -154,10 +154,16 @@ in
             middlewares = [ "authelia@file" "nextcloud-redirectregex@file" ];
           };
           dawarich = {
-            rule = "Host(`maps.joegilk.es`)";
+            rule = "Host(`maps.joegilk.es`) && !PathPrefix(`/api`)";
             tls.certResolver = "letsencrypt";
             service = "dawarich";
             middlewares = [ "authelia@file" "dawarich-compress@file" ];
+          };
+          dawarich-api = {
+            rule = "Host(`maps.joegilk.es`) && PathPrefix(`/api`)";
+            tls.certResolver = "letsencrypt";
+            service = "dawarich";
+            middlewares = [ "dawarich-compress@file" ];
           };
         };
 
@@ -207,7 +213,7 @@ in
             };
           };
         };
-        
+
         services = {
           auth.loadBalancer.servers = [ { url = "http://localhost:9091"; } ];
           homepage.loadBalancer.servers = [ { url = "http://192.168.0.41:8082"; } ];
@@ -216,6 +222,7 @@ in
           calibreWeb.loadBalancer.servers = [ { url = "http://192.168.0.41:8083"; } ];
           nextcloud.loadBalancer.servers = [ { url = "http://192.168.0.41"; } ];
           dawarich.loadBalancer.servers = [ { url = "http://192.168.0.41:3000"; } ];
+          dawarich-api.loadBalancer.servers = [ { url = "http://192.168.0.41:3000"; } ];
         };
       };
     };
