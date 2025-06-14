@@ -31,6 +31,7 @@ with lib.pluskinda;
       "giants-deep"
       "books"
       "cloud"
+      "maps"
     ];
   };
   systemd.services.ddclient.serviceConfig.SupplementaryGroups = [ "ddclient-secrets" ];

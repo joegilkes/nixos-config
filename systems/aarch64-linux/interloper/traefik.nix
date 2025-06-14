@@ -153,6 +153,12 @@ in
             service = "nextcloud";
             middlewares = [ "authelia@file" "nextcloud-redirectregex@file" ];
           };
+          dawarich = {
+            rule = "Host(`maps.joegilk.es`)";
+            tls.certResolver = "letsencrypt";
+            service = "dawarich";
+            middlewares = [ "authelia@file" ];
+          };
         };
         middlewares = {
           authelia.forwardAuth = {
@@ -176,6 +182,7 @@ in
           glancesGiantsDeep.loadBalancer.servers = [ { url = "http://192.168.0.41:61208"; } ];
           calibreWeb.loadBalancer.servers = [ { url = "http://192.168.0.41:8083"; } ];
           nextcloud.loadBalancer.servers = [ { url = "http://192.168.0.41"; } ];
+          dawarich.loadBalancer.servers = [ { url = "http://192.168.0.41:3000"; } ];
         };
       };
     };
