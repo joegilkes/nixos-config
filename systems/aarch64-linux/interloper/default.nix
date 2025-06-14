@@ -13,10 +13,6 @@ with lib.pluskinda;
   networking.hostName = "interloper";
 
   pluskinda = {
-    cli-apps = {
-      flake = enabled;
-    };
-
     tools = {
       git = enabled;
       misc = enabled;
