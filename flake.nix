@@ -42,6 +42,9 @@
     crowdsec.url = "git+https://codeberg.org/kampka/nix-flake-crowdsec.git";
     crowdsec.inputs.nixpkgs.follows = "nixpkgs";
 
+    # Quadlet-nix
+    quadlet-nix.url = "github:SEIAROTg/quadlet-nix";
+
     # Quantum chemistry programs
     qchem.url = "github:Nix-QChem/NixOS-QChem";
     qchem.inputs.nixpkgs.follows = "nixpkgs";
@@ -90,7 +93,10 @@
       ];
       systems.hosts.attlerock.modules = with inputs; [ lix-module.nixosModules.default ];
       systems.hosts.brittle-hollow.modules = with inputs; [ lix-module.nixosModules.default ];
-      systems.hosts.giants-deep.modules = with inputs; [ lix-module.nixosModules.default ];
+      systems.hosts.giants-deep.modules = with inputs; [ 
+        lix-module.nixosModules.default 
+        quadlet-nix.nixosModules.quadlet
+      ];
       systems.hosts.interloper.modules = with inputs; [ 
         crowdsec.nixosModules.crowdsec
         crowdsec.nixosModules.crowdsec-firewall-bouncer

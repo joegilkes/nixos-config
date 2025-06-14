@@ -25,4 +25,5 @@ in
   "crowdsec-enroll-key.age".publicKeys = users ++ [ interloper ];
   "ddclient-password.age".publicKeys = users ++ [ interloper ];
   "nextcloud-password.age".publicKeys = users ++ [ giants-deep ];
+  "dawarich-db-password.age".publicKeys = users ++ [ giants-deep ];
 }
