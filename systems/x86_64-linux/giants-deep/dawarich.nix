@@ -14,6 +14,8 @@ with lib.pluskinda;
     inherit (config.virtualisation.quadlet) containers networks pods volumes;
   in
   {
+    autoEscape = true;
+
     containers.dawarich_redis = {
       containerConfig = {
         image = "redis:7.4-alpine";
@@ -76,7 +78,7 @@ with lib.pluskinda;
           MIN_MINUTES_SPENT_IN_CITY = "60";
           APPLICATION_HOSTS = "localhost,maps.joegilk.es";
           TIME_ZONE = "Europe/London";
-          APPLICATION_PROTOCOL = "http";
+          APPLICATION_PROTOCOL = "https";
           PROMETHIUS_EXPORTER_ENABLED = "false";
           PROMETHIUS_EXPORTER_HOST = "0.0.0.0";
           PROMETHIUS_EXPORTER_PORT = "9394";
@@ -133,7 +135,7 @@ with lib.pluskinda;
           DATABASE_NAME = "dawarich_development";
           APPLICATION_HOSTS = "localhost,maps.joegilk.es";
           BACKGROUND_PROCESSING_CONCURRENCY = "10";
-          APPLICATION_PROTOCOL = "http";
+          APPLICATION_PROTOCOL = "https";
           PROMETHIUS_EXPORTER_ENABLED = "false";
           PROMETHIUS_EXPORTER_HOST = "dawarich_app";
           PROMETHIUS_EXPORTER_PORT = "9394";
