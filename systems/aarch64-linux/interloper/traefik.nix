@@ -157,9 +157,10 @@ in
             rule = "Host(`maps.joegilk.es`)";
             tls.certResolver = "letsencrypt";
             service = "dawarich";
-            middlewares = [ "authelia@file" ];
+            middlewares = [ "authelia@file" "dawarich-compress@file" ];
           };
         };
+
         middlewares = {
           authelia.forwardAuth = {
             address = "http://localhost:9091/api/authz/forward-auth";
@@ -174,7 +175,39 @@ in
               permanent = true;
             };
           };
+          dawarich-compress = {
+            compress = {
+              encodings = [ "br" ];
+              includedContentTypes = [
+                "text/plain"
+                "text/html"
+                "text/css"
+                "text/xml"
+                "text/javascript"
+                "application/javascript"
+                "application/json"
+                "application/manifest+json"
+                "application/vnd.api+json"
+                "application/xml"
+                "application/xhtml+xml"
+                "application/rss+xml"
+                "application/atom+xml"
+                "application/vnd.ms-fontobject"
+                "application/x-font-ttf"
+                "application/x-font-opentype"
+                "application/x-font-truetype"
+                "image/svg+xml"
+                "image/x-icon"
+                "image/vnd.microsoft.icon"
+                "font/ttf"
+                "font/otf"
+                "font/eot"
+                "font/opentype"
+              ];
+            };
+          };
         };
+        
         services = {
           auth.loadBalancer.servers = [ { url = "http://localhost:9091"; } ];
           homepage.loadBalancer.servers = [ { url = "http://192.168.0.41:8082"; } ];
