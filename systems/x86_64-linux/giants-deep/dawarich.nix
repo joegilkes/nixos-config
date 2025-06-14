@@ -11,10 +11,11 @@ with lib.pluskinda;
   };
 
   virtualisation.quadlet = let
-    inherit (config.virtualisation.quadlet) containers networks pods volumes;
+    inherit (config.virtualisation.quadlet) containers networks volumes;
   in
-  {
-    autoEscape = true;
+  { 
+    # This seems to break things.
+    # autoEscape = true;
 
     containers.dawarich_redis = {
       containerConfig = {
@@ -78,7 +79,7 @@ with lib.pluskinda;
           MIN_MINUTES_SPENT_IN_CITY = "60";
           APPLICATION_HOSTS = "localhost,maps.joegilk.es";
           TIME_ZONE = "Europe/London";
-          APPLICATION_PROTOCOL = "https";
+          APPLICATION_PROTOCOL = "http";
           PROMETHIUS_EXPORTER_ENABLED = "false";
           PROMETHIUS_EXPORTER_HOST = "0.0.0.0";
           PROMETHIUS_EXPORTER_PORT = "9394";
@@ -135,7 +136,7 @@ with lib.pluskinda;
           DATABASE_NAME = "dawarich_development";
           APPLICATION_HOSTS = "localhost,maps.joegilk.es";
           BACKGROUND_PROCESSING_CONCURRENCY = "10";
-          APPLICATION_PROTOCOL = "https";
+          APPLICATION_PROTOCOL = "http";
           PROMETHIUS_EXPORTER_ENABLED = "false";
           PROMETHIUS_EXPORTER_HOST = "dawarich_app";
           PROMETHIUS_EXPORTER_PORT = "9394";
