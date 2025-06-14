@@ -7,6 +7,7 @@ with lib.pluskinda;
     ./hardware.nix
     ./homepage.nix
     ./nextcloud.nix
+    ./dawarich.nix
   ];
 
   networking.hostName = "giants-deep";
