@@ -20,7 +20,6 @@ with lib.pluskinda;
         exec = "redis-server";
         networks = [ networks.dawarich.ref ];
         volumes = [ "${volumes.dawarich_shared.ref}:/data" ];
-        pod = pods.dawarich.ref;
 
         healthCmd = "redis-cli --raw incr ping";
         healthInterval = "10s";
@@ -39,7 +38,6 @@ with lib.pluskinda;
           "${volumes.dawarich_db_data.ref}:/var/lib/postgresql/data"
           "${volumes.dawarich_shared.ref}:/var/shared"
         ];
-        pod = pods.dawarich.ref;
         environments = {
           POSTGRES_USER = "postgres";
           POSTGRES_DB = "dawarich_development";
@@ -69,7 +67,6 @@ with lib.pluskinda;
           "${volumes.dawarich_storage.ref}:/var/app/storage"
           "${volumes.dawarich_db_data.ref}:/dawarich_db_data"
         ];
-        pod = pods.dawarich.ref;
         environments = {
           RAILS_ENV = "development";
           REDIS_URL = "redis://dawarich_redis:6379";
@@ -128,7 +125,6 @@ with lib.pluskinda;
           "${volumes.dawarich_watched.ref}:/var/app/tmp/imports/watched"
           "${volumes.dawarich_storage.ref}:/var/app/storage"
         ];
-        pod = pods.dawarich.ref;
         environments = {
           RAILS_ENV = "development";
           REDIS_URL = "redis://dawarich_redis:6379";
@@ -177,9 +173,6 @@ with lib.pluskinda;
     };
 
     networks.dawarich = {};
-    pods.dawarich = {
-      podConfig.publishPorts = [ "3000:3000" ];
-    };
 
     volumes = {
       dawarich_shared = {
