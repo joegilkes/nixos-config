@@ -85,6 +85,8 @@ with lib.pluskinda;
           PROMETHIUS_EXPORTER_PORT = "9394";
           SELF_HOSTED = "true";
           STORE_GEODATA = "true";
+          PHOTON_API_HOST = "localhost:2322";
+          PHOTON_API_USE_HTTPS = "false";
         };
         environmentFiles = [ config.age.secrets.dawarich-db-password.path ];
         logDriver = "json-file";
@@ -142,6 +144,8 @@ with lib.pluskinda;
           PROMETHIUS_EXPORTER_PORT = "9394";
           SELF_HOSTED = "true";
           STORE_GEODATA = "true";
+          PHOTON_API_HOST = "localhost:2322";
+          PHOTON_API_USE_HTTPS = "false";
         };
         environmentFiles = [ config.age.secrets.dawarich-db-password.path ];
         logDriver = "json-file";
@@ -175,6 +179,23 @@ with lib.pluskinda;
       };
     };
 
+    containers.photon = {
+      containerConfig = {
+        image = "ghcr.io/rtuszik/photon-docker:latest";
+        networks = [ networks.dawarich.ref ];
+        publishPorts = [ "2322:2322" ];
+        volumes = [ "${volumes.photon_data.ref}:/photon/photon_data" ];
+        environments = {
+          UPDATE_STRATEGY = "PARALLEL";
+          UPDATE_INTERVAL = "24h";
+          LOG_LEVEL = "INFO";
+        };
+      };
+      serviceConfig = {
+        Restart = "unless-stopped";
+      };
+    };
+
     networks.dawarich = {};
 
     volumes = {
@@ -203,8 +224,13 @@ with lib.pluskinda;
         volumeConfig.driver = "local";
         volumeConfig.options = "bind";
       };
+      photon_data = {
+        volumeConfig.device = "/mnt/gabbro/storage/dawarich/photon_data";
+        volumeConfig.driver = "local";
+        volumeConfig.options = "bind";
+      };
     };
   };
 
-  networking.firewall.allowedTCPPorts = [ 3000 ];
+  networking.firewall.allowedTCPPorts = [ 2322 3000 ];
 }
