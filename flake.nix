@@ -11,8 +11,6 @@
     # NixPkgs Master
     master.url = "github:nixos/nixpkgs/master";
 
-    blender-fix.url = "github:justinkb/nixpkgs/blender-hip";
-
     # Replace Nix with Lix https://lix.systems/
     lix-module = {
       url = "https://git.lix.systems/lix-project/nixos-module/archive/2.93.0.tar.gz";
