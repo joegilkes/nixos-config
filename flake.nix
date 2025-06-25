@@ -76,7 +76,7 @@
       };
 
       overlays = with inputs; [
-        qchem.overlays.default
+        qchem.overlays.qchem'
       ];
 
       systems.modules.nixos = with inputs; [
