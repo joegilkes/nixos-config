@@ -24,7 +24,7 @@ in
         prismlauncher = enabled;
         protontricks = enabled;
         r2modman = enabled;
-        star-citizen = enabled;
+        # star-citizen = enabled; # disabled while there is a lix bug with npins dependency fetching
         steam = enabled;
         steamtinkerlaunch = enabled;
         winetricks = enabled;

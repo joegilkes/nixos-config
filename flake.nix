@@ -27,14 +27,13 @@
     # Agenix - age encrypted secrets
     agenix.url = "github:ryantm/agenix";
     agenix.inputs.nixpkgs.follows = "nixpkgs";
+    agenix.inputs.darwin.follows = "";
 
     # Musnix - RT kernel tweaks for audio
     musnix.url = "github:musnix/musnix";
-    musnix.inputs.nixpkgs.follows = "nixpkgs";
 
     # Nix Gaming
     nix-gaming.url = "github:fufexan/nix-gaming";
-    nix-gaming.inputs.nixpkgs.follows = "nixpkgs";
 
     # Crowdsec
     crowdsec.url = "git+https://codeberg.org/kampka/nix-flake-crowdsec.git";
@@ -45,7 +44,6 @@
 
     # Quantum chemistry programs
     qchem.url = "github:Nix-QChem/NixOS-QChem";
-    qchem.inputs.nixpkgs.follows = "nixpkgs";
 
     # Snowfall Lib
     snowfall-lib.url = "github:snowfallorg/lib";
