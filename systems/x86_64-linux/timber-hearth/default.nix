@@ -44,7 +44,7 @@ with lib.pluskinda;
     apps = {
       blender.gpuType = "amd";
       keymapp = enabled;
-      # microsoft-edge = enabled;
+      microsoft-edge = enabled;
       star-citizen.location = "/beluga/Games/star-citizen";
     };
 
