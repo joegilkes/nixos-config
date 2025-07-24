@@ -17,7 +17,7 @@ in
   boot.initrd.kernelModules = [ ];
   boot.kernelPackages = pkgs.linuxKernel.packages.linux_xanmod_stable;
   boot.kernelParams = [ "amd_iommu=on" ];
-  boot.kernelModules = [ "kvm-amd" "coretemp" "zenpower" ];
+  boot.kernelModules = [ "kvm-amd" "coretemp" "zenpower" "sg" ];
   boot.extraModulePackages = [ ];
 
   fileSystems."/" =

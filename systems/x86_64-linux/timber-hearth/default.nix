@@ -78,5 +78,8 @@ with lib.pluskinda;
     RADV_PERFTEST = "gpl";
   };
 
+  pluskinda.user.extraGroups = [ "optical" ];
+  users.groups.optical = {};
+
   system.stateVersion = "23.05";
 }
