@@ -14,8 +14,7 @@ with lib.pluskinda;
     inherit (config.virtualisation.quadlet) containers networks volumes;
   in
   { 
-    # This seems to break things.
-    # autoEscape = true;
+    autoEscape = true;
 
     containers.dawarich_redis = {
       containerConfig = {
@@ -91,9 +90,9 @@ with lib.pluskinda;
         environmentFiles = [ config.age.secrets.dawarich-db-password.path ];
         logDriver = "json-file";
         podmanArgs = [
-          "--attach stdin"
-          "--log-opt 'max-size=100m'"
-          "--log-opt 'max-file=5'"
+          "--attach=stdin"
+          "--log-opt=max-size=100m"
+          "--log-opt=max-file=5"
           "--tty"
         ];
 
@@ -150,9 +149,9 @@ with lib.pluskinda;
         environmentFiles = [ config.age.secrets.dawarich-db-password.path ];
         logDriver = "json-file";
         podmanArgs = [
-          "--attach stdin"
-          "--log-opt 'max-size=100m'"
-          "--log-opt 'max-file=5'"
+          "--attach=stdin"
+          "--log-opt=max-size=100m"
+          "--log-opt=max-file=5"
           "--tty"
         ];
 
