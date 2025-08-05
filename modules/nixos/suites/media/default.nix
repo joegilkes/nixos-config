@@ -16,7 +16,8 @@ in
         calibre = enabled;
         jellyfin = enabled;
         kodi = enabled;
-        spotify = enabled;
+        # spotify = enabled;
+        tidal = enabled;
         vlc = enabled;
       };
     };

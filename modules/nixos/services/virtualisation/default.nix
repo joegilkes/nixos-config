@@ -16,6 +16,11 @@ in
     };
     programs.virt-manager = enabled;
 
+    # environment.etc."libvirt/network.conf".text = ''
+    #   firewall_backend=iptables
+    # '';
+    networking.firewall.trustedInterfaces = [ "virbr0" "virbr1" ];
+
     pluskinda.user.extraGroups = [ "libvirtd" ]; 
   };
 }
