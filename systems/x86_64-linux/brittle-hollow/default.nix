@@ -31,6 +31,11 @@ with lib.pluskinda;
     };
   };
 
+  services.openssh.settings = {
+    AllowTCPForwarding = "yes";
+    PermitTunnel = "yes";
+  };
+
   programs.ssh.extraConfig = ''
     Host builder
       HostName timber-hearth.local
