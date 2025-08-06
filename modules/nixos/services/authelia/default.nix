@@ -60,7 +60,7 @@ in
           cookies = [{
             domain = "joegilk.es";
             authelia_url = "https://auth.joegilk.es";
-            default_redirection_url = "https://wilds.joegilk.es";
+            default_redirection_url = "https://home.joegilk.es";
           }];
           redis = {
             host = config.services.redis.servers."".unixSocket;
