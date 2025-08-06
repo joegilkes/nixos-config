@@ -20,10 +20,10 @@ in
   "lldap-key-seed.age".publicKeys = users ++ [ interloper ];
   "lldap-jwt.age".publicKeys = users ++ [ interloper ];
   "lldap-user-password.age".publicKeys = users ++ [ interloper ];
-  "sendgrid-api-token.age".publicKeys = users ++ [ interloper ];
   "crowdsec-api-key-env.age".publicKeys = users ++ [ interloper ];
   "crowdsec-enroll-key.age".publicKeys = users ++ [ interloper ];
   "ddclient-password.age".publicKeys = users ++ [ interloper ];
   "nextcloud-password.age".publicKeys = users ++ [ giants-deep ];
   "dawarich-db-password.age".publicKeys = users ++ [ giants-deep ];
+  "smtp2go_pass.age".publicKeys = users ++ [ interloper ];
 }

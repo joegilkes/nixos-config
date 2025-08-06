@@ -57,9 +57,9 @@ in
       group = "lldap-secrets";
       mode = "0440";
     };
-    sendgrid_api_token = {
-      file = ../../../secrets/sendgrid-api-token.age;
-      group = "sendgrid";
+    smtp2go_pass = {
+      file = ../../../secrets/smtp2go_pass.age;
+      group = "mailrelay";
       mode = "0440";
     };
   };
@@ -100,10 +100,10 @@ in
       auth = true;
       tls = true;
       tls_starttls = false;
-      host = "smtp.sendgrid.net";
-      port = 465;
-      user = "apikey";
-      passwordeval = "${pkgs.coreutils}/bin/cat ${config.age.secrets.sendgrid_api_token.path}";
+      host = "mail.smtp2go.com";
+      port = 2525;
+      user = "interloper";
+      passwordeval = "${pkgs.coreutils}/bin/cat ${config.age.secrets.smtp2go_pass.path}";
     };
   };
 
