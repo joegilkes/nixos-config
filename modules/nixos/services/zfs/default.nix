@@ -21,7 +21,7 @@ in
       autoScrub = enabled;
       trim = enabled;
 
-      zed = mkIf cfg.useZed {
+      zed = mkIf cfg.useZedEmails {
         settings = {
           ZED_DEBUG_LOG = "/tmp/zed.debug.log";
           ZED_EMAIL_ADDR = [ "root" ];
@@ -38,7 +38,7 @@ in
       };
     };
 
-    programs.msmtp = mkIf cfg.useZed {
+    programs.msmtp = mkIf cfg.useZedEmails {
       enable = true;
       setSendmail = true;
       accounts.default = {
@@ -52,7 +52,7 @@ in
       };
     };
 
-    environment.etc = mkIf cfg.useZed {
+    environment.etc = mkIf cfg.useZedEmails {
       aliases.text = ''
         root: ${cfg.smtpFrom}
       '';
