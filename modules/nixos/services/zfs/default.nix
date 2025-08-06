@@ -48,7 +48,7 @@ in
         host = cfg.smtpServer;
         port = cfg.smtpPort;
         user = cfg.smtpUser;
-        passwordeval = "${pkgs.coreutils}/bin/cat ${smtpPassFile}";
+        passwordeval = "${pkgs.coreutils}/bin/cat ${cfg.smtpPassFile}";
       };
     };
 
