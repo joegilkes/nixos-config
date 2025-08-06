@@ -5,6 +5,7 @@ with lib.pluskinda;
 {
   imports = [ 
     ./hardware.nix
+    ./zed.nix
     ./homepage.nix
     ./nextcloud.nix
     ./dawarich.nix

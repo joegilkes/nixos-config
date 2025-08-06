@@ -26,4 +26,5 @@ in
   "nextcloud-password.age".publicKeys = users ++ [ giants-deep ];
   "dawarich-db-password.age".publicKeys = users ++ [ giants-deep ];
   "smtp2go_pass.age".publicKeys = users ++ [ interloper ];
+  "smtp2go_zed_pass.age".publicKeys = users ++ [ giants-deep ];
 }
