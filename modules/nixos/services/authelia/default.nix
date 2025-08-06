@@ -12,6 +12,8 @@ in
     port = mkOpt port 9091 "Port to run the Authelia through";
     secrets = mkOpt attrs {} "Secrets to pass to Authelia";
     envVars = mkOpt attrs {} "Environment variables to pass to Authelia";
+    smtpAddress = mkOpt str "smtp://mail.smtp2go.com:2525" "Address of SMTP relay.";
+    smtpUser = mkOpt str "mail" "Username to use with SMTP relay.";
   };
 
   config = mkIf cfg.enable { 
@@ -132,8 +134,8 @@ in
         notifier = {
           disable_startup_check = false;
           smtp = {
-            address = "submissions://smtp.sendgrid.net:465";
-            username = "apikey";
+            address = smtpAddress;
+            username = smtpUser;
             sender = "auth@mail.joegilk.es";
           };
           template_path = "/etc/authelia/config/email_templates";

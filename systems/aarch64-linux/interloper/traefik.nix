@@ -74,9 +74,11 @@ in
     };
     envVars = {
       AUTHELIA_AUTHENTICATION_BACKEND_LDAP_PASSWORD_FILE = config.age.secrets.authelia_ldap_password.path;
-      AUTHELIA_NOTIFIER_SMTP_PASSWORD_FILE = config.age.secrets.sendgrid_api_token.path;
+      AUTHELIA_NOTIFIER_SMTP_PASSWORD_FILE = config.age.secrets.smtp2go_pass.path;
       AUTHELIA_STORAGE_MYSQL_PASSWORD_FILE = config.age.secrets.authelia_mysql_password.path;
     };
+    smtpAddress = "smtp://mail.smtp2go.com:2525";
+    smtpUser = "interloper";
   };
 
   services.lldap = {
