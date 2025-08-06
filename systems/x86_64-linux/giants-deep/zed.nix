@@ -18,5 +18,6 @@ with lib.pluskinda;
     smtpServer = "mail.smtp2go.com";
     smtpPort = 2525;
     smtpFrom = "zed@mail.joegilk.es";
+    smtpTo = "joe@joegilk.es";
   };
 }

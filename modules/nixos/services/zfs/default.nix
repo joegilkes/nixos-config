@@ -14,6 +14,7 @@ in
     smtpServer = mkOpt str "" "SMTP relay address.";
     smtpPort = mkOpt int 25 "SMTP relay port.";
     smtpFrom = mkOpt str "" "Email address to send ZED emails from.";
+    smtpTo = mkOpt str "" "Email address to send ZED emails to.";
   };
 
   config = mkIf cfg.enable {
@@ -54,7 +55,7 @@ in
 
     environment.etc = mkIf cfg.useZedEmails {
       aliases.text = ''
-        root: ${cfg.smtpFrom}
+        root: ${cfg.smtpTo}
       '';
     };
   };
