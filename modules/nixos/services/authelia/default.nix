@@ -26,7 +26,7 @@ in
     };
 
     pluskinda.user.extraGroups = [ "authelia" ];
-    users.users.${autheliaMain.user}.extraGroups = [ "redis" "sendgrid" ];
+    users.users.${autheliaMain.user}.extraGroups = [ "redis" "mailrelay" ];
 
     services.mysql = {
       enable = mkForce true;
