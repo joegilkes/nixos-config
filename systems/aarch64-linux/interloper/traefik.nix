@@ -10,7 +10,7 @@ in
 {
   users.groups = {
     lldap-secrets = { };
-    sendgrid = { };
+    mailrelay = { };
   };
 
   age.secrets = {
