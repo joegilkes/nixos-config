@@ -134,8 +134,8 @@ in
         notifier = {
           disable_startup_check = false;
           smtp = {
-            address = smtpAddress;
-            username = smtpUser;
+            address = cfg.smtpAddress;
+            username = cfg.smtpUser;
             sender = "auth@mail.joegilk.es";
           };
           template_path = "/etc/authelia/config/email_templates";
