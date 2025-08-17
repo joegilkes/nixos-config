@@ -7,7 +7,7 @@ let
 in
 {
   options.pluskinda.apps.calibre = with types; {
-    enable = mkBoolOpt false "Whether or not to enable Star Citizen.";
+    enable = mkBoolOpt false "Whether or not to enable Calibre.";
   };
 
   config = mkIf cfg.enable { environment.systemPackages = with pkgs; [ calibre ]; };
