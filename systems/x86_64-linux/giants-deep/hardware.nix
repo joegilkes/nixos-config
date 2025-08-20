@@ -95,15 +95,11 @@ in
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
   hardware.graphics = {
     enable = true;
-    extraPackages = with pkgs; [ vpl-gpu-rt ];
-  };
-  hardware.opengl = {
-    enable = true;
-    extraPackages = with pkgs; [
+    extraPackages = with pkgs; [ 
       intel-media-driver
       libvdpau-va-gl
       intel-compute-runtime
-      vpl-gpu-rt
+      vpl-gpu-rt 
     ];
   };
 }
