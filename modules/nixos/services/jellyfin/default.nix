@@ -20,6 +20,6 @@ in
       jellyfin-web
       jellyfin-ffmpeg
     ];
-    users.jellyfin.extraGroups = [ "render" ];
+    users.users.jellyfin.extraGroups = [ "render" ];
   };
 }
