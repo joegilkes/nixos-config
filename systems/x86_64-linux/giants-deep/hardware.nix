@@ -97,4 +97,13 @@ in
     enable = true;
     extraPackages = with pkgs; [ vpl-gpu-rt ];
   };
+  hardware.opengl = {
+    enable = true;
+    extraPackages = with pkgs; [
+      intel-media-driver
+      libvdpau-va-gl
+      intel-compute-runtime
+      vpl-gpu-rt
+    ];
+  };
 }
