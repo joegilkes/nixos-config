@@ -28,6 +28,7 @@ with lib.pluskinda;
       creative = enabled;
       development = enabled;
       emulation = enabled;
+      gamedev = enabled;
       gaming = enabled;
       media = enabled;
       social = enabled;
