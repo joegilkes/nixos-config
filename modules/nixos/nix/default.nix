@@ -15,6 +15,7 @@ in
   options.pluskinda.nix = with types; {
     enable = mkBoolOpt true "Whether or not to manage nix configuration.";
     package = mkOpt package pkgs.nixVersions.latest "Which nix package to use.";
+    useLix = mkBoolOpt false "Whether to replace Nix and dependent programs with Lix.";
 
     default-substituter = {
       url = mkOpt str "https://cache.nixos.org" "The url for the substituter.";
@@ -49,13 +50,23 @@ in
       '';
     };
 
+    nixpkgs.overlays = mkIf cfg.useLix [ (final: prev: {
+      inherit (prev.lixPackageSets.stable)
+        nixpkgs-review
+        # Below is broken as of 26/9/2025, see https://git.lix.systems/lix-project/lix/issues/980
+        # nix-direnv
+        nix-eval-jobs
+        nix-fast-build
+        colmena;
+    }) ];
+
     nix =
       let users = [ "root" config.pluskinda.user.name ] ++
         optional config.nix.sshServe.enable "nix-ssh" ++
         optional config.services.hydra.enable "hydra";
       in
       {
-        package = cfg.package;
+        package = if cfg.useLix then pkgs.lixPackageSets.stable.lix else cfg.package;
 
         settings = {
           experimental-features = "nix-command flakes";

@@ -9,13 +9,11 @@ with lib.pluskinda;
 
   pluskinda = {
     nix = {
-       # Overwritten by Lix, use nix_2_18_upstream to go back
-      package = pkgs.nixVersions.stable;
+      # Use Lix instead of Nix
+      useLix = true;
 
       extra-substituters = {
       "https://nix-gaming.cachix.org".key = "nix-gaming.cachix.org-1:nbjlureqMbRAxR1gJ/f3hxemL9svXaZF/Ees8vCUUs4=";
-      # Lix cache doesn't seem to be working yet?
-      "https://cache.lix.systems".key = "cache.lix.systems:aBnZUw8zA7H35Cz2RyKFVs3H4PlGTLawyY5KRbvJR8o=";
       };
     };
 

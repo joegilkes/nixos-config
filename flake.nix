@@ -11,12 +11,6 @@
     # NixPkgs Master
     master.url = "github:nixos/nixpkgs/master";
 
-    # Replace Nix with Lix https://lix.systems/
-    lix-module = {
-      url = "https://git.lix.systems/lix-project/nixos-module/archive/2.93.3-1.tar.gz";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     # Home Manager (release-25-05)
     home-manager.url = "github:nix-community/home-manager/master";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
@@ -87,16 +81,12 @@
           programs.nix-index-database.comma.enable = true;
         }
       ];
-      systems.hosts.attlerock.modules = with inputs; [ lix-module.nixosModules.default ];
-      systems.hosts.brittle-hollow.modules = with inputs; [ lix-module.nixosModules.default ];
       systems.hosts.giants-deep.modules = with inputs; [ 
-        lix-module.nixosModules.default 
         quadlet-nix.nixosModules.quadlet
       ];
       systems.hosts.interloper.modules = with inputs; [ 
         crowdsec.nixosModules.crowdsec
         crowdsec.nixosModules.crowdsec-firewall-bouncer
       ];
-      systems.hosts.timber-hearth.modules = with inputs; [ lix-module.nixosModules.default ];
     };
 }
