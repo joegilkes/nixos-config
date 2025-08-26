@@ -4,6 +4,7 @@ with lib;
 with lib.pluskinda;
 let
   cfg = config.pluskinda.hardware.audio;
+  musnixAvailable = builtins.hasAttr "musnix" options;
 in
 {
   options.pluskinda.hardware.audio = with types; {
@@ -36,7 +37,7 @@ in
 
     pluskinda.user.extraGroups = [ "audio" ];
 
-  } // mkIf (cfg.enable && cfg.use-musnix) {
+  } // optionalAttrs musnixAvailable {
     musnix = mkIf cfg.use-musnix {
       enable = true;
       rtcqs.enable = true;
