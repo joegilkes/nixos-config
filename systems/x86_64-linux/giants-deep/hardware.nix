@@ -98,7 +98,6 @@ in
     extraPackages = with pkgs; [ 
       intel-media-driver
       libvdpau-va-gl
-      intel-compute-runtime
       intel-ocl
       vpl-gpu-rt 
     ];
