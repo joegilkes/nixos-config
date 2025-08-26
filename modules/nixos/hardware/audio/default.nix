@@ -36,6 +36,7 @@ in
 
     pluskinda.user.extraGroups = [ "audio" ];
 
+  } // mkIf (cfg.enable && cfg.use-musnix) {
     musnix = mkIf cfg.use-musnix {
       enable = true;
       rtcqs.enable = true;
