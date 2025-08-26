@@ -36,9 +36,9 @@ in
 
     pluskinda.user.extraGroups = [ "audio" ];
 
-    musnix = {
-      enable = cfg.use-musnix;
-      rtcqs.enable = cfg.use-musnix;
+    musnix = mkIf cfg.use-musnix {
+      enable = true;
+      rtcqs.enable = true;
       kernel.realtime = cfg.use-musnix-rt;
     };
   };

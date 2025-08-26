@@ -74,7 +74,6 @@
       ];
 
       systems.modules.nixos = with inputs; [
-        musnix.nixosModules.musnix
         home-manager.nixosModules.home-manager
         agenix.nixosModules.default
         nix-index-database.nixosModules.nix-index {
@@ -82,6 +81,9 @@
           programs.command-not-found.enable = false;
           programs.nix-index-database.comma.enable = true;
         }
+      ];
+      systems.hosts.timber-hearth.modules = with inputs; [
+        musnix.nixosModules.musnix
       ];
       systems.hosts.giants-deep.modules = with inputs; [ 
         quadlet-nix.nixosModules.quadlet
