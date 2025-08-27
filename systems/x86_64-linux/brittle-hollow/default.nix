@@ -64,5 +64,8 @@ with lib.pluskinda;
     '';
   };
 
+  pluskinda.user.extraGroups = [ "optical" ];
+  users.groups.optical = {};
+
   system.stateVersion = "23.05";
 }
