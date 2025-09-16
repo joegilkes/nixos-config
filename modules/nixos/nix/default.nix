@@ -53,8 +53,6 @@ in
     nixpkgs.overlays = mkIf cfg.useLix [ (final: prev: {
       inherit (prev.lixPackageSets.stable)
         nixpkgs-review
-        # Below is broken as of 26/9/2025, see https://git.lix.systems/lix-project/lix/issues/980
-        # nix-direnv
         nix-eval-jobs
         nix-fast-build
         colmena;

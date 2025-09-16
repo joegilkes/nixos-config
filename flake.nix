@@ -2,7 +2,7 @@
   description = "Plus Kinda";
 
   inputs = {
-     # NixPkgs (nixos-24.11)
+     # NixPkgs (nixos-25.05)
     stable.url = "github:nixos/nixpkgs/nixos-25.05";
 
     # NixPkgs Unstable (nixos-unstable)
@@ -10,6 +10,8 @@
 
     # NixPkgs Master
     master.url = "github:nixos/nixpkgs/master";
+
+    lixfix.url = "github:nixos/nixpkgs/8d346e4f495938ac50bf38a75b53b49ea05b5b98";
 
     # Home Manager (release-25-05)
     home-manager.url = "github:nix-community/home-manager/master";
