@@ -11,8 +11,6 @@
     # NixPkgs Master
     master.url = "github:nixos/nixpkgs/master";
 
-    darktable-fix.url = "github:mjoerg/nixpkgs/osm-gps-map-fix-build";
-
     # Home Manager (release-25-05)
     home-manager.url = "github:nix-community/home-manager/master";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
