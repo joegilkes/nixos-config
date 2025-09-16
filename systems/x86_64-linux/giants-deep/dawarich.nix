@@ -6,7 +6,6 @@ with lib.pluskinda;
   age.secrets = {
     dawarich-db-password = {
       file = ../../../secrets/dawarich-db-password.age;
-      owner = "nextcloud";
     };
   };
 
