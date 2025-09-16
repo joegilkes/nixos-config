@@ -7,7 +7,7 @@ with lib.pluskinda;
     ./hardware.nix
     ./zed.nix
     ./homepage.nix
-    ./nextcloud.nix
+    # ./nextcloud.nix
     ./dawarich.nix
   ];
 
