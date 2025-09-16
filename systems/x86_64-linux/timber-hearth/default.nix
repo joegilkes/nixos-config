@@ -80,5 +80,10 @@ with lib.pluskinda;
   pluskinda.user.extraGroups = [ "optical" ];
   users.groups.optical = {};
 
+  networking.firewall = {
+    allowedTCPPorts = [ 25565 ];
+    allowedUDPPorts = [ 25565 ];
+  };
+
   system.stateVersion = "23.05";
 }
