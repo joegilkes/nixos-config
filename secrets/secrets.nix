@@ -27,4 +27,5 @@ in
   "dawarich-db-password.age".publicKeys = users ++ [ giants-deep ];
   "smtp2go_pass.age".publicKeys = users ++ [ interloper ];
   "smtp2go_zed_pass.age".publicKeys = users ++ [ giants-deep ];
+  "hardcover_api_token.age".publicKeys = users ++ [ giants-deep ];
 }

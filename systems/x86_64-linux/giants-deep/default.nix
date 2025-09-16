@@ -9,6 +9,7 @@ with lib.pluskinda;
     ./homepage.nix
     # ./nextcloud.nix
     ./dawarich.nix
+    ./calibre-web-automated.nix
   ];
 
   networking.hostName = "giants-deep";
@@ -43,7 +44,6 @@ with lib.pluskinda;
           public = "/mnt/gabbro/public";
         };
       };
-      calibre-web.libraryPath = "/mnt/gabbro/media/Books";
     };
 
     user.extraGroups = [ "jellyfin" "calibre" ];
