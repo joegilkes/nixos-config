@@ -14,7 +14,7 @@ in
     pluskinda = {
       apps = {
         calibre = enabled;
-        jellyfin = enabled;
+        # jellyfin = enabled; deprecated dependency, see app config.
         kodi = enabled;
         # spotify = enabled;
         tidal = enabled;
