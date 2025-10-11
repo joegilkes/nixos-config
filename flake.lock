@@ -174,22 +174,6 @@
         "type": "github"
       }
     },
-    "lixfix": {
-      "locked": {
-        "lastModified": 1757770265,
-        "narHash": "sha256-1rqI3J8RetbspIXjq4J9wNi+A4CJZQxxV4mmScbkrqo=",
-        "owner": "nixos",
-        "repo": "nixpkgs",
-        "rev": "8d346e4f495938ac50bf38a75b53b49ea05b5b98",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nixos",
-        "repo": "nixpkgs",
-        "rev": "8d346e4f495938ac50bf38a75b53b49ea05b5b98",
-        "type": "github"
-      }
-    },
     "master": {
       "locked": {
         "lastModified": 1760187623,
@@ -395,7 +379,6 @@
         "agenix": "agenix",
         "crowdsec": "crowdsec",
         "home-manager": "home-manager_2",
-        "lixfix": "lixfix",
         "master": "master",
         "musnix": "musnix",
         "nix-gaming": "nix-gaming",
