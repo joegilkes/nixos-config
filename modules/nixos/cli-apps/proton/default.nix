@@ -12,7 +12,7 @@ in
 
   config = mkIf cfg.enable {
     environment.systemPackages = with pkgs; [ 
-      proton-caller
+      # proton-caller # Removed form nixpkgs due to lack of maintenance
       protonup-qt
     ];
   };

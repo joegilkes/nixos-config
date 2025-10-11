@@ -15,7 +15,7 @@ in
       apps = {
         calibre = enabled;
         # jellyfin = enabled; deprecated dependency, see app config.
-        kodi = enabled;
+        # kodi = enabled; no longer required.
         # spotify = enabled;
         tidal = enabled;
         vlc = enabled;
