@@ -14,6 +14,7 @@ in
     pluskinda = {
       apps = {
         bottles = enabled;
+        bs-manager = enabled;
         gamemode = enabled;
         gamescope = enabled;
         heroic-launcher = enabled;
