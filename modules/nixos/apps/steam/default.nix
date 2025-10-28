@@ -30,7 +30,8 @@ in
 
     # Allow local network game transfers.
     networking.firewall = {
-      allowedTCPPorts = [ 27040 ];
+      allowedTCPPorts = [ 27037 27040 ];
+      allowedUDPPorts = [ 10400 10401 ];
     };
   };
 }
