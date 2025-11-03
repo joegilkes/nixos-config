@@ -19,6 +19,10 @@ in
   boot.kernelParams = [ "amd_iommu=on" ];
   boot.kernelModules = [ "kvm-amd" "coretemp" "zenpower" "sg" ];
   boot.extraModulePackages = [ ];
+  boot.extraModprobeConfig = ''
+    options kvm ignore_msrs=1 report_ignored_msrs=0
+    options kvm_amd nested=1
+  '';
 
   fileSystems."/" =
     { device = "/dev/disk/by-uuid/89341997-7c37-4a6c-a83d-37ee31770a55";
