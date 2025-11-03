@@ -18,7 +18,7 @@ in
         protonvpn-gui = enabled;
       };
       cli-apps = {
-        protonvpn-cli = enabled;
+        # protonvpn-cli = enabled; source code removed from upstream
       };
     };
   };

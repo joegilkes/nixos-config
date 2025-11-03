@@ -20,7 +20,7 @@ in
   config = mkIf cfg.enable {
     environment.systemPackages = with pkgs; [
       lshw
-      glxinfo
+      mesa-demos
       pciutils
       inxi
     ] ++ optionals (cfg.gpuType == "amd") amdPkgs ++ optionals (cfg.gpuType == "nvidia") nvidiaPkgs;

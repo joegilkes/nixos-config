@@ -15,9 +15,6 @@ in
 
     environment.systemPackages = with pkgs; [
       gnupg
-      pinentry
-      pinentry-curses
-      pinentry-qt
       libsecret
     ];
 

@@ -35,7 +35,6 @@ in
       lsof # list open files 
       neofetch
       lshw
-      glxinfo
       util-linux
     ] ++ ( if gpuType == "amd" then [ btop-rocm ] else [ btop ] );
   };

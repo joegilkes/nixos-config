@@ -10,5 +10,5 @@ in
   };
 
   config =
-    mkIf cfg.enable { environment.systemPackages = with pkgs; [ ryujinx-greemdev ]; };
+    mkIf cfg.enable { environment.systemPackages = with pkgs; [ ryubing ]; };
 }

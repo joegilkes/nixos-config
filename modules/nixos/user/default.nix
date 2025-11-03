@@ -17,7 +17,7 @@ let
 
     passthru = { fileName = defaultIconFileName; };
   };
-  propagatedIcon = pkgs.runCommandNoCC "propagated-icon"
+  propagatedIcon = pkgs.runCommand "propagated-icon"
     { passthru = { fileName = cfg.icon.fileName; }; }
     ''
       local target="$out/share/pluskinda-icons/user/${cfg.name}"
