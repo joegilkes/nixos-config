@@ -13,6 +13,7 @@ in
   config = mkIf cfg.enable {
     pluskinda = {
       apps = {
+        element = enabled;
         evolution = enabled;
         discord = enabled;
         slack = enabled;
