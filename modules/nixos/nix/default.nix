@@ -37,7 +37,7 @@ in
 
     environment.systemPackages = with pkgs; [
       pluskinda.nixos-revision
-      nixfmt-classic
+      nixfmt
       nix-prefetch-git
       nix-output-monitor
       nvd

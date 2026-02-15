@@ -5,10 +5,10 @@ with lib.pluskinda;
 let 
   cfg = config.pluskinda.apps.blender;
   amdPkgs = with pkgs; [
-    blender-hip
+    pkgsRocm.blender
   ];
   nvidiaPkgs = with pkgs; [
-    blender
+    pkgsCuda.blender
   ];
 in
 {
