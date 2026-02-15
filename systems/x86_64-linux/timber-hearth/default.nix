@@ -22,7 +22,6 @@ with lib.pluskinda;
       desktop = enabled;
       benchmarking = enabled;
       browsers = enabled;
-      compchem = enabled;
       creative = enabled;
       development = enabled;
       emulation = enabled;
