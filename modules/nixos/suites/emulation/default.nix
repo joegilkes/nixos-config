@@ -22,6 +22,19 @@ in
       cli-apps = {
         fusee-nano = enabled;
       };
+
+      user.extraGroups = [ "nintendo_switch" ];
     };
+
+    users.groups = {
+      nintendo_switch = { };
+    };
+
+    services.udev.extraRules = ''
+      # Nintendo Switch RCM injection
+      SUBSYSTEMS=="usb", ATTRS{manufacturer}=="NVIDIA Corp.", ATTRS{product}=="APX", GROUP="nintendo_switch"
+      # nxdumptool USB dumping
+      SUBSYSTEM=="usb", ATTRS{idVendor}=="057e", ATTRS{idProduct}=="3000", TAG+="uaccess", MODE="0666"
+    '';
   };
 }
