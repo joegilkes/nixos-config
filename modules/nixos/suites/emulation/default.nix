@@ -15,6 +15,7 @@ in
     pluskinda = {
       apps = {
         # dolphin = enabled;  Disabled while not being used and it keeps recompiling from scratch.
+        eden = enabled;
         ryujinx = enabled;
         pcsx2 = enabled;
         rpcs3 = enabled;
