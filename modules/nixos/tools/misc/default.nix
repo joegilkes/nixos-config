@@ -33,7 +33,7 @@ in
       strace # system call monitor
       ltrace # library call monitor
       lsof # list open files 
-      neofetch
+      fastfetch
       lshw
       util-linux
     ] ++ ( if gpuType == "amd" then [ btop-rocm ] else [ btop ] );
