@@ -20,6 +20,9 @@ in
       apps = {
         proton-pass = enabled;
       };
+      tools = {
+        appimage = enabled;
+      };
     };
   };
 }
