@@ -12,5 +12,6 @@ in
 
   config = mkIf cfg.enable {
     services.desktopManager.plasma6 = enabled;
+    programs.ssh.askPassword = mkForce "${pkgs.kdePackages.ksshaskpass.out}/bin/ksshaskpass";
   };
 }
