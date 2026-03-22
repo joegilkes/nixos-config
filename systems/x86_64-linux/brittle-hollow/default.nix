@@ -29,6 +29,9 @@ with lib.pluskinda;
     services = {
       virtualisation = enabled;
     };
+
+    # Trial running KDE at the same time as GNOME.
+    desktop.kde = enabled;
   };
 
   services.openssh.settings = {
