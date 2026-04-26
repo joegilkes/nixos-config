@@ -94,6 +94,7 @@ in
             enableCompletion = true;
             autosuggestion.enable = true;
             syntaxHighlighting.enable = true;
+            dotDir = "${config.home-manager.users.${config.pluskinda.user.name}.xdg.configHome}/zsh";
 
             oh-my-zsh = {
               enable = true;
