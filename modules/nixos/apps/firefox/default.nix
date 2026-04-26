@@ -32,11 +32,10 @@ in
       extraOptions = {
         programs.firefox = {
           enable = true;
-          package = pkgs.firefox.override (
-            {
+          package = pkgs.firefox.override {
               cfg.enableGnomeExtensions = config.pluskinda.desktop.gnome.enable;
-            }
-          );
+            };
+          configPath = "${config.home-manager.users.${config.pluskinda.user.name}.xdg.configHome}/mozilla/firefox";
           profiles.${config.pluskinda.user.name} = {
             inherit (cfg) extraConfig userChrome settings;
             id = 0;
