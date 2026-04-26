@@ -28,6 +28,7 @@ in
         # star-citizen = enabled; # disabled while there is a lix bug with npins dependency fetching
         steam = enabled;
         steamtinkerlaunch = enabled;
+        ultrastar = enabled;
         winetricks = enabled;
       };
 
