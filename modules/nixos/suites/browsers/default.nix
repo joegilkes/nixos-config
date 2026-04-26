@@ -15,10 +15,7 @@ in
       apps = {
         chrome = enabled;
         firefox = enabled;
-        protonvpn-gui = enabled;
-      };
-      cli-apps = {
-        # protonvpn-cli = enabled; source code removed from upstream
+        proton-vpn = enabled;
       };
     };
   };
