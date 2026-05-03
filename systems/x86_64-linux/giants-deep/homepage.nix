@@ -16,7 +16,7 @@ in
   services.homepage-dashboard = {
     enable = true;
     openFirewall = true;
-    environmentFile = config.age.secrets.homepage-env.path;
+    environmentFile = [ config.age.secrets.homepage-env.path ];
     settings = {
       title = "Dashboard - ${hname}";
       headerstyle = "clean";
