@@ -29,7 +29,6 @@ in
       dark = mkOpt (oneOf [ str package ]) pkgs.pluskinda.wallpapers.nord-rainbow-dark-nix "The dark wallpaper to use.";
     };
     color-scheme = mkOpt (enum [ "light" "dark" ]) "dark" "The color scheme to use.";
-    wayland = mkBoolOpt true "Whether or not to use Wayland.";
     suspend = mkBoolOpt true "Whether or not to suspend the machine after inactivity.";
     monitors = mkOpt (nullOr path) null "The monitors.xml file to create.";
     extensions = mkOpt (listOf package) [ ] "Extra Gnome extensions to install.";
@@ -132,7 +131,6 @@ in
 
       displayManager.gdm = {
         enable = true;
-        wayland = cfg.wayland;
         autoSuspend = cfg.suspend;
       };
       desktopManager.gnome.enable = true;
@@ -233,7 +231,7 @@ in
           "org/gnome/mutter" = {
             edge-tiling = true;
             dynamic-workspaces = false;
-            experimental-features = [] ++ optional (cfg.wayland && cfg.enableExperimentalVRR) "variable-refresh-rate";
+            experimental-features = [] ++ optional cfg.enableExperimentalVRR "variable-refresh-rate";
           };
 
           "org/gnome/shell/extensions/just-perfection" = {
