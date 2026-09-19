@@ -68,7 +68,6 @@ in
       gnome-calendar
       gedit
       gnome-tour
-      gnome-photos
       gnome-maps
     ]);
 
