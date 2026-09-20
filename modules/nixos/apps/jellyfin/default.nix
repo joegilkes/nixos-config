@@ -1,4 +1,4 @@
-{ options, config, lib, pkgs, ... }:
+{  options, config, lib, pkgs, ... }:
 
 # qtwebkit 5 is EOL and has a lot of vulnerabilities, needs to be explicitly allowed
 # for jellyfin-media-player to be enabled.
@@ -7,11 +7,11 @@
 # update to qtwebkit 6 for jellyfin media player
 
 with lib;
-with lib.pluskinda;
-let cfg = config.pluskinda.apps.jellyfin;
+with (import ../../../../lib/module-helpers.nix { inherit lib; });
+let cfg = config.programs.jellyfin;
 in
 {
-  options.pluskinda.apps.jellyfin = with types; {
+  options.programs.jellyfin = with types; {
     enable = mkBoolOpt false "Whether or not to enable the Jellyfin client.";
   };
 

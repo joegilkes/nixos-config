@@ -1,11 +1,11 @@
-{ options, config, lib, pkgs, ... }:
+{  options, config, lib, pkgs, ... }:
 
 with lib;
-with lib.pluskinda;
-let cfg = config.pluskinda.cli-apps.mprime;
+with (import ../../../../lib/module-helpers.nix { inherit lib; });
+let cfg = config.programs.mprime;
 in
 {
-  options.pluskinda.cli-apps.mprime = with types; {
+  options.programs.mprime = with types; {
     enable = mkBoolOpt false "Whether or not to enable mprime.";
   };
 

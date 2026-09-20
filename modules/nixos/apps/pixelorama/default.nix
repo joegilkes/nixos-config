@@ -1,12 +1,12 @@
-{ options, config, lib, pkgs, ... }:
+{  options, config, lib, pkgs, ... }:
 
 with lib;
-with lib.pluskinda;
+with (import ../../../../lib/module-helpers.nix { inherit lib; });
 let 
-  cfg = config.pluskinda.apps.pixelorama;
+  cfg = config.programs.pixelorama;
 in
 {
-  options.pluskinda.apps.pixelorama = with types; {
+  options.programs.pixelorama = with types; {
     enable = mkBoolOpt false "Whether or not to enable Pixelorama.";
   };
 

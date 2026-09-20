@@ -1,12 +1,12 @@
-{ options, config, lib, pkgs, ... }:
+{  options, config, lib, pkgs, ... }:
 
 with lib;
-with lib.pluskinda;
+with (import ../../../../lib/module-helpers.nix { inherit lib; });
 let 
-  cfg = config.pluskinda.apps.mangohud;
+  cfg = config.programs.mangohud;
 in
 {
-  options.pluskinda.apps.mangohud = with types; {
+  options.programs.mangohud = with types; {
     enable = mkBoolOpt false "Whether or not to enable MangoHUD.";
   };
 

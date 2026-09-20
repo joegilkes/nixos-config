@@ -1,11 +1,11 @@
-{ options, config, pkgs, lib, ... }:
+{  options, config, pkgs, lib, ... }:
 
 with lib;
-with lib.pluskinda;
-let cfg = config.pluskinda.hardware.storage;
+with (import ../../../../lib/module-helpers.nix { inherit lib; });
+let cfg = config.hardware.storage;
 in
 {
-  options.pluskinda.hardware.storage = with types; {
+  options.hardware.storage = with types; {
     enable = mkBoolOpt false
       "Whether or not to enable support for extra storage devices.";
   };

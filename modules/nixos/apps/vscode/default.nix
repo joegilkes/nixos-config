@@ -1,18 +1,14 @@
-{ options, config, lib, pkgs, ... }:
+{  options, config, lib, pkgs, ... }:
 
 with lib;
-with lib.pluskinda;
+with (import ../../../../lib/module-helpers.nix { inherit lib; });
 let
-  cfg = config.pluskinda.apps.vscode;
-  texenabled = config.pluskinda.apps.texlive.enable;
+  cfg = config.programs.vscode;
+  texenabled = config.programs.texlive.enable;
 in
 {
-  options.pluskinda.apps.vscode = with types; {
-    enable = mkBoolOpt false "Whether or not to enable Visual Studio Code.";
-  };
-
   config = mkIf cfg.enable {
-    pluskinda.home = {
+    home = {
       extraOptions = {
         programs.vscode = {
           enable = true;

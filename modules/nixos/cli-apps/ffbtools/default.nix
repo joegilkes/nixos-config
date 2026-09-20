@@ -1,17 +1,17 @@
-{ options, config, lib, pkgs, ... }:
+{  options, config, lib, pkgs, ... }:
 
 with lib;
-with lib.pluskinda;
-let cfg = config.pluskinda.cli-apps.ffbtools;
+with (import ../../../../lib/module-helpers.nix { inherit lib; });
+let cfg = config.programs.ffbtools;
 in
 {
-  options.pluskinda.cli-apps.ffbtools = with types; {
+  options.programs.ffbtools = with types; {
     enable = mkBoolOpt false "Whether or not to enable ffbtools.";
   };
 
   config =
     mkIf cfg.enable { environment.systemPackages = [ 
-      pkgs.pluskinda.ffbwrap
+      pkgs.ffbwrap
     ]; 
   };
 }

@@ -1,12 +1,14 @@
-{ config, lib, pkgs, modulesPath, inputs, ...}:
+{ config, lib, pkgs, modulesPath, ...}:
 
 let
-  inherit (inputs) nixos-hardware;
+  nixos-hardware = (import ../../../npins).nixos-hardware.outPath;
 in
 {
-  imports = with nixos-hardware.nixosModules; [
+  nixpkgs.hostPlatform = lib.mkDefault "aarch64-linux";
+
+  imports = [
     (modulesPath + "/installer/scan/not-detected.nix")
-    raspberry-pi-4
+    "${nixos-hardware}/raspberry-pi/4"
   ];
 
   boot.initrd.availableKernelModules = [ "xhci_pci" "usb_storage" "usbhid" ];

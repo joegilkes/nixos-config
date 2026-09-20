@@ -1,12 +1,12 @@
-{ options, config, lib, pkgs, ... }:
+{  options, config, lib, pkgs, ... }:
 
 with lib;
-with lib.pluskinda;
+with (import ../../../../lib/module-helpers.nix { inherit lib; });
 let
-  cfg = config.pluskinda.apps.nexusmods-app;
+  cfg = config.programs.nexusmods-app;
 in
 {
-  options.pluskinda.apps.nexusmods-app = with types; {
+  options.programs.nexusmods-app = with types; {
     enable = mkBoolOpt false "Whether or not to enable the NexusMods.App mod manager.";
   };
 

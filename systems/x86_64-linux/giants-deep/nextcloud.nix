@@ -1,7 +1,7 @@
 { config, lib, pkgs, ...}:
 
 with lib;
-with lib.pluskinda;
+with (import ../../../../lib/module-helpers.nix { inherit lib; });
 {
   age.secrets = {
     nextcloud-pass = {

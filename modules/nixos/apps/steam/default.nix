@@ -1,17 +1,12 @@
-{ options, config, lib, pkgs, ... }:
+{  options, config, lib, pkgs, ... }:
 
 with lib;
-with lib.pluskinda;
+with (import ../../../../lib/module-helpers.nix { inherit lib; });
 let
-  cfg = config.pluskinda.apps.steam;
+  cfg = config.programs.steam;
 in
 {
-  options.pluskinda.apps.steam = with types; {
-    enable = mkBoolOpt false "Whether or not to enable support for Steam.";
-  };
-
   config = mkIf cfg.enable {
-    programs.steam.enable = true;
     programs.steam.remotePlay.openFirewall = true;
 
     hardware.steam-hardware.enable = true;

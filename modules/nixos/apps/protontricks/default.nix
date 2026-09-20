@@ -1,12 +1,12 @@
-{ options, config, lib, pkgs, ... }:
+{  options, config, lib, pkgs, ... }:
 
 with lib;
-with lib.pluskinda;
+with (import ../../../../lib/module-helpers.nix { inherit lib; });
 let
-  cfg = config.pluskinda.apps.protontricks;
+  cfg = config.programs.protontricks;
 in
 {
-  options.pluskinda.apps.protontricks = with types; {
+  options.programs.protontricks = with types; {
     enable = mkBoolOpt false "Whether or not to enable Protontricks.";
   };
 

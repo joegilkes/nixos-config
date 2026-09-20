@@ -1,12 +1,12 @@
-{ options, config, lib, pkgs, ... }:
+{  options, config, lib, pkgs, ... }:
 
 with lib;
-with lib.pluskinda;
+with (import ../../../../lib/module-helpers.nix { inherit lib; });
 let 
-  cfg = config.pluskinda.apps.godot;
+  cfg = config.programs.godot;
 in
 {
-  options.pluskinda.apps.godot = with types; {
+  options.programs.godot = with types; {
     enable = mkBoolOpt false "Whether or not to enable Godot.";
   };
 

@@ -1,9 +1,9 @@
-{ options, config, pkgs, lib, ... }:
+{  options, config, pkgs, lib, ... }:
 
 with lib;
-with lib.pluskinda;
+with (import ../../../lib/module-helpers.nix { inherit lib; });
 let
-  cfg = config.pluskinda.user;
+  cfg = config.user;
   defaultIconFileName = "profile.jpg";
   defaultIcon = pkgs.stdenvNoCC.mkDerivation {
     name = "default-icon";
@@ -20,14 +20,14 @@ let
   propagatedIcon = pkgs.runCommand "propagated-icon"
     { passthru = { fileName = cfg.icon.fileName; }; }
     ''
-      local target="$out/share/pluskinda-icons/user/${cfg.name}"
+      local target="$out/share/user-icons/user/${cfg.name}"
       mkdir -p "$target"
 
       cp ${cfg.icon} "$target/${cfg.icon.fileName}"
     '';
 in
 {
-  options.pluskinda.user = with types; {
+  options.user = with types; {
     name = mkOpt str "joe" "The name to use for the user account.";
     fullName = mkOpt str "Joe Gilkes" "The full name of the user.";
     email = mkOpt str "j.gilkes@warwick.ac.uk" "The email of the user.";
@@ -52,7 +52,7 @@ in
       histFile = "$XDG_CACHE_HOME/zsh.history";
     };
 
-    pluskinda.home = {
+    home = {
       file = {
         "Desktop/.keep".text = "";
         "Documents/.keep".text = "";
@@ -94,15 +94,11 @@ in
             enableCompletion = true;
             autosuggestion.enable = true;
             syntaxHighlighting.enable = true;
-            dotDir = "${config.home-manager.users.${config.pluskinda.user.name}.xdg.configHome}/zsh";
+            dotDir = "${config.home-manager.users.${config.user.name}.xdg.configHome}/zsh";
 
             oh-my-zsh = {
               enable = true;
               plugins = [ "git" ];
-            };
-
-            shellAliases = {
-              update = "sudo nixos-rebuild switch";
             };
 
             plugins = [
@@ -121,7 +117,7 @@ in
             initContent = strings.concatStringsSep "\n" (
               [
                 "eval \"$(starship init zsh)\""
-              ] ++ lists.optionals (config.pluskinda.tools.direnv.enable) [
+              ] ++ lists.optionals (config.programs.direnv.enable) [
                 "eval \"$(direnv hook zsh)\""
               ]
             );

@@ -1,13 +1,12 @@
-{ options, config, lib, pkgs, ... }:
+{  options, config, lib, pkgs, ... }:
 
 with lib;
-with lib.pluskinda;
+with (import ../../../../lib/module-helpers.nix { inherit lib; });
 let
-  cfg = config.pluskinda.services.glances;
+  cfg = config.services.glances;
 in
 {
-  options.pluskinda.services.glances = with types; {
-    enable = mkBoolOpt false "Whether to enable the Glances web server.";
+  options.services.glances = with types; {
     port = mkOpt port 61208 "TCP port to run the Glances web server through";
     refreshInterval = mkOpt int 2 "WebUI refresh interval, in seconds.";
   };

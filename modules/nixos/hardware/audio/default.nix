@@ -1,13 +1,13 @@
-{ options, config, pkgs, lib, ... }:
+{  options, config, pkgs, lib, ... }:
 
 with lib;
-with lib.pluskinda;
+with (import ../../../../lib/module-helpers.nix { inherit lib; });
 let
-  cfg = config.pluskinda.hardware.audio;
+  cfg = config.hardware.audio;
   musnixAvailable = builtins.hasAttr "musnix" options;
 in
 {
-  options.pluskinda.hardware.audio = with types; {
+  options.hardware.audio = with types; {
     enable = mkBoolOpt false "Whether or not to enable audio support.";
     use-musnix = mkBoolOpt false "Whether or not to enable musnix module.";
     use-musnix-rt = mkBoolOpt false "Whether or not to recompile the kernel with musnix RT tweaks.";
@@ -35,7 +35,7 @@ in
       pavucontrol
     ] ++ cfg.extra-packages;
 
-    pluskinda.user.extraGroups = [ "audio" ];
+    user.extraGroups = [ "audio" ];
 
   } // optionalAttrs musnixAvailable {
     musnix = mkIf cfg.use-musnix {

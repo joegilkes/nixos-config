@@ -1,12 +1,12 @@
-{ options, config, lib, pkgs, ... }:
+{  options, config, lib, pkgs, ... }:
 
 with lib;
-with lib.pluskinda;
+with (import ../../../../lib/module-helpers.nix { inherit lib; });
 let
-  cfg = config.pluskinda.apps.prismlauncher;
+  cfg = config.programs.prismlauncher;
 in
 {
-  options.pluskinda.apps.prismlauncher = with types; {
+  options.programs.prismlauncher = with types; {
     enable = mkBoolOpt false "Whether or not to enable Prism Launcher.";
   };
 

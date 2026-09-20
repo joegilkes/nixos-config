@@ -1,5 +1,37 @@
-# Plus *Kinda*
+# NixOS Configuration
 
-[![Flake Checker](https://github.com/joegilkes/nixos-config/actions/workflows/main.yml/badge.svg?branch=main)](https://github.com/joegilkes/nixos-config/actions/workflows/main.yml)
+[![npins Checker](https://github.com/joegilkes/nixos-config/actions/workflows/main.yml/badge.svg?branch=main)](https://github.com/joegilkes/nixos-config/actions/workflows/main.yml)
 
-An attempt at recreating Jake Hamilton's [Plus Ultra](https://github.com/jakehamilton/config) Nix config, which makes heavy use of his [Snowfall](https://github.com/snowfallorg/lib) library for managing Nix flake modules.
+Dependencies are pinned with [npins](https://github.com/andir/npins), and all
+repository modules are imported explicitly.
+
+## Rebuilding a system
+
+After applying the configuration, use the installed `update` command. It
+selects the host configuration from the current hostname and evaluates the
+pinned Nixpkgs source:
+
+```sh
+update switch
+```
+
+Set `NIXOS_HOST` when rebuilding a different host, or pass additional
+`nixos-rebuild` options after the action:
+
+```sh
+NIXOS_HOST=giants-deep update build --show-trace
+```
+
+The available hosts are `attlerock`, `brittle-hollow`, `giants-deep`,
+`timber-hearth`, and `interloper`.
+
+## Updating dependencies
+
+Use the system-provided `npins` command from the repository root to inspect,
+verify, or update pinned sources:
+
+```sh
+npins --directory npins show
+npins --directory npins verify
+npins --directory npins update
+```

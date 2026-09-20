@@ -1,12 +1,12 @@
-{ config, lib, pkgs, modulesPath, inputs, ... }:
+{ config, lib, pkgs, modulesPath, ... }:
 
 let
-  inherit (inputs) nixos-hardware;
+  nixos-hardware = (import ../../../npins).nixos-hardware.outPath;
 in
 {
-  imports = with nixos-hardware.nixosModules; [ 
+  imports = [
     (modulesPath + "/installer/scan/not-detected.nix")
-    microsoft-surface-pro-intel
+    "${nixos-hardware}/microsoft/surface/surface-pro-intel"
   ];
 
   boot.initrd.availableKernelModules = [ "xhci_pci" "nvme" "usbhid" "pinctrl_sunrisepoint" ];

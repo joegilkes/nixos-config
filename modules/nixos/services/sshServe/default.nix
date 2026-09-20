@@ -5,9 +5,9 @@
 { config, lib, pkgs, ... }:
 
 with lib;
-with lib.pluskinda;
+with (import ../../../../lib/module-helpers.nix { inherit lib; });
 let
-  cfg = config.pluskinda.services.sshServe;
+  cfg = config.services.sshServe;
   template = input: command: "    ${lib.escapeShellArg input})\n      ${lib.escapeShellArgs command}\n      ;;";
   buildCommand = commands: pkgs.writeShellApplication {
     name = "nix-serve-forcecommand";
@@ -45,7 +45,7 @@ let
   );
 in
 {
-  options.pluskinda.services.sshServe = {
+  options.services.sshServe = {
     enable = mkBoolOpt false "Whether to enable serving the Nix store as a remote store via SSH.";
     write = mkBoolOpt false "Whether to enable writing to the Nix store as a remote store via SSH. Note: by default, the sshServe user is named nix-ssh and is not a trusted-user. nix-ssh should be added to the {option}`nix.sshServe.trusted` option in most use cases, such as allowing remote building of derivations to anonymous people based on ssh key";
     trusted = mkBoolOpt false "Whether to add the nix-ssh user to the nix.settings.trusted-users option.";
