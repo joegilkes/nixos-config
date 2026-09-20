@@ -1,11 +1,11 @@
-{ options, config, lib, pkgs, ... }:
+{  options, config, lib, pkgs, ... }:
 
 with lib;
-with lib.pluskinda;
-let cfg = config.pluskinda.apps.eden;
+with (import ../../../../lib/module-helpers.nix { inherit lib; });
+let cfg = config.programs.eden;
 in
 {
-  options.pluskinda.apps.eden = with types; {
+  options.programs.eden = with types; {
     enable = mkBoolOpt false "Whether or not to enable Eden (Switch emulator).";
   };
 

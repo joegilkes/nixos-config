@@ -1,9 +1,9 @@
-{ options, config, lib, pkgs, ... }:
+{  options, config, lib, pkgs, ... }:
 
 with lib;
-with lib.pluskinda;
+with (import ../../../../lib/module-helpers.nix { inherit lib; });
 let 
-  cfg = config.pluskinda.tools.diagnostics;
+  cfg = config.programs.diagnostics;
   amdPkgs = with pkgs; [ 
     nvtopPackages.amd
     radeontop
@@ -12,7 +12,7 @@ let
   nvidiaPkgs = with pkgs; [ nvtop ];
 in
 {
-  options.pluskinda.tools.diagnostics = with types; {
+  options.programs.diagnostics = with types; {
     enable = mkBoolOpt false "Whether or not to enable diagnostic utilities.";
     gpuType = mkOpt str "none" "GPU type, for installing vendor-specific utilities [none, amd, nvidia]";
   };

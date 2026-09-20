@@ -1,15 +1,15 @@
-{ options, config, pkgs, lib, inputs, ... }:
+{  options, config, pkgs, lib, inputs, ... }:
 
 with lib;
-with lib.pluskinda;
-let cfg = config.pluskinda.home;
+with (import ../../../lib/module-helpers.nix { inherit lib; });
+let cfg = config.home;
 in
 {
   # imports = with inputs; [
   #   home-manager.nixosModules.home-manager
   # ];
 
-  options.pluskinda.home = with types; {
+  options.home = with types; {
     file = mkOpt attrs { }
       (mdDoc "A set of files to be managed by home-manager's `home.file`.");
     configFile = mkOpt attrs { }
@@ -18,19 +18,17 @@ in
   };
 
   config = {
-    pluskinda.home.extraOptions = {
-      home.stateVersion = config.system.stateVersion;
-      home.file = mkAliasDefinitions options.pluskinda.home.file;
-      xdg.enable = true;
-      xdg.configFile = mkAliasDefinitions options.pluskinda.home.configFile;
-    };
-
     home-manager = {
       useUserPackages = true;
       useGlobalPkgs = true;
 
-      users.${config.pluskinda.user.name} =
-        mkAliasDefinitions options.pluskinda.home.extraOptions;
+      users.${config.user.name} =
+        {
+          home.file = mkAliasDefinitions options.home.file;
+          xdg.enable = true;
+          xdg.configFile = mkAliasDefinitions options.home.configFile;
+        }
+        // mkAliasDefinitions options.home.extraOptions;
     };
   };
 }

@@ -18,7 +18,10 @@ let
       };
     in
     pkg;
-  names = builtins.map (lib.snowfall.path.get-file-name-without-extension) images;
+  nameWithoutExtension = image:
+    builtins.replaceStrings [ ".png" ".jpg" ".jpeg" ] [ "" "" "" ]
+      (builtins.baseNameOf image);
+  names = builtins.map nameWithoutExtension images;
   wallpapers = lib.foldl
     (acc: image:
       let
@@ -26,7 +29,7 @@ let
         # lib.getFileName is a helper to get the basename of
         # the file and then take the name before the file extension.
         # eg. mywallpaper.png -> mywallpaper
-        name = lib.snowfall.path.get-file-name-without-extension image;
+        name = nameWithoutExtension image;
       in
       acc // { "${name}" = mkWallpaper name (./wallpapers + "/${image}"); })
     { }
@@ -39,7 +42,7 @@ let
     wallpapers;
 in
 pkgs.stdenvNoCC.mkDerivation {
-  name = "pluskinda-wallpapers";
+  name = "wallpapers";
   src = ./wallpapers;
 
   installPhase = ''
@@ -53,6 +56,5 @@ pkgs.stdenvNoCC.mkDerivation {
   meta = with lib; {
     description = "Some good wallpapers!";
     license = licenses.asl20;
-    maintainers = with maintainers; [ jakehamilton ];
   };
 }

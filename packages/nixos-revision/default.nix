@@ -5,7 +5,6 @@
 }:
 
 let
-  inherit (lib.pluskinda) override-meta;
 
   new-meta = with lib; {
     description = "A helper show the current git revision of the system configuration.";
@@ -70,4 +69,6 @@ let
       fi
     '';
 in
-override-meta new-meta package
+package.overrideAttrs (attrs: {
+  meta = (attrs.meta or { }) // new-meta;
+})

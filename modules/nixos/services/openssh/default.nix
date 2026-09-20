@@ -1,19 +1,17 @@
 { lib, config, options, ... }:
 
 with lib;
-with lib.pluskinda;
+with (import ../../../../lib/module-helpers.nix { inherit lib; });
 let
-  cfg = config.pluskinda.services.openssh;
+  cfg = config.services.openssh;
 in
 {
-  options.pluskinda.services.openssh = with types; {
-    enable = mkBoolOpt false "Whether or not to configure OpenSSH support.";
+  options.services.openssh = with types; {
     allowPasswordAuth = mkBoolOpt true "Whether to allow SSH password authentication.";
   };
 
   config = mkIf cfg.enable {
     services.openssh = {
-      enable = true;
       settings = {
         X11Forwarding = true;
         PermitRootLogin = "no";

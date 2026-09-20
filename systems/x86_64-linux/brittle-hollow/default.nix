@@ -1,35 +1,32 @@
 { pkgs, config, lib, channel, ...}:
 
 with lib;
-with lib.pluskinda;
+with (import ../../../lib/module-helpers.nix { inherit lib; });
 {
-  imports = [ ./hardware.nix ];
+  imports = [
+    ../../../configuration.nix
+    ./hardware.nix
+  ];
 
   networking.hostName = "brittle-hollow";
 
-  pluskinda = {
-    nix = {
-      # Use Lix instead of Nix
-      useLix = true;
+  nix = {
+    # Use Lix instead of Nix
+    useLix = true;
 
-      extra-substituters = {
-        "ssh-ng://builder".key = "timber-hearth:P0qnfshi3IsdI0gMkeFn3o1kik55uWpBqHaiYVC8UQY=";
-      };
-    };
-
-    suites = {
-      common = enabled;
-      desktop = enabled;
-      browsers = enabled;
-      development = enabled;
-      media = enabled;
-      social = enabled;
-    };
-
-    services = {
-      virtualisation = enabled;
+    extra-substituters = {
+      "ssh-ng://builder".key = "timber-hearth:P0qnfshi3IsdI0gMkeFn3o1kik55uWpBqHaiYVC8UQY=";
     };
   };
+
+  profiles.common.enable = true;
+  profiles.desktop.enable = true;
+  profiles.browsers.enable = true;
+  profiles.development.enable = true;
+  profiles.media.enable = true;
+  profiles.social.enable = true;
+
+  services.virtualisation.enable = true;
 
   services.openssh.settings = {
     AllowTCPForwarding = "yes";
@@ -64,8 +61,9 @@ with lib.pluskinda;
     '';
   };
 
-  pluskinda.user.extraGroups = [ "optical" ];
+  user.extraGroups = [ "optical" ];
   users.groups.optical = {};
 
   system.stateVersion = "23.05";
+  home-manager.users.joe.home.stateVersion = "23.05";
 }

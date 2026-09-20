@@ -1,12 +1,12 @@
-{ options, config, lib, pkgs, ... }:
+{  options, config, lib, pkgs, ... }:
 
 with lib;
-with lib.pluskinda;
+with (import ../../../../lib/module-helpers.nix { inherit lib; });
 let
-  cfg = config.pluskinda.cli-apps.fusee-nano;
+  cfg = config.programs.fusee-nano;
 in
 {
-  options.pluskinda.cli-apps.fusee-nano = with types; {
+  options.programs.fusee-nano = with types; {
     enable = mkBoolOpt false "Whether or not to enable fusee-nano.";
   };
 

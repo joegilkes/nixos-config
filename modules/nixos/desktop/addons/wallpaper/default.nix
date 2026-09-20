@@ -1,19 +1,19 @@
 { options, config, pkgs, lib, ... }:
 
 with lib;
-with lib.pluskinda;
+with (import ../../../../../lib/module-helpers.nix { inherit lib; });
 let
-  cfg = config.pluskinda.desktop.addons.wallpapers;
-  inherit (pkgs.pluskinda) wallpapers;
+  cfg = config.services.desktop.addons.wallpapers;
+  wallpapers = pkgs.wallpapers;
 in
 {
-  options.pluskinda.desktop.addons.wallpapers = with types; {
+  options.services.desktop.addons.wallpapers = with types; {
     enable = mkBoolOpt false
       "Whether or not to add wallpapers to ~/Pictures/wallpapers.";
   };
 
   config = {
-    pluskinda.home.file = lib.foldl
+    home.file = lib.foldl
       (acc: name:
         let wallpaper = wallpapers.${name};
         in

@@ -1,12 +1,12 @@
-{ options, config, lib, pkgs, ... }:
+{  options, config, lib, pkgs, ... }:
 
 with lib;
-with lib.pluskinda;
+with (import ../../../../lib/module-helpers.nix { inherit lib; });
 let 
-  cfg = config.pluskinda.apps.star-citizen;
+  cfg = config.programs.star-citizen;
 in
 {
-  options.pluskinda.apps.star-citizen = with types; {
+  options.programs.star-citizen = with types; {
     enable = mkBoolOpt false "Whether or not to enable Star Citizen.";
     location = mkOpt str "$HOME/MyGames/star-citizen" "Location to install Star Citizen launcher.";
   };

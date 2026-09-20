@@ -1,39 +1,38 @@
 { pkgs, config, lib, channel, ...}:
 
 with lib;
-with lib.pluskinda;
+with (import ../../../lib/module-helpers.nix { inherit lib; });
 {
-  imports = [ ./hardware.nix ];
+  imports = [
+    ../../../configuration.nix
+    ./hardware.nix
+  ];
 
   networking.hostName = "attlerock";
 
-  pluskinda = {
-    hardware.surface = enabled;
+  hardware.surface.enable = true;
 
-    nix = {
-      # Use Lix instead of Nix
-      useLix = true;
+  nix = {
+    # Use Lix instead of Nix
+    useLix = true;
 
-      extra-substituters = {
-        "ssh-ng://builder".key = "timber-hearth:P0qnfshi3IsdI0gMkeFn3o1kik55uWpBqHaiYVC8UQY=";
-      };
+    extra-substituters = {
+      "ssh-ng://builder".key = "timber-hearth:P0qnfshi3IsdI0gMkeFn3o1kik55uWpBqHaiYVC8UQY=";
     };
-
-    suites = {
-      common = enabled;
-      desktop = enabled;
-      browsers = enabled;
-      development = enabled;
-      media = enabled;
-    };
-
-    apps.xournalpp = enabled;
-    apps.microsoft-edge = enabled;
-    cli-apps.android-platform-tools.enable = mkForce false;
-    cli-apps.fusee-nano.enable = true;
-
-    desktop.gnome.wallpaper.dark = pkgs.pluskinda.wallpapers.contour_sunrise_bi;
   };
+
+  profiles.common.enable = true;
+  profiles.desktop.enable = true;
+  profiles.browsers.enable = true;
+  profiles.development.enable = true;
+  profiles.media.enable = true;
+
+  programs.xournalpp.enable = true;
+  programs.microsoft-edge.enable = true;
+  programs.android-platform-tools.enable = mkForce false;
+  programs.fusee-nano.enable = true;
+
+  services.desktop.gnome.wallpaper.dark = pkgs.wallpapers.contour_sunrise_bi;
 
   programs.ssh.extraConfig = ''
     Host builder
@@ -64,4 +63,5 @@ with lib.pluskinda;
   };
 
   system.stateVersion = "24.05";
+  home-manager.users.joe.home.stateVersion = "24.05";
 }

@@ -1,3 +1,4 @@
+# Helpers for composing generated file contents from existing files and text.
 { lib, ... }:
 
 rec {

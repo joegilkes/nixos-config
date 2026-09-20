@@ -1,5 +1,7 @@
 { inputs, ... }:
 
 final: prev: {
-  star-citizen = inputs.nix-gaming.packages.${prev.system}.star-citizen;
+  star-citizen = final.callPackage "${inputs.nix-gaming.outPath}/pkgs/star-citizen" {
+    pkgs = final;
+  };
 }

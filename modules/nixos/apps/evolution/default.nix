@@ -1,18 +1,13 @@
-{ options, config, lib, pkgs, ... }:
+{  options, config, lib, pkgs, ... }:
 
 with lib;
-with lib.pluskinda;
+with (import ../../../../lib/module-helpers.nix { inherit lib; });
 let 
-  cfg = config.pluskinda.apps.evolution;
+  cfg = config.programs.evolution;
 in
 {
-  options.pluskinda.apps.evolution = with types; {
-    enable = mkBoolOpt false "Whether or not to enable Evolution mail client.";
-  };
-
   config = mkIf cfg.enable { 
     programs.evolution = {
-      enable = true;
       plugins = with pkgs; [ evolution-ews ];
     };
   };

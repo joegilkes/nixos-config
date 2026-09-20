@@ -1,9 +1,9 @@
-{ options, config, pkgs, lib, inputs, ... }:
+{  options, config, pkgs, lib, inputs, ... }:
 
 with lib;
-with lib.pluskinda;
+with (import ../../../lib/module-helpers.nix { inherit lib; });
 let
-  cfg = config.pluskinda.nix;
+  cfg = config.nix;
 
   substituters-submodule = types.submodule ({ name, ... }: {
     options = with types; {
@@ -12,9 +12,7 @@ let
   });
 in
 {
-  options.pluskinda.nix = with types; {
-    enable = mkBoolOpt true "Whether or not to manage nix configuration.";
-    package = mkOpt package pkgs.nixVersions.latest "Which nix package to use.";
+  options.nix = with types; {
     useLix = mkBoolOpt false "Whether to replace Nix and dependent programs with Lix.";
 
     default-substituter = {
@@ -31,12 +29,12 @@ in
     assertions = mapAttrsToList
       (name: value: {
         assertion = value.key != null;
-        message = "pluskinda.nix.extra-substituters.${name}.key must be set";
+        message = "nix.extra-substituters.${name}.key must be set";
       })
       cfg.extra-substituters;
 
     environment.systemPackages = with pkgs; [
-      pluskinda.nixos-revision
+      nixos-revision
       nixfmt
       nix-prefetch-git
       nix-output-monitor
@@ -59,15 +57,15 @@ in
     }) ];
 
     nix =
-      let users = [ "root" config.pluskinda.user.name ] ++
+      let users = [ "root" config.user.name ] ++
         optional config.nix.sshServe.enable "nix-ssh" ++
         optional config.services.hydra.enable "hydra";
       in
       {
-        package = if cfg.useLix then pkgs.lixPackageSets.stable.lix else cfg.package;
+        package = mkIf cfg.useLix pkgs.lixPackageSets.stable.lix;
 
         settings = {
-          experimental-features = [ "nix-command" "flakes" ];
+          experimental-features = [ "nix-command" ];
           http-connections = 50;
           warn-dirty = false;
           log-lines = 50;
@@ -85,7 +83,7 @@ in
               ++
               (mapAttrsToList (name: value: value.key) cfg.extra-substituters);
 
-        } // (lib.optionalAttrs config.pluskinda.tools.direnv.enable {
+        } // (lib.optionalAttrs config.programs.direnv.enable {
           keep-outputs = true;
           keep-derivations = true;
         });
@@ -96,10 +94,6 @@ in
           options = "--delete-older-than 30d";
         };
 
-        # flake-utils-plus
-        generateRegistryFromInputs = true;
-        generateNixPathFromInputs = true;
-        linkInputs = true;
       };
   };
 }

@@ -1,11 +1,11 @@
-{ options, config, pkgs, lib, ... }:
+{  options, config, pkgs, lib, ... }:
 
 with lib;
-with lib.pluskinda;
-let cfg = config.pluskinda.system.boot;
+with (import ../../../../lib/module-helpers.nix { inherit lib; });
+let cfg = config.system.boot;
 in
 {
-  options.pluskinda.system.boot = with types; {
+  options.system.boot = with types; {
     enable = mkBoolOpt false "Whether or not to enable booting.";
   };
 

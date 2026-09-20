@@ -1,9 +1,9 @@
-{ options, config, lib, pkgs, ... }:
+{  options, config, lib, pkgs, ... }:
 
 with lib;
-with lib.pluskinda;
+with (import ../../../../lib/module-helpers.nix { inherit lib; });
 let 
-  cfg = config.pluskinda.apps.blender;
+  cfg = config.programs.blender;
   amdPkgs = with pkgs; [
     pkgsRocm.blender
   ];
@@ -12,7 +12,7 @@ let
   ];
 in
 {
-  options.pluskinda.apps.blender = with types; {
+  options.programs.blender = with types; {
     enable = mkBoolOpt false "Whether or not to enable Blender.";
     gpuType = mkOpt str "none" "GPU type, for installing vendor-specific utilities [none, amd, nvidia]";
   };

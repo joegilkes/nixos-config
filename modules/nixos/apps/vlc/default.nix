@@ -1,12 +1,12 @@
-{ options, config, lib, pkgs, ... }:
+{  options, config, lib, pkgs, ... }:
 
 with lib;
-with lib.pluskinda;
+with (import ../../../../lib/module-helpers.nix { inherit lib; });
 let
-  cfg = config.pluskinda.apps.vlc;
+  cfg = config.programs.vlc;
 in
 {
-  options.pluskinda.apps.vlc = with types; {
+  options.programs.vlc = with types; {
     enable = mkBoolOpt false "Whether or not to enable vlc.";
   };
 

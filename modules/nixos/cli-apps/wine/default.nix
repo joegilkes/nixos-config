@@ -1,12 +1,12 @@
-{ options, config, lib, pkgs, ... }:
+{  options, config, lib, pkgs, ... }:
 
 with lib;
-with lib.pluskinda;
+with (import ../../../../lib/module-helpers.nix { inherit lib; });
 let
-  cfg = config.pluskinda.cli-apps.wine;
+  cfg = config.programs.wine;
 in
 {
-  options.pluskinda.cli-apps.wine = with types; {
+  options.programs.wine = with types; {
     enable = mkBoolOpt false "Whether or not to enable Wine.";
   };
 

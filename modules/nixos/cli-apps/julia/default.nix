@@ -1,11 +1,11 @@
-{ options, config, lib, pkgs, ... }:
+{  options, config, lib, pkgs, ... }:
 
 with lib;
-with lib.pluskinda;
-let cfg = config.pluskinda.cli-apps.julia;
+with (import ../../../../lib/module-helpers.nix { inherit lib; });
+let cfg = config.programs.julia;
 in
 {
-  options.pluskinda.cli-apps.julia = with types; {
+  options.programs.julia = with types; {
     enable = mkBoolOpt false "Whether or not to enable Julia.";
     
   };

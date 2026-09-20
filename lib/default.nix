@@ -1,5 +1,5 @@
-# Most of this is shamelessly stolen from Plus Ultra.
-{ lib, inputs, snowfall-inputs }:
+# General-purpose helpers shared by packages and NixOS modules.
+{ lib, inputs, ... }:
 
 rec {
   ## Override a package's metadata

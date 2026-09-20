@@ -1,11 +1,11 @@
-{ options, config, pkgs, lib, ... }:
+{  options, config, pkgs, lib, ... }:
 
 with lib;
-with lib.pluskinda;
-let cfg = config.pluskinda.system.env;
+with (import ../../../../lib/module-helpers.nix { inherit lib; });
+let cfg = config.system.env;
 in
 {
-  options.pluskinda.system.env = with types;
+  options.system.env = with types;
     mkOption {
       type = attrsOf (oneOf [ str path (listOf (either str path)) ]);
       apply = mapAttrs (n: v:

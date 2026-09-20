@@ -1,11 +1,11 @@
-{ options, config, lib, pkgs, ... }:
+{  options, config, lib, pkgs, ... }:
 
 with lib;
-with lib.pluskinda;
-let cfg = config.pluskinda.apps.sidequest;
+with (import ../../../../lib/module-helpers.nix { inherit lib; });
+let cfg = config.programs.sidequest;
 in
 {
-  options.pluskinda.apps.sidequest = with types; {
+  options.programs.sidequest = with types; {
     enable = mkBoolOpt false "Whether or not to enable Sidequest.";
   };
 

@@ -1,9 +1,9 @@
 { options, config, lib, pkgs, ... }:
 
 with lib;
-with lib.pluskinda;
+with (import ../../../../lib/module-helpers.nix { inherit lib; });
 let
-  cfg = config.pluskinda.desktop.gnome;
+  cfg = config.services.desktop.gnome;
   gdmHome = config.users.users.gdm.home;
 
   defaultExtensions = with pkgs.gnomeExtensions; [
@@ -21,12 +21,12 @@ let
   nested-default-attrs = mapAttrs (key: default-attrs);
 in
 {
-  options.pluskinda.desktop.gnome = with types; {
+  options.services.desktop.gnome = with types; {
     enable =
       mkBoolOpt false "Whether or not to use Gnome as the desktop environment.";
     wallpaper = {
-      light = mkOpt (oneOf [ str package ]) pkgs.pluskinda.wallpapers.nord-rainbow-light-nix "The light wallpaper to use.";
-      dark = mkOpt (oneOf [ str package ]) pkgs.pluskinda.wallpapers.nord-rainbow-dark-nix "The dark wallpaper to use.";
+      light = mkOpt (oneOf [ str package ]) pkgs.wallpapers.nord-rainbow-light-nix "The light wallpaper to use.";
+      dark = mkOpt (oneOf [ str package ]) pkgs.wallpapers.nord-rainbow-dark-nix "The dark wallpaper to use.";
     };
     color-scheme = mkOpt (enum [ "light" "dark" ]) "dark" "The color scheme to use.";
     suspend = mkBoolOpt true "Whether or not to suspend the machine after inactivity.";
@@ -36,8 +36,8 @@ in
   };
 
   config = mkIf cfg.enable {
-    pluskinda.system.kb.enable = true;
-    pluskinda.desktop.addons = {
+    system.kb.enable = true;
+    services.desktop.addons = {
       wallpapers = enabled;
       electron-support = enabled;
       xdg-portal = enabled;
@@ -86,7 +86,7 @@ in
       lib.optional (cfg.monitors != null) "L+ ${gdmHome}/.config/monitors.xml - - - - ${cfg.monitors}"
     );
 
-    systemd.services.pluskinda-user-icon = {
+    systemd.services.user-icon = {
       before = [ "display-manager.service" ];
       wantedBy = [ "display-manager.service" ];
 
@@ -97,8 +97,8 @@ in
       };
 
       script = ''
-        config_file=/var/lib/AccountsService/users/${config.pluskinda.user.name}
-        icon_file=/run/current-system/sw/share/pluskinda-icons/user/${config.pluskinda.user.name}/${config.pluskinda.user.icon.fileName}
+        config_file=/var/lib/AccountsService/users/${config.user.name}
+        icon_file=/run/current-system/sw/share/user-icons/user/${config.user.name}/${config.user.icon.fileName}
 
         if ! [ -d "$(dirname "$config_file")"]; then
           mkdir -p "$(dirname "$config_file")"
@@ -135,16 +135,16 @@ in
       desktopManager.gnome.enable = true;
     };
 
-    pluskinda.home.extraOptions = {
+    home.extraOptions = {
       dconf.settings =
         let
-          user = config.users.users.${config.pluskinda.user.name};
+          user = config.users.users.${config.user.name};
           get-wallpaper = wallpaper:
             if lib.isDerivation wallpaper then
               builtins.toString wallpaper
             else
               wallpaper;
-          customFonts = config.pluskinda.system.fonts.enable;
+          customFonts = config.system.fonts.enable;
         in
         nested-default-attrs {
           "org/gnome/shell" = {
@@ -157,11 +157,11 @@ in
             ];
             favorite-apps =
               [ "org.gnome.Nautilus.desktop" ]
-              ++ optional config.pluskinda.apps.chrome.enable "google-chrome.desktop"
-              ++ optional config.pluskinda.apps.firefox.enable "firefox.desktop"
-              ++ optional config.pluskinda.apps.vscode.enable "code.desktop"
-              ++ optional config.pluskinda.apps.discord.enable "discord.desktop"
-              ++ optional config.pluskinda.apps.steam.enable "steam.desktop";
+              ++ optional config.programs.chrome.enable "google-chrome.desktop"
+              ++ optional config.programs.firefox.enable "firefox.desktop"
+              ++ optional config.programs.vscode.enable "code.desktop"
+              ++ optional config.programs.discord.enable "discord.desktop"
+              ++ optional config.programs.steam.enable "steam.desktop";
           };
 
           "org/gnome/desktop/background" = {

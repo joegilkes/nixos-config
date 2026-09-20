@@ -1,7 +1,7 @@
 { pkgs, config, lib, channel, ...}:
 
 with lib;
-with lib.pluskinda;
+with (import ../../../../lib/module-helpers.nix { inherit lib; });
 
 {
   age.secrets = {
@@ -11,7 +11,7 @@ with lib.pluskinda;
     };
   };
 
-  pluskinda.services.zfs = {
+  services.zfs = {
     useZedEmails = true;
     smtpUser = "giants-deep";
     smtpPassFile = config.age.secrets.smtp2go_zed_pass.path;

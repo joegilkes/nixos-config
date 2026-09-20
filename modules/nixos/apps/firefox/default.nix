@@ -1,9 +1,9 @@
-{ options, config, lib, pkgs, ... }:
+{  options, config, lib, pkgs, ... }:
 
 with lib;
-with lib.pluskinda;
+with (import ../../../../lib/module-helpers.nix { inherit lib; });
 let
-  cfg = config.pluskinda.apps.firefox;
+  cfg = config.programs.firefox;
   defaultSettings = {
     "browser.aboutwelcome.enabled" = false;
     "browser.meta_refresh_when_inactive.disabled" = true;
@@ -16,8 +16,7 @@ let
   };
 in
 {
-  options.pluskinda.apps.firefox = with types; {
-    enable = mkBoolOpt false "Whether or not to enable Firefox.";
+  options.programs.firefox = with types; {
     extraConfig =
       mkOpt str "" "Extra configuration for the user profile JS file.";
     userChrome =
@@ -26,20 +25,20 @@ in
   };
 
   config = mkIf cfg.enable {
-    services.gnome.gnome-browser-connector.enable = config.pluskinda.desktop.gnome.enable;
+    services.gnome.gnome-browser-connector.enable = config.services.desktop.gnome.enable;
 
-    pluskinda.home = {
+    home = {
       extraOptions = {
         programs.firefox = {
           enable = true;
           package = pkgs.firefox.override {
-              cfg.enableGnomeExtensions = config.pluskinda.desktop.gnome.enable;
+              cfg.enableGnomeExtensions = config.services.desktop.gnome.enable;
             };
-          configPath = "${config.home-manager.users.${config.pluskinda.user.name}.xdg.configHome}/mozilla/firefox";
-          profiles.${config.pluskinda.user.name} = {
+          configPath = "${config.home-manager.users.${config.user.name}.xdg.configHome}/mozilla/firefox";
+          profiles.${config.user.name} = {
             inherit (cfg) extraConfig userChrome settings;
             id = 0;
-            name = config.pluskinda.user.name;
+            name = config.user.name;
           };
         };
       };

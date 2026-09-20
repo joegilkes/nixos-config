@@ -1,0 +1,148 @@
+{
+  "pins": {
+    "nixpkgs": {
+      "type": "Git",
+      "repository": {
+        "type": "GitHub",
+        "owner": "nixos",
+        "repo": "nixpkgs"
+      },
+      "branch": "nixos-unstable",
+      "submodules": false,
+      "revision": "e554fab72f81915600f3f449b786fd9af40439a5",
+      "url": "https://github.com/nixos/nixpkgs/archive/e554fab72f81915600f3f449b786fd9af40439a5.tar.gz",
+      "hash": "sha256-ZKhUe/2IJUq1JhKxKMu8rbkgSGmPP2ZCqlIPn40aGCM="
+    },
+    "stable": {
+      "type": "Git",
+      "repository": {
+        "type": "GitHub",
+        "owner": "nixos",
+        "repo": "nixpkgs"
+      },
+      "branch": "nixos-25.11",
+      "submodules": false,
+      "revision": "b6018f87da91d19d0ab4cf979885689b469cdd41",
+      "url": "https://github.com/nixos/nixpkgs/archive/b6018f87da91d19d0ab4cf979885689b469cdd41.tar.gz",
+      "hash": "sha256-twXPFqFsrrY5r28Zh7Homgcp2gUMBgQ6WDS98Q/3xFI="
+    },
+    "master": {
+      "type": "Git",
+      "repository": {
+        "type": "GitHub",
+        "owner": "nixos",
+        "repo": "nixpkgs"
+      },
+      "branch": "master",
+      "submodules": false,
+      "revision": "9271266be65d98ab5291bc33ce61f46df4921338",
+      "url": "https://github.com/nixos/nixpkgs/archive/9271266be65d98ab5291bc33ce61f46df4921338.tar.gz",
+      "hash": "sha256-hhAd2y9tjJ1LSxtgY6WDU7raHX6vxxtsM8GIvIVHsU8="
+    },
+    "home-manager": {
+      "type": "Git",
+      "repository": {
+        "type": "GitHub",
+        "owner": "nix-community",
+        "repo": "home-manager"
+      },
+      "branch": "master",
+      "submodules": false,
+      "revision": "17903129f47656fa4d07e78ad87f6592ff4f2527",
+      "url": "https://github.com/nix-community/home-manager/archive/17903129f47656fa4d07e78ad87f6592ff4f2527.tar.gz",
+      "hash": "sha256-voJJ5IZR4w2149u2Jm/j2zifeWROlpZQ+JzmCQwjgn8="
+    },
+    "nixos-hardware": {
+      "type": "Git",
+      "repository": {
+        "type": "GitHub",
+        "owner": "nixos",
+        "repo": "nixos-hardware"
+      },
+      "branch": "main",
+      "submodules": false,
+      "revision": "b2d7d02644f0002535a3bb51a73780945cdc7ba4",
+      "url": "https://github.com/nixos/nixos-hardware/archive/b2d7d02644f0002535a3bb51a73780945cdc7ba4.tar.gz",
+      "hash": "sha256-q0J27mJDfd4BM9a7KcMVbcRmqyU+goQwudbMIu66qsg="
+    },
+    "agenix": {
+      "type": "Git",
+      "repository": {
+        "type": "GitHub",
+        "owner": "ryantm",
+        "repo": "agenix"
+      },
+      "branch": "main",
+      "submodules": false,
+      "revision": "b027ee29d959fda4b60b57566d64c98a202e0feb",
+      "url": "https://github.com/ryantm/agenix/archive/b027ee29d959fda4b60b57566d64c98a202e0feb.tar.gz",
+      "hash": "sha256-9VnK6Oqai65puVJ4WYtCTvlJeXxMzAp/69HhQuTdl/I="
+    },
+    "musnix": {
+      "type": "Git",
+      "repository": {
+        "type": "GitHub",
+        "owner": "musnix",
+        "repo": "musnix"
+      },
+      "branch": "main",
+      "submodules": false,
+      "revision": "8548782f0d1d0928daa3fffde8a008f72219a3f3",
+      "url": "https://github.com/musnix/musnix/archive/8548782f0d1d0928daa3fffde8a008f72219a3f3.tar.gz",
+      "hash": "sha256-Dj51C0NWsglqRrCpdmMr2nFiYacFOid1Tor4H9yG2HY="
+    },
+    "nix-gaming": {
+      "type": "Git",
+      "repository": {
+        "type": "GitHub",
+        "owner": "fufexan",
+        "repo": "nix-gaming"
+      },
+      "branch": "main",
+      "submodules": false,
+      "revision": "5928fa386f57488e918a7d1b282f8daf3e103d02",
+      "url": "https://github.com/fufexan/nix-gaming/archive/5928fa386f57488e918a7d1b282f8daf3e103d02.tar.gz",
+      "hash": "sha256-bhzBYZm4whYF6/I7zkS1UxBNSbj5RNVysK6gYzl5weo="
+    },
+    "quadlet-nix": {
+      "type": "Git",
+      "repository": {
+        "type": "GitHub",
+        "owner": "SEIAROTg",
+        "repo": "quadlet-nix"
+      },
+      "branch": "main",
+      "submodules": false,
+      "revision": "b6ff6c4d6b36b8e29bce417b668597fab3e03160",
+      "url": "https://github.com/SEIAROTg/quadlet-nix/archive/b6ff6c4d6b36b8e29bce417b668597fab3e03160.tar.gz",
+      "hash": "sha256-kE3JCUeQA4CXlLl5TglmKceOJP+ZF/CwkHngiZ3yS00="
+    },
+    "qchem": {
+      "type": "Git",
+      "repository": {
+        "type": "GitHub",
+        "owner": "Nix-QChem",
+        "repo": "NixOS-QChem"
+      },
+      "branch": "main",
+      "submodules": false,
+      "revision": "a8e0f9501c34ee707f699711af60b3d76cf5c0ac",
+      "url": "https://github.com/Nix-QChem/NixOS-QChem/archive/a8e0f9501c34ee707f699711af60b3d76cf5c0ac.tar.gz",
+      "hash": "sha256-CMGFpTacni32s37KP3ueeYgP41aiiv86G1oR65DzjWc="
+    },
+    "nix-index-database": {
+      "type": "Git",
+      "repository": {
+        "type": "GitHub",
+        "owner": "Mic92",
+        "repo": "nix-index-database"
+      },
+      "branch": "main",
+      "submodules": false,
+      "revision": "a74e173407559083a412ea89a1cc58ea389c3b65",
+      "url": "https://github.com/Mic92/nix-index-database/archive/a74e173407559083a412ea89a1cc58ea389c3b65.tar.gz",
+      "hash": "sha256-xVstyCdg0DpzjyrEacm72VJAIP9DMhfWJdPDzhWxHuo="
+    }
+  },
+  "version": 8
+}

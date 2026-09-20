@@ -1,4 +1,5 @@
-{ lib, inputs, snowfall-inputs }:
+# Network-address parsing helpers used by repository modules.
+{ lib, inputs, ... }:
 
 let
   inherit (inputs.nixpkgs.lib) assertMsg last;

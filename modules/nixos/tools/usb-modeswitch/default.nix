@@ -1,12 +1,12 @@
-{ options, config, lib, pkgs, ... }:
+{  options, config, lib, pkgs, ... }:
 
 with lib;
-with lib.pluskinda;
+with (import ../../../../lib/module-helpers.nix { inherit lib; });
 let 
-  cfg = config.pluskinda.tools.usb-modeswitch;
+  cfg = config.programs.usb-modeswitch;
 in
 {
-  options.pluskinda.tools.usb-modeswitch = with types; {
+  options.programs.usb-modeswitch = with types; {
     enable = mkBoolOpt false "Whether or not to enable usb-modeswitch.";
   };
 

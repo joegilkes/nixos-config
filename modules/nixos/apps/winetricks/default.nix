@@ -1,12 +1,12 @@
-{ options, config, lib, pkgs, ... }:
+{  options, config, lib, pkgs, ... }:
 
 with lib;
-with lib.pluskinda;
+with (import ../../../../lib/module-helpers.nix { inherit lib; });
 let
-  cfg = config.pluskinda.apps.winetricks;
+  cfg = config.programs.winetricks;
 in
 {
-  options.pluskinda.apps.winetricks = with types; {
+  options.programs.winetricks = with types; {
     enable = mkBoolOpt false "Whether or not to enable Winetricks.";
   };
 
