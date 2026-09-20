@@ -1,15 +1,11 @@
 { config, lib, pkgs, ... }:
 
 with lib;
-with lib.pluskinda;
+with (import ../../../../lib/module-helpers.nix { inherit lib; });
 let
-  cfg = config.pluskinda.services.sunshine;
+  cfg = config.services.sunshine;
 in
 {
-  options.pluskinda.services.sunshine = with types; {
-    enable = mkBoolOpt false "Whether to enable Sunshine as a user service.";
-  };
-
   config = mkIf cfg.enable {
     networking.firewall.allowedTCPPortRanges = [{ from = 47984; to = 48010; }];
     networking.firewall.allowedUDPPortRanges = [{ from = 47998; to = 48010; }];
@@ -32,6 +28,6 @@ in
       };
     };
 
-    environment.systemPackages = [ pkgs.pluskinda.sunshinectl ];
+    environment.systemPackages = [ pkgs.sunshinectl ];
   };
 }

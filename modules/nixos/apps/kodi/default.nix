@@ -1,11 +1,11 @@
-{ options, config, lib, pkgs, ... }:
+{  options, config, lib, pkgs, ... }:
 
 with lib;
-with lib.pluskinda;
-let cfg = config.pluskinda.apps.kodi;
+with (import ../../../../lib/module-helpers.nix { inherit lib; });
+let cfg = config.programs.kodi;
 in
 {
-  options.pluskinda.apps.kodi = with types; {
+  options.programs.kodi = with types; {
     enable = mkBoolOpt false "Whether or not to enable the Kodi client.";
   };
 

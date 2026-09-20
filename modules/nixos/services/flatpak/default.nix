@@ -1,18 +1,12 @@
-{ options, config, lib, pkgs, ... }:
+{  options, config, lib, pkgs, ... }:
 
 with lib;
-with lib.pluskinda;
+with (import ../../../../lib/module-helpers.nix { inherit lib; });
 let
-  cfg = config.pluskinda.services.flatpak;
+  cfg = config.services.flatpak;
 in
 {
-  options.pluskinda.services.flatpak = with types; {
-    enable = mkBoolOpt false "Whether to enable Flatpak.";
-  };
-
   config = mkIf cfg.enable {
-    services.flatpak.enable = true;
-
     systemd.services.flatpak-repo = {
       wantedBy = [ "multi-user.target" ];
       path = [ pkgs.flatpak ];

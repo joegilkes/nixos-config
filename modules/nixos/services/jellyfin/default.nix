@@ -1,18 +1,13 @@
-{ options, config, lib, pkgs, ... }:
+{  options, config, lib, pkgs, ... }:
 
 with lib;
-with lib.pluskinda;
+with (import ../../../../lib/module-helpers.nix { inherit lib; });
 let
-  cfg = config.pluskinda.services.jellyfin;
+  cfg = config.services.jellyfin;
 in
 {
-  options.pluskinda.services.jellyfin = with types; {
-    enable = mkBoolOpt false "Whether to enable Jellyfin.";
-  };
-
   config = mkIf cfg.enable {
     services.jellyfin = {
-      enable = true;
       openFirewall = true;
     };
     environment.systemPackages = with pkgs; [

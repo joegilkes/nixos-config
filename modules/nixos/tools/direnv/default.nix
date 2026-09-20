@@ -1,16 +1,12 @@
-{ options, config, lib, pkgs, ... }:
+{  options, config, lib, pkgs, ... }:
 
 with lib;
-with lib.pluskinda;
-let cfg = config.pluskinda.tools.direnv;
+with (import ../../../../lib/module-helpers.nix { inherit lib; });
+let cfg = config.programs.direnv;
 in
 {
-  options.pluskinda.tools.direnv = with types; {
-    enable = mkBoolOpt false "Whether or not to enable direnv.";
-  };
-
   config = mkIf cfg.enable {
-    pluskinda.home.extraOptions = {
+    home.extraOptions = {
       programs.direnv = {
         enable = true;
         enableZshIntegration = true;

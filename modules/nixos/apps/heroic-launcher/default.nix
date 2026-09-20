@@ -1,11 +1,11 @@
-{ options, config, lib, pkgs, ... }:
+{  options, config, lib, pkgs, ... }:
 
 with lib;
-with lib.pluskinda;
-let cfg = config.pluskinda.apps.heroic-launcher;
+with (import ../../../../lib/module-helpers.nix { inherit lib; });
+let cfg = config.programs.heroic-launcher;
 in
 {
-  options.pluskinda.apps.heroic-launcher = with types; {
+  options.programs.heroic-launcher = with types; {
     enable = mkBoolOpt false "Whether or not to enable Heroic Launcher.";
   };
 

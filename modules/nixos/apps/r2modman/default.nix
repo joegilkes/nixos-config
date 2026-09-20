@@ -1,12 +1,12 @@
-{ options, config, lib, pkgs, ... }:
+{  options, config, lib, pkgs, ... }:
 
 with lib;
-with lib.pluskinda;
+with (import ../../../../lib/module-helpers.nix { inherit lib; });
 let
-  cfg = config.pluskinda.apps.r2modman;
+  cfg = config.programs.r2modman;
 in
 {
-  options.pluskinda.apps.r2modman = with types; {
+  options.programs.r2modman = with types; {
     enable = mkBoolOpt false "Whether or not to enable r2modman Mod Manager.";
   };
 

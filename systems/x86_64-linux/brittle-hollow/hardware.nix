@@ -1,12 +1,12 @@
-{ config, lib, pkgs, modulesPath, inputs, ...}:
+{ config, lib, pkgs, modulesPath, ...}:
 
 let
-  inherit (inputs) nixos-hardware;
+  nixos-hardware = (import ../../../npins).nixos-hardware.outPath;
 in
 {
-  imports = with nixos-hardware.nixosModules; [
+  imports = [
     (modulesPath + "/installer/scan/not-detected.nix")
-    dell-latitude-5520
+    "${nixos-hardware}/dell/latitude/5520"
   ];
 
   boot.kernelPackages = pkgs.linuxKernel.packages.linux_xanmod_stable;

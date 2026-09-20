@@ -1,3 +1,4 @@
+# Helpers for declaring and enabling repository-defined NixOS module options.
 { lib, ... }:
 
 with lib; rec {

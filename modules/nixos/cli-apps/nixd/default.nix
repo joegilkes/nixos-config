@@ -1,11 +1,11 @@
-{ options, config, lib, pkgs, ... }:
+{  options, config, lib, pkgs, ... }:
 
 with lib;
-with lib.pluskinda;
-let cfg = config.pluskinda.cli-apps.nixd;
+with (import ../../../../lib/module-helpers.nix { inherit lib; });
+let cfg = config.programs.nixd;
 in
 {
-  options.pluskinda.cli-apps.nixd = with types; {
+  options.programs.nixd = with types; {
     enable = mkBoolOpt false "Whether or not to enable nixd.";
   };
 

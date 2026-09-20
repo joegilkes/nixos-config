@@ -1,12 +1,12 @@
-{ options, config, lib, pkgs, ... }:
+{  options, config, lib, pkgs, ... }:
 
 with lib;
-with lib.pluskinda;
+with (import ../../../../lib/module-helpers.nix { inherit lib; });
 let 
-  cfg = config.pluskinda.apps.darktable;
+  cfg = config.programs.darktable;
 in
 {
-  options.pluskinda.apps.darktable = with types; {
+  options.programs.darktable = with types; {
     enable = mkBoolOpt false "Whether or not to enable Darktable.";
   };
 

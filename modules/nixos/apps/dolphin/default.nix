@@ -1,11 +1,11 @@
-{ options, config, lib, pkgs, ... }:
+{  options, config, lib, pkgs, ... }:
 
 with lib;
-with lib.pluskinda;
-let cfg = config.pluskinda.apps.dolphin;
+with (import ../../../../lib/module-helpers.nix { inherit lib; });
+let cfg = config.programs.dolphin;
 in
 {
-  options.pluskinda.apps.dolphin = with types; {
+  options.programs.dolphin = with types; {
     enable = mkBoolOpt false "Whether or not to enable Dolphin.";
   };
 

@@ -1,12 +1,12 @@
-{ options, config, lib, pkgs, ... }:
+{  options, config, lib, pkgs, ... }:
 
 with lib;
-with lib.pluskinda;
+with (import ../../../../lib/module-helpers.nix { inherit lib; });
 let
-  cfg = config.pluskinda.services.adguard;
+  cfg = config.services.adguard;
 in
 {
-  options.pluskinda.services.adguard = with types; {
+  options.services.adguard = with types; {
     enable = mkBoolOpt false "Whether to enable AdGuard Home.";
     port = mkOpt port 3003 "Port to run the AdGuard Home WebUI through";
   };

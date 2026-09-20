@@ -1,18 +1,12 @@
 { options, config, pkgs, lib, ... }:
 
 with lib;
-with lib.pluskinda;
-let cfg = config.pluskinda.services.traefik;
+with (import ../../../../lib/module-helpers.nix { inherit lib; });
+let cfg = config.services.traefik;
 in
 {
-  options.pluskinda.services.traefik = with types; {
-    enable = mkBoolOpt false "Whether or not to configure Traefik as a reverse proxy.";
-  };
-
   config = mkIf cfg.enable { 
     services.traefik = {
-      enable = true;
-
       staticConfigOptions = {
         entryPoints = {
           web = {

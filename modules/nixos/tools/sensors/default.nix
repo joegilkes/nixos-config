@@ -1,12 +1,12 @@
-{ options, config, lib, pkgs, ... }:
+{  options, config, lib, pkgs, ... }:
 
 with lib;
-with lib.pluskinda;
+with (import ../../../../lib/module-helpers.nix { inherit lib; });
 let 
-  cfg = config.pluskinda.tools.sensors;
+  cfg = config.programs.sensors;
 in
 {
-  options.pluskinda.tools.sensors = with types; {
+  options.programs.sensors = with types; {
     enable = mkBoolOpt false "Whether or not to enable lm_sensors.";
   };
 
@@ -19,6 +19,6 @@ in
     # Maintainer doesn't seem likely to update this anytime soon.
     # See https://github.com/HarlemSquirrel/gnome-shell-extension-sensory-perception/issues/49
     # 
-    # pluskinda.desktop.gnome.extensions = [ pkgs.gnomeExtensions.sensory-perception ];
+    # services.desktop.gnome.extensions = [ pkgs.gnomeExtensions.sensory-perception ];
   };
 }

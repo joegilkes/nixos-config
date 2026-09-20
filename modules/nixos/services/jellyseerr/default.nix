@@ -1,12 +1,12 @@
 { options, config, lib, pkgs, ... }:
 
 with lib;
-with lib.pluskinda;
+with (import ../../../../lib/module-helpers.nix { inherit lib; });
 let
-  cfg = config.pluskinda.services.jellyseerr;
+  cfg = config.services.media.jellyseerr;
 in
 {
-  options.pluskinda.services.jellyseerr = with types; {
+  options.services.media.jellyseerr = with types; {
     enable = mkBoolOpt false "Whether to enable Jellyseerr and related services.";
     port = mkOpt port 5055 "Port to run Jellyseerr through";
     radarr-dataDir = mkOpt str "/var/lib/radarr/.config/Radarr" "Path for Radarr data files.";
@@ -14,7 +14,7 @@ in
   };
 
   config = mkIf cfg.enable {
-    services.jellyseerr = {
+    services.seerr = {
       enable = true;
       port = cfg.port;
       openFirewall = true;

@@ -1,12 +1,12 @@
-{ options, config, lib, pkgs, ... }:
+{  options, config, lib, pkgs, ... }:
 
 with lib;
-with lib.pluskinda;
+with (import ../../../../lib/module-helpers.nix { inherit lib; });
 let 
-  cfg = config.pluskinda.apps.calibre;
+  cfg = config.programs.calibre;
 in
 {
-  options.pluskinda.apps.calibre = with types; {
+  options.programs.calibre = with types; {
     enable = mkBoolOpt false "Whether or not to enable Calibre.";
   };
 

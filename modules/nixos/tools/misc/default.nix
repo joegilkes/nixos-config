@@ -1,19 +1,19 @@
-{ options, config, lib, pkgs, ... }:
+{  options, config, lib, pkgs, ... }:
 
 with lib;
-with lib.pluskinda;
+with (import ../../../../lib/module-helpers.nix { inherit lib; });
 let 
-  cfg = config.pluskinda.tools.misc;
-  gpuType = config.pluskinda.tools.diagnostics.gpuType;
+  cfg = config.programs.misc;
+  gpuType = config.programs.diagnostics.gpuType;
 
 in
 {
-  options.pluskinda.tools.misc = with types; {
+  options.programs.misc = with types; {
     enable = mkBoolOpt false "Whether or not to enable common utilities.";
   };
 
   config = mkIf cfg.enable {
-    pluskinda.home.configFile."wgetrc".text = "";
+    home.configFile."wgetrc".text = "";
 
     environment.systemPackages = with pkgs; [
       vim
@@ -36,6 +36,8 @@ in
       fastfetch
       lshw
       util-linux
+      npins
+      update
     ] ++ ( if gpuType == "amd" then [ btop-rocm ] else [ btop ] );
   };
 }

@@ -1,11 +1,11 @@
-{ options, config, pkgs, lib, ... }:
+{  options, config, pkgs, lib, ... }:
 
 with lib;
-with lib.pluskinda;
-let cfg = config.pluskinda.system.locale;
+with (import ../../../../lib/module-helpers.nix { inherit lib; });
+let cfg = config.system.locale;
 in
 {
-  options.pluskinda.system.locale = with types; {
+  options.system.locale = with types; {
     enable = mkBoolOpt false "Whether or not to manage locale settings.";
   };
 

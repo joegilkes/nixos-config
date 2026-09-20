@@ -1,7 +1,7 @@
-{ config, lib, pkgs, modulesPath, inputs, ...}:
+{ config, lib, pkgs, modulesPath, ...}:
 
 let
-  inherit (inputs) nixos-hardware;
+  nixos-hardware = (import ../../../npins).nixos-hardware.outPath;
 
   zfsCompatibleKernelPackages = lib.filterAttrs (
     name: kernelPackages:
@@ -16,11 +16,11 @@ let
   );
 in
 {
-  imports = with nixos-hardware.nixosModules; [
+  imports = [
     (modulesPath + "/installer/scan/not-detected.nix")
-    common-cpu-intel
-    common-pc
-    common-pc-ssd
+    "${nixos-hardware}/common/cpu/intel"
+    "${nixos-hardware}/common/pc"
+    "${nixos-hardware}/common/pc/ssd"
   ];
 
   boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "ahci" "usb_storage" "usbhid" "sd_mod" ];

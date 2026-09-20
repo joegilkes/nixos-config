@@ -1,12 +1,12 @@
-{ options, config, pkgs, lib, inputs, ... }:
+{  options, config, pkgs, lib, inputs, ... }:
 
 with lib;
-with lib.pluskinda;
+with (import ../../../../lib/module-helpers.nix { inherit lib; });
 let
-  cfg = config.pluskinda.security.gpg;
+  cfg = config.security.gpg;
 in
 {
-  options.pluskinda.security.gpg = with types; {
+  options.security.gpg = with types; {
     enable = mkBoolOpt false "Whether or not to enable GPG.";
   };
 
@@ -29,10 +29,8 @@ in
       };
     };
 
-    pluskinda = {
-      home.file = {
-        ".gnupg/.keep".text = "";
-      };
+    home.file = {
+      ".gnupg/.keep".text = "";
     };
   };
 }

@@ -1,11 +1,11 @@
 { options, config, pkgs, lib, ... }:
 
 with lib;
-with lib.pluskinda;
-let cfg = config.pluskinda.services.virtualisation;
+with (import ../../../../lib/module-helpers.nix { inherit lib; });
+let cfg = config.services.virtualisation;
 in
 {
-  options.pluskinda.services.virtualisation = with types; {
+  options.services.virtualisation = with types; {
     enable = mkBoolOpt false "Whether or not to allow QEMU/KVM virtualisation.";
   };
 
@@ -21,6 +21,6 @@ in
     # '';
     networking.firewall.trustedInterfaces = [ "virbr0" "virbr1" ];
 
-    pluskinda.user.extraGroups = [ "libvirtd" ]; 
+    user.extraGroups = [ "libvirtd" ];
   };
 }

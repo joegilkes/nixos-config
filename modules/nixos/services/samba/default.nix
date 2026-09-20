@@ -1,13 +1,12 @@
 { options, config, lib, pkgs, ... }:
 
 with lib;
-with lib.pluskinda;
+with (import ../../../../lib/module-helpers.nix { inherit lib; });
 let
-  cfg = config.pluskinda.services.samba;
+  cfg = config.services.samba;
 in
 {
-  options.pluskinda.services.samba = with types; {
-    enable = mkBoolOpt false "Whether to enable the SMB server.";
+  options.services.samba = with types; {
     wsdd-enable = mkBoolOpt true "Whether to enable the discoverability of SMB shares on Windows.";
     serverName = mkOpt str "nixsmb" "Name of SMB server";
     privateShareDirs = mkOpt attrs {} "Attribute set of directories to enable as private shares.";
@@ -16,7 +15,6 @@ in
 
   config = mkIf cfg.enable {
     services.samba = {
-      enable = true;
       openFirewall = true;
 
       settings = {

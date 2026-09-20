@@ -1,11 +1,11 @@
 { options, config, lib, pkgs, ... }:
 
 with lib;
-with lib.pluskinda;
-let cfg = config.pluskinda.desktop.addons.xdg-portal;
+with (import ../../../../../lib/module-helpers.nix { inherit lib; });
+let cfg = config.services.desktop.addons.xdg-portal;
 in
 {
-  options.pluskinda.desktop.addons.xdg-portal = with types; {
+  options.services.desktop.addons.xdg-portal = with types; {
     enable = mkBoolOpt false
       "Whether to enable xdg-open via portals in the desktop environment.";
   };

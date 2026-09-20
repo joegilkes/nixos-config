@@ -1,3 +1,4 @@
+# Age-encryption public-key assignments for users and deployed systems.
 let
   joe = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAeRKrAVjXXRat28Exr37wBWT8VgcWWvvfYAvRY286cQ";
   users = [ joe ];
@@ -20,8 +21,6 @@ in
   "lldap-key-seed.age".publicKeys = users ++ [ interloper ];
   "lldap-jwt.age".publicKeys = users ++ [ interloper ];
   "lldap-user-password.age".publicKeys = users ++ [ interloper ];
-  "crowdsec-api-key-env.age".publicKeys = users ++ [ interloper ];
-  "crowdsec-enroll-key.age".publicKeys = users ++ [ interloper ];
   "ddclient-password.age".publicKeys = users ++ [ interloper ];
   "nextcloud-password.age".publicKeys = users ++ [ giants-deep ];
   "dawarich-db-password.age".publicKeys = users ++ [ giants-deep ];

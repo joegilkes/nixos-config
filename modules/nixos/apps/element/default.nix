@@ -1,11 +1,11 @@
-{ options, config, lib, pkgs, ... }:
+{  options, config, lib, pkgs, ... }:
 
 with lib;
-with lib.pluskinda;
-let cfg = config.pluskinda.apps.element;
+with (import ../../../../lib/module-helpers.nix { inherit lib; });
+let cfg = config.programs.element;
 in
 {
-  options.pluskinda.apps.element = with types; {
+  options.programs.element = with types; {
     enable = mkBoolOpt false "Whether or not to enable Element.";
   };
 

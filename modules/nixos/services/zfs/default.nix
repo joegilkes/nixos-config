@@ -1,12 +1,12 @@
 { options, config, lib, pkgs, ... }:
 
 with lib;
-with lib.pluskinda;
+with (import ../../../../lib/module-helpers.nix { inherit lib; });
 let
-  cfg = config.pluskinda.services.zfs;
+  cfg = config.services.zfs;
 in
 {
-  options.pluskinda.services.zfs = with types; {
+  options.services.zfs = with types; {
     enable = mkBoolOpt false "Whether to enable ZFS services.";
     useZedEmails = mkBoolOpt false "Whether to send event emails from the ZFS event daemon (ZED).";
     smtpUser = mkOpt str "zed" "Username for ZED on SMTP relay.";

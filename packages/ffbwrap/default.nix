@@ -1,11 +1,6 @@
-{
-  lib,
-  pkgs,
-  ...
-}:
+{ lib, pkgs, ... }:
 
 let
-  inherit (lib.pluskinda) override-meta;
 
   new-meta = with lib; {
     homepage = "https://github.com/berarma/ffbtools";
@@ -50,7 +45,7 @@ let
 
     CURRENT_DIR=$(CDPATH= cd -- "$(dirname -- $(readlink -f "$0"))" && pwd)
 
-    LIBDIR=${pkgs.pluskinda.ffbtools}/lib
+    LIBDIR=${pkgs.ffbtools}/lib
 
     LD_PRELOAD="$LIBDIR/libffbwrapper-x86_64.so $LIBDIR/libffbwrapper-i386.so $LD_PRELOAD"
 
@@ -144,4 +139,6 @@ let
     "$COMMAND" "$@"
   '';
 in
-override-meta new-meta package
+package.overrideAttrs (attrs: {
+  meta = (attrs.meta or { }) // new-meta;
+})

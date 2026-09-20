@@ -206,19 +206,6 @@ in
             };
           };
         }
-        {
-          "CrowdSec" = {
-            icon = "crowdsec.png";
-            href = "http://app.crowdsec.net";
-            description = "Threat Intelligence";
-            widget = {
-              type = "crowdsec";
-              url = "http://192.168.0.40:41412";
-              username = "interloper";
-              password = "{{HOMEPAGE_VAR_CROWDSEC_LAPI_KEY}}";
-            };
-          };
-        }
       ];
     }];
     widgets = [

@@ -1,7 +1,7 @@
 { pkgs, config, lib, channel, ...}:
 
 with lib;
-with lib.pluskinda;
+with (import ../../../../lib/module-helpers.nix { inherit lib; });
 let
   autheliaInstance = config.services.authelia.instances.main;
   autheliaUser = autheliaInstance.user;
@@ -64,7 +64,7 @@ in
     };
   };
 
-  pluskinda.services.authelia = {
+  services.authelia = {
     secrets = {
       jwtSecretFile = config.age.secrets.authelia_jwt_secret.path;
       # oidcHmacSecretFile = config.age.secrets.authelia_hmac_secret.path;

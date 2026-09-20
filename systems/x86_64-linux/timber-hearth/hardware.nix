@@ -1,16 +1,16 @@
-{ config, lib, pkgs, modulesPath, inputs, ...}:
+{ config, lib, pkgs, modulesPath, ...}:
 
 let
-  inherit (inputs) nixos-hardware;
+  nixos-hardware = (import ../../../npins).nixos-hardware.outPath;
 in
 {
-  imports = with nixos-hardware.nixosModules; [
+  imports = [
     (modulesPath + "/installer/scan/not-detected.nix")
-    common-cpu-amd
-    common-cpu-amd-pstate
-    common-gpu-amd
-    common-pc
-    common-pc-ssd
+    "${nixos-hardware}/common/cpu/amd"
+    "${nixos-hardware}/common/cpu/amd/pstate.nix"
+    "${nixos-hardware}/common/gpu/amd"
+    "${nixos-hardware}/common/pc"
+    "${nixos-hardware}/common/pc/ssd"
   ];
 
   boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "ahci" "usb_storage" "usbhid" "sd_mod" ];
@@ -56,5 +56,5 @@ in
 
   hardware.usb-modeswitch.enable = true;
 
-  pluskinda.hardware.audio.use-musnix = true;
+  hardware.audio.use-musnix = true;
 }

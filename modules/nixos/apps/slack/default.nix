@@ -1,11 +1,11 @@
-{ options, config, lib, pkgs, ... }:
+{  options, config, lib, pkgs, ... }:
 
 with lib;
-with lib.pluskinda;
-let cfg = config.pluskinda.apps.slack;
+with (import ../../../../lib/module-helpers.nix { inherit lib; });
+let cfg = config.programs.slack;
 in
 {
-  options.pluskinda.apps.slack = with types; {
+  options.programs.slack = with types; {
     enable = mkBoolOpt false "Whether or not to enable Slack.";
   };
 

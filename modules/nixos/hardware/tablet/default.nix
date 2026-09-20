@@ -1,11 +1,11 @@
-{ options, config, pkgs, lib, ... }:
+{  options, config, pkgs, lib, ... }:
 
 with lib;
-with lib.pluskinda;
-let cfg = config.pluskinda.hardware.tablet;
+with (import ../../../../lib/module-helpers.nix { inherit lib; });
+let cfg = config.hardware.tablet;
 in
 {
-  options.pluskinda.hardware.tablet = with types; {
+  options.hardware.tablet = with types; {
     enable = mkBoolOpt false "Whether or not to enable drawing tablet support.";
   };
 

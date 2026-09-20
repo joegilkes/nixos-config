@@ -1,9 +1,9 @@
-{ options, config, lib, pkgs, ... }:
+{  options, config, lib, pkgs, ... }:
 
 with lib;
-with lib.pluskinda;
+with (import ../../../../lib/module-helpers.nix { inherit lib; });
 let 
-  cfg = config.pluskinda.cli-apps.conda;
+  cfg = config.programs.conda;
   # Uses a separate install path to avoid clash with CondaPkg.jl, which also
   # writes to ~/.conda
   miniconda = pkgs.conda.override (prev: {
@@ -11,7 +11,7 @@ let
   });
 in
 {
-  options.pluskinda.cli-apps.conda = with types; {
+  options.programs.conda = with types; {
     enable = mkBoolOpt false "Whether or not to enable Miniconda package manager.";
   };
 

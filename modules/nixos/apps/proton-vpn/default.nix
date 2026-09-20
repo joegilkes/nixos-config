@@ -1,11 +1,11 @@
-{ options, config, lib, pkgs, ... }:
+{  options, config, lib, pkgs, ... }:
 
 with lib;
-with lib.pluskinda;
-let cfg = config.pluskinda.apps.proton-vpn;
+with (import ../../../../lib/module-helpers.nix { inherit lib; });
+let cfg = config.programs.proton-vpn;
 in
 {
-  options.pluskinda.apps.proton-vpn = with types; {
+  options.programs.proton-vpn = with types; {
     enable = mkBoolOpt false "Whether or not to enable Proton VPN.";
   };
 

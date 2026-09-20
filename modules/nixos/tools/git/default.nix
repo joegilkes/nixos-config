@@ -1,15 +1,14 @@
-{ options, config, pkgs, lib, ... }:
+{  options, config, pkgs, lib, ... }:
 
 with lib;
-with lib.pluskinda;
+with (import ../../../../lib/module-helpers.nix { inherit lib; });
 let
-  cfg = config.pluskinda.tools.git;
-  gpg = config.pluskinda.security.gpg;
-  user = config.pluskinda.user;
+  cfg = config.programs.git;
+  gpg = config.security.gpg;
+  user = config.user;
 in
 {
-  options.pluskinda.tools.git = with types; {
-    enable = mkBoolOpt false "Whether or not to install and configure git.";
+  options.programs.git = with types; {
     userName = mkOpt types.str user.fullName "The name to configure git with.";
     userEmail = mkOpt types.str user.email "The email to configure git with.";
   };
@@ -17,7 +16,7 @@ in
   config = mkIf cfg.enable {
     environment.systemPackages = with pkgs; [ git ];
 
-    pluskinda.home = {
+    home = {
       extraOptions = {
         programs.git = {
           enable = true;

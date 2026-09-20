@@ -1,12 +1,12 @@
 { options, config, lib, pkgs, ... }:
 
 with lib;
-with lib.pluskinda;
+with (import ../../../../lib/module-helpers.nix { inherit lib; });
 let
-  cfg = config.pluskinda.desktop.kodi;
+  cfg = config.services.desktop.kodi;
 in
 {
-  options.pluskinda.desktop.kodi = with types; {
+  options.services.desktop.kodi = with types; {
     enable = mkBoolOpt false "Whether to enable the Kodi client as the desktop environment.";
   };
 

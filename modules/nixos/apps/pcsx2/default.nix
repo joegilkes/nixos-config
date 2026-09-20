@@ -1,12 +1,12 @@
-{ config, lib, pkgs, ... }:
+{  config, lib, pkgs, ... }:
 
 with lib;
-with lib.pluskinda;
+with (import ../../../../lib/module-helpers.nix { inherit lib; });
 let 
-  cfg = config.pluskinda.apps.pcsx2;
+  cfg = config.programs.pcsx2;
 in
 {
-  options.pluskinda.apps.pcsx2 = with types; {
+  options.programs.pcsx2 = with types; {
     enable = mkBoolOpt false "Whether or not to enable PCSX2.";
   };
 

@@ -1,12 +1,12 @@
-{ options, config, lib, pkgs, ... }:
+{  options, config, lib, pkgs, ... }:
 
 with lib;
-with lib.pluskinda;
+with (import ../../../../lib/module-helpers.nix { inherit lib; });
 let 
-  cfg = config.pluskinda.apps.oversteer;
+  cfg = config.programs.oversteer;
 in
 {
-  options.pluskinda.apps.oversteer = with types; {
+  options.programs.oversteer = with types; {
     enable = mkBoolOpt false "Whether or not to enable Oversteer.";
   };
 

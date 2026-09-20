@@ -1,11 +1,11 @@
-{ options, config, pkgs, lib, ... }:
+{  options, config, pkgs, lib, ... }:
 
 with lib;
-with lib.pluskinda;
-let cfg = config.pluskinda.system.fonts;
+with (import ../../../../lib/module-helpers.nix { inherit lib; });
+let cfg = config.system.fonts;
 in
 {
-  options.pluskinda.system.fonts = with types; {
+  options.system.fonts = with types; {
     enable = mkBoolOpt false "Whether or not to manage fonts.";
     fonts = mkOpt (listOf package) [ ] "Custom font packages to install.";
   };

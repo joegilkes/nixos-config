@@ -1,10 +1,12 @@
 { pkgs, config, lib, channel, ...}:
 
 with lib;
-with lib.pluskinda;
+with (import ../../../lib/module-helpers.nix { inherit lib; });
 {
-  imports = [ 
+  imports = [
+    ../../../configuration.nix
     ./hardware.nix
+    "${(import ../../../npins).quadlet-nix.outPath}/nixos-module.nix"
     ./zed.nix
     ./homepage.nix
     # ./nextcloud.nix
@@ -14,40 +16,34 @@ with lib.pluskinda;
 
   networking.hostName = "giants-deep";
 
-  pluskinda = {
-    nix = {
-      # Use Lix instead of Nix
-      useLix = true;
+  nix = {
+    # Use Lix instead of Nix
+    useLix = true;
 
-      extra-substituters = {
-        "ssh-ng://builder".key = "timber-hearth:P0qnfshi3IsdI0gMkeFn3o1kik55uWpBqHaiYVC8UQY=";
-      };
+    extra-substituters = {
+      "ssh-ng://builder".key = "timber-hearth:P0qnfshi3IsdI0gMkeFn3o1kik55uWpBqHaiYVC8UQY=";
     };
-
-    suites = {
-      common = enabled;
-      htpc = enabled;
-      nas = enabled;
-      tuning = enabled;
-    };
-
-    services = {
-      openssh.allowPasswordAuth = false;
-      samba = {
-        serverName = "NAS";
-        privateShareDirs = {
-          backups = "/mnt/gabbro/backups";
-          media = "/mnt/gabbro/media";
-          storage = "/mnt/gabbro/storage";
-        };
-        publicShareDirs = {
-          public = "/mnt/gabbro/public";
-        };
-      };
-    };
-
-    user.extraGroups = [ "jellyfin" "calibre" ];
   };
+
+  profiles.common.enable = true;
+  profiles.htpc.enable = true;
+  profiles.nas.enable = true;
+  profiles.tuning.enable = true;
+
+  services.openssh.allowPasswordAuth = false;
+  services.samba = {
+    serverName = "NAS";
+    privateShareDirs = {
+      backups = "/mnt/gabbro/backups";
+      media = "/mnt/gabbro/media";
+      storage = "/mnt/gabbro/storage";
+    };
+    publicShareDirs = {
+      public = "/mnt/gabbro/public";
+    };
+  };
+
+  user.extraGroups = [ "jellyfin" "calibre" ];
 
   programs.ssh.extraConfig = ''
     Host builder
@@ -78,4 +74,5 @@ with lib.pluskinda;
   };
 
   system.stateVersion = "24.05";
+  home-manager.users.joe.home.stateVersion = "24.05";
 }

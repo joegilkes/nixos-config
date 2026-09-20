@@ -1,11 +1,11 @@
-{ options, config, lib, pkgs, ... }:
+{  options, config, lib, pkgs, ... }:
 
 with lib;
-with lib.pluskinda;
-let cfg = config.pluskinda.apps.bs-manager;
+with (import ../../../../lib/module-helpers.nix { inherit lib; });
+let cfg = config.programs.bs-manager;
 in
 {
-  options.pluskinda.apps.bs-manager = with types; {
+  options.programs.bs-manager = with types; {
     enable = mkBoolOpt false "Whether or not to enable BSManager.";
   };
 

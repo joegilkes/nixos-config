@@ -1,11 +1,11 @@
-{ options, config, lib, pkgs, ... }:
+{  options, config, lib, pkgs, ... }:
 
 with lib;
-with lib.pluskinda;
-let cfg = config.pluskinda.apps.steamtinkerlaunch;
+with (import ../../../../lib/module-helpers.nix { inherit lib; });
+let cfg = config.programs.steamtinkerlaunch;
 in
 {
-  options.pluskinda.apps.steamtinkerlaunch = with types; {
+  options.programs.steamtinkerlaunch = with types; {
     enable = mkBoolOpt false "Whether or not to enable SteamTinkerLaunch.";
   };
 

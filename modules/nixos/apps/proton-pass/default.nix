@@ -1,12 +1,12 @@
-{ options, config, lib, pkgs, ... }:
+{  options, config, lib, pkgs, ... }:
 
 with lib;
-with lib.pluskinda;
+with (import ../../../../lib/module-helpers.nix { inherit lib; });
 let
-  cfg = config.pluskinda.apps.proton-pass;
+  cfg = config.programs.proton-pass;
 in
 {
-  options.pluskinda.apps.proton-pass = with types; {
+  options.programs.proton-pass = with types; {
     enable = mkBoolOpt false "Whether or not to enable Proton Pass.";
   };
 

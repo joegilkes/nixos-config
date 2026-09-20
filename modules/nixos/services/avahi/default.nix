@@ -1,18 +1,13 @@
 { lib, config, options, ... }:
 
 let
-  cfg = config.pluskinda.services.avahi;
+  cfg = config.services.avahi;
 
   inherit (lib) types mkEnableOption mkIf;
 in
 {
-  options.pluskinda.services.avahi = with types; {
-    enable = mkEnableOption "Avahi";
-  };
-
   config = mkIf cfg.enable {
     services.avahi = {
-      enable = true;
       nssmdns4 = true;
       publish = {
         enable = true;

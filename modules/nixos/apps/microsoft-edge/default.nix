@@ -1,12 +1,12 @@
-{ options, config, lib, pkgs, ... }:
+{  options, config, lib, pkgs, ... }:
 
 with lib;
-with lib.pluskinda;
+with (import ../../../../lib/module-helpers.nix { inherit lib; });
 let 
-  cfg = config.pluskinda.apps.microsoft-edge;
+  cfg = config.programs.microsoft-edge;
 in
 {
-  options.pluskinda.apps.microsoft-edge = with types; {
+  options.programs.microsoft-edge = with types; {
     enable = mkBoolOpt false "Whether or not to enable Microsoft Edge.";
   };
 

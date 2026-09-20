@@ -1,13 +1,13 @@
-{ config, lib, pkgs, ...}:
+{  config, lib, pkgs, ...}:
 
 with lib;
-with lib.pluskinda;
+with (import ../../../../lib/module-helpers.nix { inherit lib; });
 let 
-  cfg = config.pluskinda.services.authelia;
+  cfg = config.services.authelia;
   autheliaMain = config.services.authelia.instances.main;
 in
 {
-  options.pluskinda.services.authelia = with types; {
+  options.services.authelia = with types; {
     enable = mkBoolOpt false "Whether or not to configure Authelia for web auth.";
     port = mkOpt port 9091 "Port to run the Authelia through";
     secrets = mkOpt attrs {} "Secrets to pass to Authelia";
@@ -25,7 +25,7 @@ in
       };
     };
 
-    pluskinda.user.extraGroups = [ "authelia" ];
+    user.extraGroups = [ "authelia" ];
     users.users.${autheliaMain.user}.extraGroups = [ "redis" "mailrelay" ];
 
     services.mysql = {

@@ -1,12 +1,12 @@
-{ options, config, lib, pkgs, ... }:
+{  options, config, lib, pkgs, ... }:
 
 with lib;
-with lib.pluskinda;
+with (import ../../../../lib/module-helpers.nix { inherit lib; });
 let
-  cfg = config.pluskinda.security.pass;
+  cfg = config.security.pass;
 in
 {
-  options.pluskinda.security.pass = with types; {
+  options.security.pass = with types; {
     enable = mkBoolOpt false "Whether to enable the Pass password manager.";
   };
 

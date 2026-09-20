@@ -1,10 +1,16 @@
-name: Flake Checker
-run-name: ${{ github.actor }} checking the current `flake.lock`
+name: npins Checker
+run-name: ${{ github.actor }} checking pinned dependencies
 on: [push]
 jobs:
-  flake-check:
+  npins-check:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - name: Check Nix flake inputs
-        uses: DeterminateSystems/flake-checker-action@v5
+      - uses: actions/checkout@v4
+      - uses: cachix/install-nix-action@v31
+      - name: Verify npins sources
+        working-directory: npins
+        run: nix shell nixpkgs#npins --command npins verify
+      - name: Parse repository Nix files
+        run: |
+          nix-instantiate --parse configuration.nix >/dev/null
+          nix-instantiate --parse modules/nixos/default.nix >/dev/null

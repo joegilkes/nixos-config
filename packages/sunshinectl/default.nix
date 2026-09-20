@@ -1,7 +1,6 @@
 { pkgs, lib, ... }:
 
 let
-  inherit (lib.pluskinda) override-meta;
 
   new-meta = with lib; {
     description = "A bash script to handle starting/stopping the Sunshine user service.";
@@ -106,4 +105,6 @@ let
       fi
     '';
 in
-override-meta new-meta package
+package.overrideAttrs (attrs: {
+  meta = (attrs.meta or { }) // new-meta;
+})

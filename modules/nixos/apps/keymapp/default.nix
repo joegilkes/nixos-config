@@ -1,11 +1,11 @@
-{ options, config, lib, pkgs, ... }:
+{  options, config, lib, pkgs, ... }:
 
 with lib;
-with lib.pluskinda;
-let cfg = config.pluskinda.apps.keymapp;
+with (import ../../../../lib/module-helpers.nix { inherit lib; });
+let cfg = config.programs.keymapp;
 in
 {
-  options.pluskinda.apps.keymapp = with types; {
+  options.programs.keymapp = with types; {
     enable = mkBoolOpt false "Whether or not to enable chrome.";
   };
 
