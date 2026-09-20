@@ -2,8 +2,6 @@
 
 with lib;
 with (import ../../../lib/module-helpers.nix { inherit lib; });
-let cfg = config.home;
-in
 {
   # imports = with inputs; [
   #   home-manager.nixosModules.home-manager
@@ -22,13 +20,14 @@ in
       useUserPackages = true;
       useGlobalPkgs = true;
 
-      users.${config.user.name} =
+      users.${config.user.name} = mkMerge [
         {
-          home.file = mkAliasDefinitions options.home.file;
+          home.file = config.home.file;
           xdg.enable = true;
-          xdg.configFile = mkAliasDefinitions options.home.configFile;
+          xdg.configFile = config.home.configFile;
         }
-        // mkAliasDefinitions options.home.extraOptions;
+        (mkAliasDefinitions options.home.extraOptions)
+      ];
     };
   };
 }
