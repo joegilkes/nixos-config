@@ -100,7 +100,7 @@ in
         config_file=/var/lib/AccountsService/users/${config.user.name}
         icon_file=/run/current-system/sw/share/user-icons/user/${config.user.name}/${config.user.icon.fileName}
 
-        if ! [ -d "$(dirname "$config_file")"]; then
+        if ! [ -d "$(dirname "$config_file")" ]; then
           mkdir -p "$(dirname "$config_file")"
         fi
 
@@ -115,7 +115,7 @@ in
           if [[ "$icon_config" == "" ]]; then
             echo "Icon=$icon_file" >> $config_file
           else
-            sed -E -i -e "s#^Icon=.*$#Icon=$icon_file#" $config_file
+            sed -E -i "s#^Icon=.*\$#Icon=$icon_file#" "$config_file"
           fi
         fi
       '';
