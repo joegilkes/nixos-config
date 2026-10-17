@@ -35,7 +35,6 @@ with (import ../../../lib/module-helpers.nix { inherit lib; });
   profiles.media.enable = true;
   profiles.social.enable = true;
   profiles.tuning.enable = true;
-  profiles.vr.enable = true;
 
   services.desktop.gnome = {
     extensions = [ pkgs.gnomeExtensions.tiling-shell ]; # Settings included but not applied.

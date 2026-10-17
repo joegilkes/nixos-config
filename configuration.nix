@@ -44,6 +44,7 @@ let
     (import ./overlays/openldap overlayArgs)
     (import ./overlays/traefik overlayArgs)
     (import ./overlays/star-citizen overlayArgs)
+    (import ./overlays/lix overlayArgs)
   ];
 in
 {
