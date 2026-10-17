@@ -112,6 +112,7 @@
     ./services/zfs
     ./system/boot
     ./system/env
+    ./system/fhs-bindmounts
     ./system/fonts
     ./system/kb
     ./system/locale
