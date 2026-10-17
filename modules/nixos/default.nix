@@ -75,23 +75,6 @@
     ./hardware/tablet
     ./home
     ./nix
-    ./security/gpg
-    ./security/keyring
-    ./security/pass
-    ./services/adguard
-    ./services/authelia
-    ./services/avahi
-    ./services/calibre-web
-    ./services/flatpak
-    ./services/jellyfin
-    ./services/jellyseerr
-    ./services/openssh
-    ./services/redis
-    ./services/samba
-    ./services/sshServe
-    ./services/traefik
-    ./services/virtualisation
-    ./services/zfs
     ./profiles/benchmarking
     ./profiles/browsers
     ./profiles/common
@@ -108,6 +91,25 @@
     ./profiles/social
     ./profiles/tuning
     ./profiles/vr
+    ./security/gpg
+    ./security/keyring
+    ./security/pass
+    ./services/adguard
+    ./services/authelia
+    ./services/avahi
+    ./services/calibre-web
+    ./services/flatpak
+    ./services/glances
+    ./services/jellyfin
+    ./services/jellyseerr
+    ./services/openssh
+    ./services/redis
+    ./services/samba
+    ./services/sshServe
+    ./services/sunshine
+    ./services/traefik
+    ./services/virtualisation
+    ./services/zfs
     ./system/boot
     ./system/env
     ./system/fonts
