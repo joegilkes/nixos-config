@@ -1,16 +1,7 @@
 # Package the repository's flakeless NixOS rebuild wrapper as the `update`
 # command, making it available to every system that enables `programs.misc`.
-{ pkgs, lib, ... }:
+{ pkgs, ... }:
 
-let
-  repository = builtins.path {
-    path = ../..;
-    name = "nixos-config-source";
-    filter = path: type:
-      let name = builtins.baseNameOf path;
-      in name != ".git" && name != "result";
-  };
-in
 pkgs.writeShellApplication {
   name = "update";
   runtimeInputs = with pkgs; [
@@ -20,7 +11,11 @@ pkgs.writeShellApplication {
   text = ''
     set -euo pipefail
 
-    repo_root=${lib.escapeShellArg (toString repository)}
+    repo_root="$(pwd -P)"
+    if [[ ! -f "$repo_root/npins/default.nix" || ! -d "$repo_root/systems" ]]; then
+      printf 'Run update from the root of a NixOS configuration repository.\n' >&2
+      exit 2
+    fi
     action="''${1:-switch}"
     if [[ $# -gt 0 ]]; then
       shift
@@ -40,12 +35,18 @@ pkgs.writeShellApplication {
         ;;
     esac
 
+    host_config="$repo_root/systems/$system/$host/default.nix"
+    if [[ ! -f "$host_config" ]]; then
+      printf 'No configuration found for host %s in %s.\n' "$host" "$repo_root" >&2
+      exit 2
+    fi
+
     nixpkgs="$(cd "$repo_root" && nix eval --impure --raw \
       --expr '(import ./npins).nixpkgs.outPath')"
 
     exec nixos-rebuild "$action" --no-flake \
       -I "nixpkgs=$nixpkgs" \
-      -I "nixos-config=$repo_root/systems/$system/$host/default.nix" \
+      -I "nixos-config=$host_config" \
       "$@"
   '';
 }
