@@ -7,7 +7,11 @@ let
 in
 {
   config = mkIf cfg.enable {
-    services.sunshine.autoStart = false;
+    services.sunshine = {
+      autoStart = false;
+      openFirewall = true;
+      capSysAdmin = true;
+    };
     environment.systemPackages = [ pkgs.sunshinectl ];
   };
 }
