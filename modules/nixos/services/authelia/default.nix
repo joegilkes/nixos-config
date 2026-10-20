@@ -106,8 +106,17 @@ in
               name = "internal";
               networks = [ "192.168.0.40/30" ];
             }
+            {
+              name = "home";
+              networks = [ "192.168.0.0/24" "10.10.10.1/24" ];
+            }
           ];
           rules = [
+            {
+              domain = "books.joegilk.es";
+              policy = "bypass";
+              networks = "home";
+            }
             {
               domain = "*.joegilk.es";
               policy = "bypass";
