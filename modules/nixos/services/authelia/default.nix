@@ -50,7 +50,7 @@ in
       settings = {
         theme = "dark";
         default_2fa_method = "totp";
-        server.address = "tcp://127.0.0.1:${toString cfg.port}";
+        server.address = "tcp://192.168.0.40:${toString cfg.port}";
         log = {
           level = "info";
           file_path = "/var/log/authelia/authelia.log";

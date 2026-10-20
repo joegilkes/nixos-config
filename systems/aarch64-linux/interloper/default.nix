@@ -6,8 +6,6 @@ with lib.pluskinda;
   imports = [ 
     ./hardware.nix
     ./traefik.nix
-    ./crowdsec.nix
-    ./ddclient.nix
   ];
 
   networking.hostName = "interloper";
@@ -34,7 +32,6 @@ with lib.pluskinda;
         enable = true;
         databases = 1;
       };
-      traefik = enabled;
       openssh = {
         enable = true;
         allowPasswordAuth = false;
