@@ -1,6 +1,6 @@
 # Shared flakeless NixOS configuration: pin dependencies, define overlays, and
 # import the repository's explicit module tree.
-{ config, pkgs, ... }:
+{ lib, pkgs, ... }:
 
 let
   sources = import ./npins;
@@ -47,6 +47,11 @@ let
   ];
 in
 {
+  nix.nixPath = lib.mkForce [
+    "nixpkgs=${source "nixpkgs"}"
+    "nixos-config=/etc/nixos/configuration.nix"
+  ];
+
   imports = [
     ./modules/nixos
     "${source "home-manager"}/nixos"
