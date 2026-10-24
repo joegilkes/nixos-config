@@ -37,7 +37,6 @@ let
     (import ((source "qchem") + "/default.nix"))
     packageOverlay
     (import ./overlays/btop overlayArgs)
-    (import ./overlays/calibre overlayArgs)
     (import ./overlays/homepage-dashboard overlayArgs)
     (import ./overlays/intel-ocl overlayArgs)
     (import ./overlays/liquidctl overlayArgs)
