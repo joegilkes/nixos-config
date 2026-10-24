@@ -9,7 +9,8 @@ repository modules are imported explicitly.
 
 After applying the configuration, use the installed `update` command. It
 selects the host configuration from the current hostname and evaluates the
-pinned Nixpkgs source:
+pinned Nixpkgs source. The same pin is exposed through `NIX_PATH` for tools such as `nix-shell` and `comma`. After switching, log out and
+back in so existing sessions pick up the updated environment:
 
 ```sh
 update switch
