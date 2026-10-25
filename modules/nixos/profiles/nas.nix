@@ -14,7 +14,6 @@ in
   config = mkIf cfg.enable {
     services = {
       flatpak.enable = mkForce false;
-      adguard = enabled;
       glances = enabled;
       samba = enabled;
       zfs = enabled;

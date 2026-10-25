@@ -7,8 +7,6 @@ let
 in
 {
   config = mkIf cfg.enable {
-    environment.systemPackages = with pkgs; [ 
-      gamemode
-    ];
+    programs.gamemode.enableRenice = true;
   };
 }
