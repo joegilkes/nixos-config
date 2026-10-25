@@ -1,4 +1,4 @@
-{ config, lib, pkgs, modulesPath, ... }:
+{ config, lib, modulesPath, ... }:
 
 let
   nixos-hardware = (import ../../../npins).nixos-hardware.outPath;

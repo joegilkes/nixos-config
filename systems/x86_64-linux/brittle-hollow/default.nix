@@ -1,7 +1,8 @@
-{ pkgs, config, lib, channel, ...}:
+{ lib, ...}:
 
 with lib;
 with (import ../../../lib/module-helpers.nix { inherit lib; });
+
 {
   imports = [
     ../../../configuration.nix
@@ -10,28 +11,23 @@ with (import ../../../lib/module-helpers.nix { inherit lib; });
 
   networking.hostName = "brittle-hollow";
 
-  nix = {
-    # Use Lix instead of Nix
-    useLix = true;
+  profiles = {
+    common = enabled;
+    desktop = enabled;
+    browsers = enabled;
+    development = enabled;
+    media = enabled;
+    social = enabled;
+  };
 
-    extra-substituters = {
-      "ssh-ng://builder".key = "timber-hearth:P0qnfshi3IsdI0gMkeFn3o1kik55uWpBqHaiYVC8UQY=";
+  services = {
+    virtualisation = enabled;
+    openssh = {
+      AllowTCPForwarding = "yes";
+      PermitTunnel = "yes";
     };
   };
 
-  profiles.common.enable = true;
-  profiles.desktop.enable = true;
-  profiles.browsers.enable = true;
-  profiles.development.enable = true;
-  profiles.media.enable = true;
-  profiles.social.enable = true;
-
-  services.virtualisation.enable = true;
-
-  services.openssh.settings = {
-    AllowTCPForwarding = "yes";
-    PermitTunnel = "yes";
-  };
 
   programs.ssh.extraConfig = ''
     Host builder
@@ -45,6 +41,10 @@ with (import ../../../lib/module-helpers.nix { inherit lib; });
   '';
 
   nix = {
+    useLix = true;
+    extra-substituters = {
+      "ssh-ng://builder".key = "timber-hearth:P0qnfshi3IsdI0gMkeFn3o1kik55uWpBqHaiYVC8UQY=";
+    };
     buildMachines = [ {
       hostName = "builder";
       system = "x86_64-linux";

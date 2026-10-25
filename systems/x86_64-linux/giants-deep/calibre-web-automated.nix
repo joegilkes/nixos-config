@@ -1,7 +1,8 @@
 { config, lib, ... }:
 
 with lib;
-with (import ../../../../lib/module-helpers.nix { inherit lib; });
+with (import ../../../lib/module-helpers.nix { inherit lib; });
+
 {
   age.secrets = {
     hardcover-api-token = {
@@ -17,7 +18,7 @@ with (import ../../../../lib/module-helpers.nix { inherit lib; });
 
     containers.calibre_web_automated = {
       containerConfig = {
-        image = "crocodilestick/calibre-web-automated:latest";
+        image = "docker.io/crocodilestick/calibre-web-automated:v4.0.8";
         networks = [ networks.cwa.ref ];
         publishPorts = [ "8083:8083" ];
         volumes = [

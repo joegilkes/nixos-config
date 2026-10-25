@@ -1,7 +1,7 @@
-{ pkgs, config, lib, channel, ...}:
+{ config, lib, ...}:
 
 with lib;
-with (import ../../../../lib/module-helpers.nix { inherit lib; });
+with (import ../../../lib/module-helpers.nix { inherit lib; });
 
 {
   age.secrets = {
@@ -15,8 +15,8 @@ with (import ../../../../lib/module-helpers.nix { inherit lib; });
     useZedEmails = true;
     smtpUser = "giants-deep";
     smtpPassFile = config.age.secrets.smtp2go_zed_pass.path;
-    smtpServer = "mail.smtp2go.com";
-    smtpPort = 2525;
+    smtpServer = "mail-eu.smtp2go.com";
+    smtpPort = 443;
     smtpFrom = "zed@mail.joegilk.es";
     smtpTo = "joe@joegilk.es";
   };

@@ -1,7 +1,8 @@
-{ pkgs, config, lib, channel, ...}:
+{ lib, ...}:
 
 with lib;
 with (import ../../../lib/module-helpers.nix { inherit lib; });
+
 {
   imports = [
     ../../../configuration.nix
@@ -9,41 +10,36 @@ with (import ../../../lib/module-helpers.nix { inherit lib; });
     "${(import ../../../npins).quadlet-nix.outPath}/nixos-module.nix"
     ./zed.nix
     ./homepage.nix
-    # ./nextcloud.nix
     ./dawarich.nix
     ./calibre-web-automated.nix
   ];
 
   networking.hostName = "giants-deep";
 
-  nix = {
-    # Use Lix instead of Nix
-    useLix = true;
-
-    extra-substituters = {
-      "ssh-ng://builder".key = "timber-hearth:P0qnfshi3IsdI0gMkeFn3o1kik55uWpBqHaiYVC8UQY=";
-    };
+  profiles = {
+    common = enabled;
+    htpc = enabled;
+    nas = enabled;
+    tuning = enabled;
   };
 
-  profiles.common.enable = true;
-  profiles.htpc.enable = true;
-  profiles.nas.enable = true;
-  profiles.tuning.enable = true;
-
-  services.openssh.allowPasswordAuth = false;
-  services.samba = {
-    serverName = "NAS";
-    privateShareDirs = {
-      backups = "/mnt/gabbro/backups";
-      media = "/mnt/gabbro/media";
-      storage = "/mnt/gabbro/storage";
-    };
-    publicShareDirs = {
-      public = "/mnt/gabbro/public";
+  services = {
+    openssh.allowPasswordAuth = false;
+    samba = {
+      serverName = "NAS";
+      privateShareDirs = {
+        backups = "/mnt/gabbro/backups";
+        media = "/mnt/gabbro/media";
+        storage = "/mnt/gabbro/storage";
+      };
+      publicShareDirs = {
+        public = "/mnt/gabbro/public";
+      };
     };
   };
 
   user.extraGroups = [ "jellyfin" "calibre" ];
+
 
   programs.ssh.extraConfig = ''
     Host builder
@@ -57,6 +53,10 @@ with (import ../../../lib/module-helpers.nix { inherit lib; });
   '';
 
   nix = {
+    useLix = true;
+    extra-substituters = {
+      "ssh-ng://builder".key = "timber-hearth:P0qnfshi3IsdI0gMkeFn3o1kik55uWpBqHaiYVC8UQY=";
+    };
     buildMachines = [ {
       hostName = "builder";
       system = "x86_64-linux";
