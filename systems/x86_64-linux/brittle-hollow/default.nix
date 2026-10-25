@@ -22,7 +22,7 @@ with (import ../../../lib/module-helpers.nix { inherit lib; });
 
   services = {
     virtualisation = enabled;
-    openssh = {
+    openssh.settings = {
       AllowTCPForwarding = "yes";
       PermitTunnel = "yes";
     };
