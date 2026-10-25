@@ -1,130 +1,136 @@
 # Explicit index of every repository NixOS module.
-# Explicitly import every repository NixOS module.
 # Keep this list alphabetical so adding a module is straightforward.
 { ... }:
 
 {
   imports = [
-    ./apps/blender
-    ./apps/bottles
-    ./apps/bs-manager
-    ./apps/calibre
-    ./apps/chrome
-    ./apps/darktable
-    ./apps/discord
-    ./apps/dolphin
-    ./apps/eden
-    ./apps/element
-    ./apps/evolution
-    ./apps/firefox
-    ./apps/gamemode
-    ./apps/godot
-    ./apps/heroic-launcher
-    ./apps/jellyfin
-    ./apps/keymapp
-    ./apps/kodi
-    ./apps/lutris
-    ./apps/mangohud
-    ./apps/microsoft-edge
-    ./apps/nexusmods-app
-    ./apps/orca
-    ./apps/oversteer
-    ./apps/pcsx2
-    ./apps/pixelorama
-    ./apps/prismlauncher
-    ./apps/proton-pass
-    ./apps/proton-vpn
-    ./apps/protontricks
-    ./apps/r2modman
-    ./apps/rpcs3
-    ./apps/ryujinx
-    ./apps/sidequest
-    ./apps/slack
-    ./apps/spotify
-    ./apps/star-citizen
-    ./apps/steam
-    ./apps/steamtinkerlaunch
-    ./apps/texlive
-    ./apps/tidal
-    ./apps/ultrastar
-    ./apps/unigine
-    ./apps/vlc
-    ./apps/vscode
-    ./apps/winetricks
-    ./apps/xournalpp
-    ./cli-apps/android-platform-tools
-    ./cli-apps/conda
-    ./cli-apps/ffbtools
-    ./cli-apps/fusee-nano
-    ./cli-apps/julia
-    ./cli-apps/liquidctl
-    ./cli-apps/mprime
-    ./cli-apps/nixd
-    ./cli-apps/proton
-    ./cli-apps/wine
-    ./desktop/addons/electron-support
-    ./desktop/addons/wallpaper
-    ./desktop/addons/xdg-portal
-    ./desktop/gnome
-    ./desktop/kodi
-    ./hardware/audio
-    ./hardware/fingerprint
-    ./hardware/networking
-    ./hardware/storage
-    ./hardware/surface
-    ./hardware/tablet
     ./home
     ./nix
-    ./profiles/benchmarking
-    ./profiles/browsers
-    ./profiles/common
-    ./profiles/compchem
-    ./profiles/creative
-    ./profiles/desktop
-    ./profiles/development
-    ./profiles/emulation
-    ./profiles/gamedev
-    ./profiles/gaming
-    ./profiles/htpc
-    ./profiles/media
-    ./profiles/nas
-    ./profiles/social
-    ./profiles/tuning
-    ./profiles/vr
-    ./security/gpg
-    ./security/keyring
-    ./security/pass
-    ./services/adguard
-    ./services/authelia
-    ./services/avahi
-    ./services/calibre-web
-    ./services/flatpak
-    ./services/glances
-    ./services/jellyfin
-    ./services/jellyseerr
-    ./services/openssh
-    ./services/redis
-    ./services/samba
-    ./services/sshServe
-    ./services/sunshine
-    ./services/traefik
-    ./services/virtualisation
-    ./services/zfs
-    ./system/boot
-    ./system/env
-    ./system/fhs-bindmounts
-    ./system/fonts
-    ./system/kb
-    ./system/locale
-    ./system/time
-    ./tools/appimage
-    ./tools/diagnostics
-    ./tools/direnv
-    ./tools/git
-    ./tools/misc
-    ./tools/rpi
-    ./tools/sensors
-    ./tools/usb-modeswitch
     ./user
+
+    # GUI Apps
+    ./apps/blender.nix
+    ./apps/bottles.nix
+    ./apps/bs-manager.nix
+    ./apps/calibre.nix
+    ./apps/chrome.nix
+    ./apps/darktable.nix
+    ./apps/discord.nix
+    ./apps/dolphin.nix
+    ./apps/eden.nix
+    ./apps/element-desktop.nix
+    ./apps/firefox.nix
+    ./apps/godot.nix
+    ./apps/heroic-launcher.nix
+    ./apps/jellyfin-media-player.nix
+    ./apps/keymapp.nix
+    ./apps/kodi.nix
+    ./apps/lutris.nix
+    ./apps/mangohud.nix
+    ./apps/microsoft-edge.nix
+    ./apps/oversteer.nix
+    ./apps/pcsx2.nix
+    ./apps/pixelorama.nix
+    ./apps/prismlauncher.nix
+    ./apps/proton-pass.nix
+    ./apps/proton-vpn.nix
+    ./apps/protonup-qt.nix
+    ./apps/r2modman.nix
+    ./apps/rpcs3.nix
+    ./apps/ryujinx.nix
+    ./apps/sidequest.nix
+    ./apps/slack.nix
+    ./apps/spotify.nix
+    ./apps/star-citizen.nix
+    ./apps/steam.nix
+    ./apps/steamtinkerlaunch.nix
+    ./apps/tidal.nix
+    ./apps/ultrastardx.nix
+    ./apps/unigine-benchmarks.nix
+    ./apps/vlc.nix
+    ./apps/vscode.nix
+    ./apps/winetricks.nix
+    ./apps/xournalpp.nix
+
+    # CLI Apps
+    ./cli-apps/android-platform-tools.nix
+    ./cli-apps/conda.nix
+    ./cli-apps/ffbtools.nix
+    ./cli-apps/fusee-nano.nix
+    ./cli-apps/gamemode.nix
+    ./cli-apps/julia.nix
+    ./cli-apps/liquidctl.nix
+    ./cli-apps/mprime.nix
+    ./cli-apps/nixd.nix
+    ./cli-apps/orca-qchem.nix
+    ./cli-apps/texlive.nix
+
+    # Desktops (display managers and addons)
+    ./desktop/addons/electron-support.nix
+    ./desktop/addons/wallpaper.nix
+    ./desktop/addons/xdg-portal.nix
+    ./desktop/gnome.nix
+    ./desktop/kodi.nix
+
+    # Hardware
+    ./hardware/audio.nix
+    ./hardware/fingerprint.nix
+    ./hardware/networking.nix
+    ./hardware/storage.nix
+    ./hardware/surface.nix
+    ./hardware/tablet.nix
+
+    # Profiles
+    ./profiles/benchmarking.nix
+    ./profiles/browsers.nix
+    ./profiles/common.nix
+    ./profiles/compchem.nix
+    ./profiles/creative.nix
+    ./profiles/desktop.nix
+    ./profiles/development.nix
+    ./profiles/emulation.nix
+    ./profiles/gamedev.nix
+    ./profiles/gaming.nix
+    ./profiles/htpc.nix
+    ./profiles/media.nix
+    ./profiles/nas.nix
+    ./profiles/social.nix
+    ./profiles/tuning.nix
+    ./profiles/vr.nix
+
+    # Security
+    ./security/gpg.nix
+    ./security/keyring.nix
+    ./security/pass.nix
+
+    # Services
+    ./services/avahi.nix
+    ./services/flatpak.nix
+    ./services/glances.nix
+    ./services/jellyfin.nix
+    ./services/openssh.nix
+    ./services/samba.nix
+    ./services/sshServe.nix
+    ./services/sunshine.nix
+    ./services/virtualisation.nix
+    ./services/zfs.nix
+
+    # System
+    ./system/boot.nix
+    ./system/env.nix
+    ./system/fhs-bindmounts.nix
+    ./system/fonts.nix
+    ./system/kb.nix
+    ./system/locale.nix
+    ./system/time.nix
+
+    # Tools
+    ./tools/appimage.nix
+    ./tools/diagnostics.nix
+    ./tools/git.nix
+    ./tools/misc.nix
+    ./tools/rpi.nix
+    ./tools/sensors.nix
+    ./tools/usb-modeswitch.nix
   ];
 }

@@ -23,27 +23,23 @@ let
   };
 
   packageOverlay = final: _prev: {
-    ffbtools = final.callPackage ./packages/ffbtools { };
-    ffbwrap = final.callPackage ./packages/ffbwrap { };
-    nixos-revision = final.callPackage ./packages/nixos-revision { };
-    ryujinx = final.callPackage ./packages/ryujinx { };
-    sunshinectl = final.callPackage ./packages/sunshinectl { };
     wallpapers = final.callPackage ./packages/wallpapers { };
-    update = final.callPackage ./packages/update { };
+    ffbtools = final.callPackage ./packages/ffbtools.nix { };
+    ffbwrap = final.callPackage ./packages/ffbwrap.nix { };
+    sunshinectl = final.callPackage ./packages/sunshinectl.nix { };
+    update = final.callPackage ./packages/update.nix { };
   };
 
   overlayArgs = { inherit inputs channels; };
   overlays = [
     (import ((source "qchem") + "/default.nix"))
     packageOverlay
-    (import ./overlays/btop overlayArgs)
-    (import ./overlays/homepage-dashboard overlayArgs)
-    (import ./overlays/intel-ocl overlayArgs)
-    (import ./overlays/liquidctl overlayArgs)
-    (import ./overlays/openldap overlayArgs)
-    (import ./overlays/traefik overlayArgs)
-    (import ./overlays/star-citizen overlayArgs)
-    (import ./overlays/lix overlayArgs)
+    (import ./overlays/btop-rocm_package.nix overlayArgs)
+    (import ./overlays/homepage-dashboard_background.nix overlayArgs)
+    (import ./overlays/intel-ocl_src.nix overlayArgs)
+    (import ./overlays/liquidctl_latest.nix overlayArgs)
+    (import ./overlays/openldap_platform_check.nix overlayArgs)
+    (import ./overlays/star-citizen_package.nix overlayArgs)
   ];
 in
 {

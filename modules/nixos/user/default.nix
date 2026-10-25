@@ -1,7 +1,8 @@
-{  options, config, pkgs, lib, ... }:
+{ config, pkgs, lib, ... }:
 
 with lib;
 with (import ../../../lib/module-helpers.nix { inherit lib; });
+
 let
   cfg = config.user;
   defaultIconFileName = "profile.jpg";

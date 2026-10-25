@@ -2,6 +2,7 @@
 
 let
   images = builtins.attrNames (builtins.readDir ./wallpapers);
+
   mkWallpaper = name: src:
     let
       fileName = builtins.baseNameOf src;
@@ -17,11 +18,14 @@ let
         passthru = { inherit fileName; };
       };
     in
-    pkg;
+      pkg;
+
   nameWithoutExtension = image:
     builtins.replaceStrings [ ".png" ".jpg" ".jpeg" ] [ "" "" "" ]
       (builtins.baseNameOf image);
+
   names = builtins.map nameWithoutExtension images;
+
   wallpapers = lib.foldl
     (acc: image:
       let
@@ -34,27 +38,29 @@ let
       acc // { "${name}" = mkWallpaper name (./wallpapers + "/${image}"); })
     { }
     images;
+
   installTarget = "$out/share/wallpapers";
+
   installWallpapers = builtins.mapAttrs
     (name: wallpaper: ''
       cp ${wallpaper} ${installTarget}/${wallpaper.fileName}
     '')
     wallpapers;
 in
-pkgs.stdenvNoCC.mkDerivation {
-  name = "wallpapers";
-  src = ./wallpapers;
+  pkgs.stdenvNoCC.mkDerivation {
+    name = "wallpapers";
+    src = ./wallpapers;
 
-  installPhase = ''
-    mkdir -p ${installTarget}
+    installPhase = ''
+      mkdir -p ${installTarget}
 
-    find * -type f -mindepth 0 -maxdepth 0 -exec cp ./{} ${installTarget}/{} ';'
-  '';
+      find * -type f -mindepth 0 -maxdepth 0 -exec cp ./{} ${installTarget}/{} ';'
+    '';
 
-  passthru = { inherit names; } // wallpapers;
+    passthru = { inherit names; } // wallpapers;
 
-  meta = with lib; {
-    description = "Some good wallpapers!";
-    license = licenses.asl20;
-  };
-}
+    meta = with lib; {
+      description = "Some good wallpapers!";
+      license = licenses.asl20;
+    };
+  }
