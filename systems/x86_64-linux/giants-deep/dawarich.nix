@@ -1,7 +1,8 @@
 { config, lib, ... }:
 
 with lib;
-with (import ../../../../lib/module-helpers.nix { inherit lib; });
+with (import ../../../lib/module-helpers.nix { inherit lib; });
+
 {
   age.secrets = {
     dawarich-db-password = {
