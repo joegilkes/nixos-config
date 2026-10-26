@@ -22,7 +22,7 @@ with (import ../../../lib/module-helpers.nix { inherit lib; });
 
   services = {
     avahi = enabled;
-    glances = enabled;
+    # glances = enabled;
     openssh = {
       enable = true;
       allowPasswordAuth = false;
