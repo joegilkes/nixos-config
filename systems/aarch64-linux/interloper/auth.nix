@@ -93,8 +93,9 @@ in
     enable = true;
     settings = {
       ldap_base_dn = "dc=joegilk,dc=es";
-      ldap_user_pass = config.age.secrets.lldap_user_pass.path;
+      ldap_user_pass_file = config.age.secrets.lldap_user_pass.path;
       jwt_secret_file = config.age.secrets.lldap_jwt_secret.path;
+      force_ldap_user_pass_reset = "always";
     };
   };
   systemd.services.lldap.serviceConfig.SupplementaryGroups = [ "lldap-secrets" ];
@@ -114,7 +115,7 @@ in
   };
 
   # Authelia
-  services.authelia.main = {
+  services.authelia.instances.main = {
     enable = true;
 
     settings = {
