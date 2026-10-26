@@ -1,4 +1,4 @@
-{ lib, pkgs, modulesPath, ...}:
+{ lib, modulesPath, ...}:
 
 let
   nixos-hardware = (import ../../../npins).nixos-hardware.outPath;
@@ -12,7 +12,6 @@ in
   ];
 
   boot.initrd.availableKernelModules = [ "xhci_pci" "usb_storage" "usbhid" ];
-  boot.kernelPackages = pkgs.linuxKernel.packages.linux_rpi4;
   boot.loader = {
     grub.enable = false;
     generic-extlinux-compatible.enable = true;
