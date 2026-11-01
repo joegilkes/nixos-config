@@ -28,6 +28,7 @@ let
     ffbwrap = final.callPackage ./packages/ffbwrap.nix { };
     sunshinectl = final.callPackage ./packages/sunshinectl.nix { };
     update = final.callPackage ./packages/update.nix { };
+    vortex-umu = final.callPackage ./packages/vortex-umu.nix { };
   };
 
   overlayArgs = { inherit inputs channels; };

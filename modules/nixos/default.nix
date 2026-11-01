@@ -48,6 +48,7 @@
     ./apps/ultrastardx.nix
     ./apps/unigine-benchmarks.nix
     ./apps/vlc.nix
+    ./apps/vortex-umu.nix
     ./apps/vscode.nix
     ./apps/winetricks.nix
     ./apps/xournalpp.nix
