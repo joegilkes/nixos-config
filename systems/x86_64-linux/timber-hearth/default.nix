@@ -35,6 +35,7 @@ with (import ../../../lib/module-helpers.nix { inherit lib; });
     blender.gpuType = "amd";
     diagnostics.gpuType = "amd";
     star-citizen.location = "/beluga/Games/star-citizen";
+    vortex-umu.pressure-vessel-filesystems-rw = [ "/beluga" ];
   };
 
   services = {

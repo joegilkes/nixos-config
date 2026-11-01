@@ -27,6 +27,7 @@ in
       steam = enabled;
       steamtinkerlaunch = enabled;
       ultrastar = enabled;
+      vortex-umu = enabled;
       winetricks = enabled;
       ffbtools = enabled;
     };
