@@ -29,9 +29,16 @@ sudo update
 # Build the current host and switch to the new config on next boot.
 sudo update boot
 
-# Build a different host.
+# Build the current host and switch, without trying to build on timber-hearth.
+sudo update --option builders ""
+
+# Build a different host with error traces.
 NIXOS_HOST=giants-deep update build --show-trace
 
 # Build a different host and push its new config to be switched to on next boot.
-NIXOS_HOST=interloper update boot --target-host interloper.local --no-reexec
+NIXOS_HOST="interloper" update boot --target-host interloper.home --no-reexec --elevate=sudo --ask-elevate-password
 ```
+
+All systems default to preferring `timber-hearth` as a builder when `update` is used locally. 
+
+`interloper` gets special treatment - since it often takes years to copy built derivations on its own, it is easier to run the entire build on `timber-hearth` and then copy it over in one, as above. This creates an issue, as `timber-hearth` garbage collects `interloper`'s entire system derivation (including its kernel build) and then needs to rebuild everything. This is resolved by letting `interloper` also be a substituter for `timber-hearth`, so while building `interloper` it can fetch any already existing derivations from there instead of rebuilding them.
