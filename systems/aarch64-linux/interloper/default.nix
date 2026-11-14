@@ -41,6 +41,8 @@ with (import ../../../lib/module-helpers.nix { inherit lib; });
     kb = enabled;
   };
 
+  # Somehow this has been set at some point and now can't be unset easily.
+  users.users."joe".uid = mkForce 1001;
 
   programs.ssh.extraConfig = ''
     Host builder

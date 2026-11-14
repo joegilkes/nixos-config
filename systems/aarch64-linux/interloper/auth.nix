@@ -238,5 +238,5 @@ in
     serviceConfig.LogsDirectory = "authelia";
     };
 
-  networking.firewall.allowedTCPPorts = [ lldapHttpPort lldapInternalPort ];
+  networking.firewall.allowedTCPPorts = [ lldapHttpPort lldapInternalPort autheliaPort ];
 }
