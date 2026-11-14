@@ -28,7 +28,6 @@ in
   boot.kernelPackages = latestKernelPackage;
   boot.kernelModules = [ "coretemp" ];
   boot.kernelParams = [ "nohibernate" ];
-  # boot.extraModulePackages = [ (config.boot.kernelPackages.callPackage ./tbs-driver.nix {}) ];
   boot.supportedFilesystems = [ "zfs" ];
   boot.zfs.forceImportRoot = false;
 
