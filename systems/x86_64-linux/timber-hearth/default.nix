@@ -64,6 +64,17 @@ with (import ../../../lib/module-helpers.nix { inherit lib; });
     allowedUDPPorts = [ 25565 ];
   };
 
+  # Add interloper as a local shared Nix store to avoid rebuilding packages that have already been built on interloper.
+  programs.ssh.extraConfig = ''
+    Host interloper-store
+      HostName interloper.local
+      User nix-ssh
+      IdentitiesOnly yes
+      IdentityFile /root/.ssh/nixremote
+      ControlMaster auto
+      ControlPath /tmp/ssh-%r@%h:%p
+      ControlPersist 120
+  '';
 
   # Enable this system as a local shared Nix store.
   services.sshServe = {
@@ -81,6 +92,7 @@ with (import ../../../lib/module-helpers.nix { inherit lib; });
     useLix = true;
     extra-substituters = {
       "https://nix-gaming.cachix.org".key = "nix-gaming.cachix.org-1:nbjlureqMbRAxR1gJ/f3hxemL9svXaZF/Ees8vCUUs4=";
+      "ssh-ng://interloper-store".key = "interloper:KXMaZG8YqQ6Q77jsM9M3x4uFDjVQZ+CQv0CT+qw5SsI=";
     };
     extraOptions = ''
       secret-key-files = /home/${config.user.name}/.nixos-cache-secrets/cache-priv-key.pem
