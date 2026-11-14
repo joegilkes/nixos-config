@@ -1,4 +1,4 @@
-{ lib, ...}:
+{ config, lib, ...}:
 
 with lib;
 with (import ../../../lib/module-helpers.nix { inherit lib; });
