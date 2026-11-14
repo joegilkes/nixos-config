@@ -55,6 +55,19 @@ with (import ../../../lib/module-helpers.nix { inherit lib; });
       ControlPersist 120
   '';
 
+  # Enable this system as a local shared Nix store - allows timber-hearth to 
+  # fetch already built packages when building this system.
+  services.sshServe = {
+    enable = true;
+    write = true;
+    trusted = true;
+    protocol = "ssh-ng";
+    keys = [
+      # Shared remote-builder key used by the local system configurations.
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILFz8ePAZAOD3JZh5AY+25dW+4L1dL4dnJ3JbvOxpqqi root@attlerock"
+    ];
+  };
+
   nix = {
     extra-substituters = {
       "ssh-ng://builder".key = "timber-hearth:P0qnfshi3IsdI0gMkeFn3o1kik55uWpBqHaiYVC8UQY=";
@@ -72,6 +85,7 @@ with (import ../../../lib/module-helpers.nix { inherit lib; });
       builders-use-substitutes = true
       fallback = true
       connect-timeout = 5
+      secret-key-files = /home/${config.user.name}/.nixos-cache-secrets/cache-priv-key.pem
     '';
   };
 
