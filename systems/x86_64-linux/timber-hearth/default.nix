@@ -67,7 +67,7 @@ with (import ../../../lib/module-helpers.nix { inherit lib; });
   # Add interloper as a local shared Nix store to avoid rebuilding packages that have already been built on interloper.
   programs.ssh.extraConfig = ''
     Host interloper-store
-      HostName interloper.local
+      HostName interloper.home
       User nix-ssh
       IdentitiesOnly yes
       IdentityFile /root/.ssh/nixremote
